@@ -1,0 +1,125 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title>
+    <!--Iconos de google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CDN de Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- css personalizado para el flexbox -->
+    <!--Logo de la empresas en las pestañas-->
+    <link rel="icon" type="image/png" href="{% static 'img/logo.jpeg' %}">
+
+    <style type="text/css">
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper white black-text">
+            <ul class="hide-on-med-and-down left">
+                <img src="{% static 'img/Logo-large.jpeg' %}" alt="" style="height: 60px; margin-left: 10px;">
+            </ul>
+
+            <ul class="hide-on-med-and-down left">
+                <li>
+                    <div class="center row">
+                        <div class="col s12 ">
+                            <div class="row" id="topbarsearch">
+                                <div class="input-field col s6 s12 black-text">
+                                    <i class=" material-icons prefix">search</i>
+                                    <input type="text" placeholder="buscar" id="autocomplete-input"
+                                        class="autocomplete ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="hide-on-med-and-down right">
+                <li><i href="" class="large material-icons black-text" style="margin-left: 10px; margin-right: 20px;">message</i></li>
+                <li><i href="" class="large material-icons black-text">settings</i></li>
+                
+                <li style="margin-left: 20px; margin-right: -10px;">perfil</li>
+                <li>
+                    <i href="#!" style="margin-left: 10px; margin-right: 10px;" class="material-icons prefix black-text">account_box</i>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Contenido de la página-->
+    <main>
+       <div class="container center">
+        
+       </div>
+       <div class="row">
+        <div class="col s6">
+            <h4>Deja tus proyectos Tecnológico en manos de los expertos</h4>
+            <h5>-Proyectos de alta calidad</h5>
+            <h5>-Innovación</h5>
+            <h5>-Nuevas Tecnologias</h5>
+        </div>
+        <div class="col s6"></div>
+       </div>
+    
+       
+       <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red">
+          <i class="large material-icons" style="font-size: 50px;">help_outline</i>
+        </a>
+        <ul>
+          <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+          <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+          <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+          <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+        </ul>
+      </div>
+    </main>
+
+    <!--Espacio para el pie de página-->
+    <footer class="page-footer grey lighten-2">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="black-text">Pie de página</h5>
+                    <p class="grey-text text-darken-4">texto para el pie de página</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="black-text">Enlaces</h5>
+                    <ul>
+                        <li><a class="grey-text text-darken-4" href="#!">Enlace 1</a></li>
+                        <li><a class="grey-text text-darken-4" href="#!">Enlace 2</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            <div class="container black-text">
+                © 2021 Industria de software
+                <a class="right" href="#!">Acerca de nosotros</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CDN de Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
