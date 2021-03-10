@@ -1,178 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>{{ titulo }}</title>
-      <!--Iconos de google-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!-- CDN de Materialize CSS -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-      <!-- css personalizado para el flexbox -->
-      <!--Logo de la empresas en las pestañas-->
-      <link rel="icon" type="image/png" href="{% static 'img/logo.jpeg' %}">
-      <style type="text/css">
-         body {
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>{{ titulo }}</title>
+   <!--Iconos de google-->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!-- CDN de Materialize CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   <!-- css personalizado para el flexbox -->
+   <!--Logo de la empresas en las pestañas-->
+   <link rel="icon" type="image/png" href="{% static 'img/logo.jpeg' %}">
+   <style type="text/css">
+      body {
          display: flex;
          min-height: 100vh;
          flex-direction: column;
-         }
-         main {
+      }
+
+      main {
          flex: 1 0 auto;
-         }
-      </style>
-   </head>
-   <body style="background-color: rgb(238, 238, 238)">
-      <nav>
-         <div class="nav-wrapper white black-text">
-            <ul class="hide-on-med-and-down left">
-               <img src="../static/img/Logo-Large.jpeg" alt="" style="height: 60px; margin-left: 10px;">
-            </ul>
-            <ul class="hide-on-med-and-down left">
-               <li>
-                  <div class="center row">
-                     <div class="col s12 ">
-                        <div class="row" id="topbarsearch">
-                           <div class="input-field col s6 s12 black-text">
-                              <i class=" material-icons prefix">search</i>
-                              <input type="text" placeholder="buscar" id="autocomplete-input"
-                                 class="autocomplete ">
-                           </div>
+      }
+
+       /* No añadir */
+       /* The container */
+       .container {
+         display: block;
+         position: relative;
+         padding-left: 35px;
+         margin-bottom: 12px;
+         cursor: pointer;
+         font-size: 22px;
+         -webkit-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         user-select: none;
+      }
+
+      /* Hide the browser's default checkbox */
+      .container input {
+         position: absolute;
+         opacity: 0;
+         cursor: pointer;
+         height: 0;
+         width: 0;
+      }
+
+      /* Create a custom checkbox */
+      .checkmark {
+         position: absolute;
+         top: 0;
+         left: 0;
+         height: 25px;
+         width: 25px;
+         background-color: #eee;
+      }
+
+      /* On mouse-over, add a grey background color */
+      .container:hover input~.checkmark {
+         background-color: #ccc;
+      }
+
+      /* When the checkbox is checked, add a blue background */
+      .container input:checked~.checkmark {
+         background-color: #2196F3;
+      }
+
+      /* Create the checkmark/indicator (hidden when not checked) */
+      .checkmark:after {
+         content: "";
+         position: absolute;
+         display: none;
+      }
+
+      /* Show the checkmark when checked */
+      .container input:checked~.checkmark:after {
+         display: block;
+      }
+
+      /* Style the checkmark/indicator */
+      .container .checkmark:after {
+         left: 9px;
+         top: 5px;
+         width: 5px;
+         height: 10px;
+         border: solid white;
+         border-width: 0 3px 3px 0;
+         -webkit-transform: rotate(45deg);
+         -ms-transform: rotate(45deg);
+         transform: rotate(45deg);
+      }
+
+      .button {
+         background-color: #4CAF50;
+         border: none;
+         color: white;
+         padding: 15px 85px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 16px;
+         margin: 4px 2px;
+         cursor: pointer;
+      }
+
+      .Sombras {
+         -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+         -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+         box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+         border-radius: 10px;
+      }
+   </style>
+</head>
+
+<body style="background-color: rgb(238, 238, 238)">
+   <nav>
+      <div class="nav-wrapper white black-text">
+         <ul class="hide-on-med-and-down left">
+            <img src="../static/img/Logo-Large.jpeg" alt="" style="height: 60px; margin-left: 10px;">
+         </ul>
+         <ul class="hide-on-med-and-down left">
+            <li>
+               <div class="center row">
+                  <div class="col s12 ">
+                     <div class="row" id="topbarsearch">
+                        <div class="input-field col s6 s12 black-text">
+                           <i class=" material-icons prefix">search</i>
+                           <input type="text" placeholder="buscar" id="autocomplete-input" class="autocomplete ">
                         </div>
                      </div>
                   </div>
-               </li>
-            </ul>
-            <ul class="hide-on-med-and-down right">
-               <li><i href="" class="large material-icons black-text" style="margin-left: 10px; margin-right: 20px;">message</i></li>
-               <li><i href="" class="large material-icons black-text">settings</i></li>
-               <li style="margin-left: 20px; margin-right: -10px;">perfil</li>
-               <li>
-                  <i href="#!" style="margin-left: 10px; margin-right: 10px;" class="material-icons prefix black-text">account_box</i>
-               </li>
-            </ul>
-         </div>
-      </nav>
-      <style>
-        /* The container */
-        .container {
-          display: block;
-          position: relative;
-          padding-left: 35px;
-          margin-bottom: 12px;
-          cursor: pointer;
-          font-size: 22px;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-        }
-        
-        /* Hide the browser's default checkbox */
-        .container input {
-          position: absolute;
-          opacity: 0;
-          cursor: pointer;
-          height: 0;
-          width: 0;
-        }
-        
-        /* Create a custom checkbox */
-        .checkmark {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 25px;
-          width: 25px;
-          background-color: #eee;
-        }
-        
-        /* On mouse-over, add a grey background color */
-        .container:hover input ~ .checkmark {
-          background-color: #ccc;
-        }
-        
-        /* When the checkbox is checked, add a blue background */
-        .container input:checked ~ .checkmark {
-          background-color: #2196F3;
-        }
-        
-        /* Create the checkmark/indicator (hidden when not checked) */
-        .checkmark:after {
-          content: "";
-          position: absolute;
-          display: none;
-        }
-        
-        /* Show the checkmark when checked */
-        .container input:checked ~ .checkmark:after {
-          display: block;
-        }
-        
-        /* Style the checkmark/indicator */
-        .container .checkmark:after {
-          left: 9px;
-          top: 5px;
-          width: 5px;
-          height: 10px;
-          border: solid white;
-          border-width: 0 3px 3px 0;
-          -webkit-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          transform: rotate(45deg);
-        }
-        .button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 15px 85px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
-        .Sombras{
-            -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-            -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-            border-radius: 10px;
-        }
-        </style>
-      <div style="text-align: center;">
-        <div  class="Sombras" style="background-color: #fff;margin: 3% 30% 0% 30%;text-align: center;padding-top: 2%;padding-bottom: 3%;">
-            <span style="color: #000;font-size: 20px;font-weight: bold;">
-                Iniciar Sesión
-            </span><br>
-            <div style="padding-top: 5%;">
-                <div style="text-align: center;padding: 0% 0% 0% 18%;">
-                    <table style="border-collapse: inherit;">
-                        <tr>
-                            <th><label style="color: #000;font-size: 15px;">Correo</label></th>
-                            <th><input type="text" style="border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;"></th>
-                        </tr>
-                        <tr>
-                            <th><label style="color: #000;font-size: 15px;">Contraseña</label></th>
-                            <th><input type="password" style="border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;"></th>
-                        </tr>
-                        <tr>
-                      </table>
-                    </div>
-                      <div>
-                        <label class="container" style="font-size: 15px;color: #000;">Recordar Contraseña
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                          </label>
-                      </div>
-                      <div>
-                        <input type="button" class="button" value="Iniciar Sesión">
-                      </div><br<br>
-                  ¿Aun no tienes cuenta en WQuick?
-            </div>  
-        </div>
+               </div>
+            </li>
+         </ul>
+         <ul class="hide-on-med-and-down right">
+            <li><i href="" class="large material-icons black-text"
+                  style="margin-left: 10px; margin-right: 20px;">message</i></li>
+            <li><i href="" class="large material-icons black-text">settings</i></li>
+            <li style="margin-left: 20px; margin-right: -10px;">perfil</li>
+            <li>
+               <i href="#!" style="margin-left: 10px; margin-right: 10px;"
+                  class="material-icons prefix black-text">account_box</i>
+            </li>
+         </ul>
       </div>
-      
-      <!-- CDN de Materialize JavaScript -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-   </body>
+   </nav>
+
+   <div style="text-align: center;">
+      <div class="Sombras"
+         style="background-color: #fff;margin: 3% 30% 0% 30%;text-align: center;padding-top: 2%;padding-bottom: 3%;">
+         <span style="color: #000;font-size: 20px;font-weight: bold;">
+            Iniciar Sesión
+         </span><br>
+         <div style="padding-top: 5%;">
+            <div style="text-align: center;padding: 0% 0% 0% 18%;">
+               <table style="border-collapse: inherit;">
+                  <tr>
+                     <th><label style="color: #000;font-size: 15px;">Correo</label></th>
+                     <th><input type="text" style="border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;">
+                     </th>
+                  </tr>
+                  <tr>
+                     <th><label style="color: #000;font-size: 15px;">Contraseña</label></th>
+                     <th><input type="password"
+                           style="border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;"></th>
+                  </tr>
+                  <tr>
+               </table>
+            </div>
+            <div>
+               <p>
+                  <label>
+                     <input id="chk-clave" type="checkbox" />
+                     <span>Recordar Contraseña</span>
+                  </label>
+               </p>
+            </div>
+            <div>
+               <input type="button" class="button" value="Iniciar Sesión">
+            </div>
+            <br<br>
+               <a href="">¿Aun no tienes cuenta en WQuick?</a>
+         </div>
+      </div>
+   </div>
+
+   <!-- CDN de Materialize JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
 </html>
