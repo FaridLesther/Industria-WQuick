@@ -1,0 +1,107 @@
+{% load static %}
+<div class="navbar-fixed">
+    <nav class="nav-wrapper white black-text">
+        <div class="nav-wrapper" style="margin-left: 20px; margin-right: 20px;">
+            <a href="" id="logo" class="left">
+                <img src="{%static 'img/Logo-Large.jpeg'%}" alt="" style="height: 55px;">
+            </a>
+
+            <!-- Barra de búsqueda -->
+            <ul class="hide-on-med-and-down left">
+                <li>
+                    <div class="center row">
+                        <div class="col s12 ">
+                            <div class="row" id="topbarsearch">
+                                <div class="input-field col s6 s12 black-text">
+                                    <i class=" material-icons prefix">search</i>
+                                    <input type="text" placeholder="buscar" id="autocomplete-input"
+                                        class="autocomplete ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <!--boton menu responsivo -->
+            <ul>
+                <li class="right">
+                    <a href="#" data-target="menu-responsive" class="sidenav-trigger">
+                        <i class="material-icons black-text">menu</i>
+                    </a>
+                </li>
+            </ul>
+            <!-- Lista desplegable de sesion no responsiva -->
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="" class="dropdown-trigger black-text" data-target="id_drop" style="min-width: 125px;">
+                        Sesión
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Botones random que no sabremos si dejaremos -->
+            <ul class="hide-on-med-and-down right">
+                <li><i href="" class="large material-icons black-text"
+                        style="margin-left: 10px; margin-right: 20px;">message</i></li>
+                <li><i href="" class="large material-icons black-text">settings</i></li>
+            </ul>
+
+        </div>
+    </nav>
+</div>
+
+<!--Menú de sessión no responsivo-->
+<ul class="dropdown-content" id="id_drop">
+    <li><a href="login" class="black-text">Iniciar sesión</a></li>
+    <li class="divider"></li>
+    <li><a href="registrar" class="black-text">Registrarse</a></li>
+</ul>
+
+<!--Contenido del menú responsivo-->
+<ul class="sidenav" id="menu-responsive">
+
+    <li class="center">
+        <h5>Sesión</h5>
+    </li>
+    <li class="divider"></li>
+
+    <li>
+        <a href="login" class="black-text" style="font-size: 15px;">
+            <i class="material-icons black-text" style="font-size: 35px;">account_box</i>
+            Iniciar sesión
+        </a>
+    </li>
+    <li class="divider"></li>
+
+    <li>
+        <a href="registrar" class="black-text" style="font-size: 15px;">
+            <i class="material-icons black-text" style="font-size: 35px;">recent_actors</i>
+            Registrarse
+        </a>
+    </li>
+    <li class="divider"></li>
+
+    <li class="center">
+        <h5>Otros</h5>
+    </li>
+    <li class="divider"></li>
+
+    <li>
+        <a href="" class="black-text" style="font-size: 15px;">
+            <i class="material-icons black-text" style="font-size: 35px;">message</i>
+            Notificaciones
+        </a>
+    </li>
+    <li class="divider"></li>
+
+    <li>
+        <a href="" class="black-text" style="font-size: 15px;">
+            <i class="material-icons black-text" style="font-size: 35px;">settings</i>
+            Configuración
+        </a>
+    </li>
+    <li class="divider"></li>
+
+</ul>
