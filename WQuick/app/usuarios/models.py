@@ -37,7 +37,7 @@ class Usuario(AbstractBaseUser):
     objects = UsuarioManager()
 
     USERNAME_FIELD = 'nombre'
-    REQUIRED_FIELDS = 'Correo'
+    REQUIRED_FIELDS = ['correo']
 
     def __str__(self):
         # metodo de sobrescritura de la funcion to_string esto representa
