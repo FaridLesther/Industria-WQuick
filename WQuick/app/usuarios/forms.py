@@ -1,9 +1,10 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login
 from usuarios import models
 
 
-class frmCrearUsuario(forms.ModelForm):
+class frmCrearUsuario(UserCreationForm):
     #  Formulario de registro de un usuario en la base de datos
     #  Autor: Lesther Valladares
     #  Version: 0.0.1
@@ -58,14 +59,6 @@ class frmCrearUsuario(forms.ModelForm):
         if password1 != password2:
             raise forms.ValidationError('La contraseñas no coinciden')
         return password2
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.set_password(self.cleaned_data.get('password1'))
-        user.admin = self.cleaned_data.get('admin')
-        if commit:
-            user.save()
-        return user
 
 
 class frmLogin(AuthenticationForm):
