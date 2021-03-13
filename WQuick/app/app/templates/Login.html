@@ -15,6 +15,27 @@
    <!--Logo de la empresas en las pestañas-->
    <link rel="icon" type="image/png" href="{% static 'img/logo.jpeg' %}">
    <style type="text/css">
+      @media only screen and (max-width: 450px) {
+         .button {
+            padding: 5% 16%!important;
+         }
+         .FondoBlanco {
+            margin: 50% 5% 0% 5%!important;
+         }
+         td, th {
+            padding: 2px 5px!important;
+         }
+         .textbox{
+            width: 90%!important;
+            height: 4vh!important;
+         }
+      }    
+      
+      @font-face {
+         font-family: fuente1;
+         src: url("./static/fuente/fuente.ttf");
+         }
+
       body {
          display: flex;
          min-height: 100vh;
@@ -95,7 +116,7 @@
       }
 
       .button {
-         background-color: #4CAF50;
+         background-color: #C8A900;
          border: none;
          color: white;
          padding: 15px 85px;
@@ -105,6 +126,7 @@
          font-size: 16px;
          margin: 4px 2px;
          cursor: pointer;
+         font-family: fuente1;
       }
 
       .Sombras {
@@ -113,29 +135,63 @@
          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
          border-radius: 10px;
       }
+
+      .FondoPantalla{
+         background-image: url("./static/img/amarilla.jpg");
+         background-size: cover;
+      }
+      .FondoBlanco{
+         background-color: #fff;
+         margin: 8% 30% 0% 30%;
+         text-align: center;
+         padding-top: 2%;
+         padding-bottom: 3%;
+      }
+
+      .Centro{
+         text-align: center;
+      }
+
+      .Bajar{
+         padding-top: 5% ;
+      }
+
+      .textbox{
+         border-radius: 2px;
+         width: 80%;
+         border: 1px solid #000!important;
+      }
+
+      .Titulo{
+         color: #000;
+         font-size: 20px;
+         font-weight: bold;
+         font-family: fuente1;
+      }
    </style>
 </head>
 
-<body style="background-color: rgb(238, 238, 238)">
+<body class="FondoPantalla">
    
-   <div style="text-align: center;">
-      <div class="Sombras"
-         style="background-color: #fff;margin: 3% 30% 0% 30%;text-align: center;padding-top: 2%;padding-bottom: 3%;">
-         <span style="color: #000;font-size: 20px;font-weight: bold;">
+   <div class="Centro">
+      
+      <div class="Sombras FondoBlanco">
+         <div style="text-align: center;">
+            <img src="./static/img/transparencia.png" style="width: 30%;">
+         </div>
+         <span class=".LogoTransparencia Titulo">
             Iniciar Sesión
          </span><br>
-         <div style="padding-top: 5%;">
-            <div style="text-align: center;padding: 0% 0% 0% 18%;">
+         <div class="Bajar">
+            <div class="Centro" style= "padding: 0% 0% 0% 18%;">
                <table style="border-collapse: inherit;">
                   <tr>
-                     <th><label style="color: #000;font-size: 15px;">Correo</label></th>
-                     <th><input type="text" style="border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;">
-                     </th>
+                     <th><label style="color: #000;font-family: fuente1;font-size: 15px;">Correo</label></th>
+                     <th><input type="text" class="textbox" style="width: 90%;"></th>
                   </tr>
                   <tr>
-                     <th><label style="color: #000;font-size: 15px;">Contraseña</label></th>
-                     <th><input type="password"
-                           style="border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;"></th>
+                     <th><label style="color: #000;font-family: fuente1;font-size: 15px;">Contraseña</label></th>
+                     <th><input type="password" class="textbox" style="width: 90%;"></th>
                   </tr>
                   <tr>
                </table>

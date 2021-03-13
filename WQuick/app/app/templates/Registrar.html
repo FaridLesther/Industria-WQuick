@@ -14,6 +14,159 @@
    <!--Logo de la empresas en las pestañas-->
    <link rel="icon" type="image/png" href="{% static 'img/logo.jpeg' %}">
    <style type="text/css">
+         @media only screen and (max-width: 450px) {
+         .button {
+            padding: 5% 16%!important;
+         }
+         .FondoBlanco {
+            margin: 50% 5% 0% 5%!important;
+         }
+         td, th {
+            padding: 2px 5px!important;
+         }
+         .textbox{
+            width: 90%!important;
+            height: 4vh!important;
+         }
+      }    
+      
+      @font-face {
+         font-family: fuente1;
+         src: url("./static/fuente/fuente.ttf");
+         }
+
+      body {
+         display: flex;
+         min-height: 100vh;
+         flex-direction: column;
+      }
+
+      main {
+         flex: 1 0 auto;
+      }
+
+      /* No añadir */
+      /* The container */
+      .container {
+         display: block;
+         position: relative;
+         padding-left: 35px;
+         margin-bottom: 12px;
+         cursor: pointer;
+         font-size: 22px;
+         -webkit-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         user-select: none;
+      }
+
+      /* Hide the browser's default checkbox */
+      .container input {
+         position: absolute;
+         opacity: 0;
+         cursor: pointer;
+         height: 0;
+         width: 0;
+      }
+
+      /* Create a custom checkbox */
+      .checkmark {
+         position: absolute;
+         top: 0;
+         left: 0;
+         height: 25px;
+         width: 25px;
+         background-color: #eee;
+      }
+
+      /* On mouse-over, add a grey background color */
+      .container:hover input~.checkmark {
+         background-color: #ccc;
+      }
+
+      /* When the checkbox is checked, add a blue background */
+      .container input:checked~.checkmark {
+         background-color: #2196F3;
+      }
+
+      /* Create the checkmark/indicator (hidden when not checked) */
+      .checkmark:after {
+         content: "";
+         position: absolute;
+         display: none;
+      }
+
+      /* Show the checkmark when checked */
+      .container input:checked~.checkmark:after {
+         display: block;
+      }
+
+      /* Style the checkmark/indicator */
+      .container .checkmark:after {
+         left: 9px;
+         top: 5px;
+         width: 5px;
+         height: 10px;
+         border: solid white;
+         border-width: 0 3px 3px 0;
+         -webkit-transform: rotate(45deg);
+         -ms-transform: rotate(45deg);
+         transform: rotate(45deg);
+      }
+
+      .button {
+         background-color: #C8A900;
+         border: none;
+         color: white;
+         padding: 15px 85px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 16px;
+         margin: 4px 2px;
+         cursor: pointer;
+         font-family: fuente1;
+      }
+
+      .Sombras {
+         -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+         -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+         box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+         border-radius: 10px;
+      }
+
+      .FondoPantalla{
+         background-image: url("./static/img/amarilla.jpg");
+         background-size: cover;
+      }
+      .FondoBlanco{
+         background-color: #fff;
+         margin: 5% 30% 0% 30%;
+         text-align: center;
+         padding-top: 2%;
+         padding-bottom: 3%;
+      }
+
+      .Centro{
+         text-align: center;
+      }
+
+      .Bajar{
+         padding-top: 5% ;
+      }
+
+      .textbox{
+         border-radius: 2px;
+         width: 80%;
+         border: 1px solid #000!important;
+      }
+
+      .Titulo{
+         color: #000;
+         font-size: 20px;
+         font-weight: bold;
+         font-family: fuente1;
+      }
       body {
          display: flex;
          min-height: 100vh;
@@ -94,7 +247,7 @@
       }
 
       .button {
-         background-color: #4CAF50;
+         background-color: #C8A900;
          border: none;
          color: white;
          padding: 15px 85px;
@@ -115,31 +268,33 @@
    </style>
 </head>
 
-<body style="background-color: rgb(238, 238, 238)">
+<body class="FondoPantalla">
 
-   <div style="text-align: center;">
-      <div class="Sombras"
-         style="background-color: #fff;margin: 3% 30% 0% 30%;text-align: center;padding-top: 2%;padding-bottom: 3%;">
-         <span style="color: #000;font-size: 20px;font-weight: bold;">
+   <div class="Centro">
+      <div class="Sombras FondoBlanco" >
+         <div style="text-align: center;">
+            <img src="./static/img/transparencia.png" style="width: 30%;">
+         </div>
+         <span style="color: #000;font-family: fuente1;font-size: 20px;font-weight: bold;">
             Registrate
          </span><br>
          <div style="padding-top: 5%;">
             <div style="text-align: center;padding: 0% 0% 0% 18%;">
                <table style="border-collapse: inherit;">
                   <tr>
-                     <th><label style="color: #000;font-size: 15px;">Nombre</label></th>
-                     <th><input type="text" style="border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;">
+                     <th><label style="color: #000;font-family: fuente1;font-size: 15px;">Nombre</label></th>
+                     <th><input type="text" style="border-radius: 2px;width: 90%;border: 1px solid #000;height: 5vh;">
                      </th>
                   </tr>
                   <tr>
-                     <th><label style="color: #000;font-size: 15px;">Correo</label></th>
-                     <th><input type="text" style="border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;">
+                     <th><label style="color: #000;font-family: fuente1;font-size: 15px;">Correo</label></th>
+                     <th><input type="text" style="border-radius: 2px;width: 90%;border: 1px solid #000;height: 5vh;">
                      </th>
                   </tr>
                   <tr>
-                     <th><label style="color: #000;font-size: 15px;">Contraseña</label></th>
+                     <th><label style="color: #000;font-family: fuente1;font-size: 15px;">Contraseña</label></th>
                      <th><input type="password"
-                           style="border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;"></th>
+                           style="border-radius: 2px;width: 90%;border: 1px solid #000;height: 5vh;"></th>
                   </tr>
                   <tr>
                </table>
