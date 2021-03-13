@@ -11,30 +11,34 @@
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <!-- CDN de Materialize CSS -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-   <!-- css personalizado para el flexbox -->
    <!--Logo de la empresas en las pestañas-->
    <link rel="icon" type="image/png" href="{% static 'img/logo.jpeg' %}">
+
    <style type="text/css">
       @media only screen and (max-width: 450px) {
          .button {
-            padding: 5% 16%!important;
+            padding: 5% 16% !important;
          }
+
          .FondoBlanco {
-            margin: 50% 5% 0% 5%!important;
+            margin: 50% 5% 0% 5% !important;
          }
-         td, th {
-            padding: 2px 5px!important;
+
+         td,
+         th {
+            padding: 2px 5px !important;
          }
-         .textbox{
-            width: 90%!important;
-            height: 4vh!important;
+
+         .textbox {
+            width: 90% !important;
+            height: 4vh !important;
          }
-      }    
-      
+      }
+
       @font-face {
          font-family: fuente1;
          src: url("./static/fuente/fuente.ttf");
-         }
+      }
 
       body {
          display: flex;
@@ -136,79 +140,86 @@
          border-radius: 10px;
       }
 
-      .FondoPantalla{
+      .Centro {
+         text-align: center;
+      }
+
+      .Bajar {
+         padding-top: 5%;
+      }
+
+      .textbox {
+         border-radius: 2px;
+         width: 80%;
+         border: 1px solid #000 !important;
+      }
+
+      .Titulo {
+         color: #000;
+         font-size: 20px;
+         font-weight: bold;
+         font-family: fuente1;
+      }
+
+      .FondoPantalla {
          background-image: url("./static/img/amarilla.jpg");
          background-size: cover;
       }
-      .FondoBlanco{
+
+      .FondoBlanco {
          background-color: #fff;
          margin: 8% 30% 0% 30%;
          text-align: center;
          padding-top: 2%;
          padding-bottom: 3%;
       }
-
-      .Centro{
-         text-align: center;
-      }
-
-      .Bajar{
-         padding-top: 5% ;
-      }
-
-      .textbox{
-         border-radius: 2px;
-         width: 80%;
-         border: 1px solid #000!important;
-      }
-
-      .Titulo{
-         color: #000;
-         font-size: 20px;
-         font-weight: bold;
-         font-family: fuente1;
-      }
    </style>
+
 </head>
 
 <body class="FondoPantalla">
-   
+
    <div class="Centro">
-      
+
       <div class="Sombras FondoBlanco">
-         <div style="text-align: center;">
-            <img src="./static/img/transparencia.png" style="width: 30%;">
-         </div>
-         <span class=".LogoTransparencia Titulo">
+         <a href="/">
+            <div style="text-align: center;">
+               <img src="{% static 'img/transparencia.png' %}" style="width: 40%;">
+            </div>
+         </a>
+         <span style="color: #000;font-size: 20px;font-weight: bold;">
             Iniciar Sesión
          </span><br>
          <div class="Bajar">
-            <div class="Centro" style= "padding: 0% 0% 0% 18%;">
-               <table style="border-collapse: inherit;">
-                  <tr>
-                     <th><label style="color: #000;font-family: fuente1;font-size: 15px;">Correo</label></th>
-                     <th><input type="text" class="textbox" style="width: 90%;"></th>
-                  </tr>
-                  <tr>
-                     <th><label style="color: #000;font-family: fuente1;font-size: 15px;">Contraseña</label></th>
-                     <th><input type="password" class="textbox" style="width: 90%;"></th>
-                  </tr>
-                  <tr>
-               </table>
+            <div class="Centro" style="padding: 0% 0% 0% 18%;">
+               <!--=============================== Formulario de login ============================-->
+               <form method="POST" id="frm_login">
+                  {% csrf_token %}
+
+                  <table style="border-collapse: inherit;">
+                     <tr>
+                        <th><label style="color: #000;font-size: 15px;">Usuario</label></th>
+                        <th>
+                           {{ form.username }}
+                        </th>
+                     </tr>
+                     <tr>
+                        <th><label style="color: #000;font-size: 15px;">Contraseña</label></th>
+                        <th>
+                           {{ form.password }}
+                        </th>
+                     </tr>
+                     <tr>
+                  </table>
+
+                  <button id="btn_iniciar" type="submit" class="button">
+                     Iniciar Sesión
+                  </button><br><br>
+                  <br<br>
+                     <a href="/registrar">¿Aun no tienes cuenta en WQuick?</a>
+
+               </form>
             </div>
-            <div>
-               <p>
-                  <label>
-                     <input id="chk-clave" type="checkbox" />
-                     <span>Recordar Contraseña</span>
-                  </label>
-               </p>
-            </div>
-            <div>
-               <input type="button" class="button" value="Iniciar Sesión">
-            </div>
-            <br<br>
-               <a href="">¿Aun no tienes cuenta en WQuick?</a>
          </div>
       </div>
    </div>

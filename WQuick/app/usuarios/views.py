@@ -14,11 +14,43 @@ from usuarios import forms, models
 path = os.path.dirname(__file__)
 
 
-#def login(request):
- #   parametros = {"titulo": 'Login'}
- #  return render(request, 'Login.html', parametros)
+class Registrar(CreateView):
+    model = models.Usuario
+    form_class = forms.frmCrearUsuario
+    template_name = 'usuarios/Registrar.html'
+    success_url = reverse_lazy('inicio')
 
+    def get_context_data(self, **kwargs):
+        # Capturamos el contexto del padre.
+        context = super(Registrar, self).get_context_data(**kwargs)
 
-#def registrar(request):
-    #parametros = {"titulo": 'Registrar'}
-    #return render(request, 'Registrar.html', parametros)
+        # Le agregamos la información necesaria o parametros.
+        context['titulo'] = "Registro de usuarios"
+        return context
+
+class Login(FormView):
+    template_name = 'usuarios/Login.html'
+    form_class = forms.frmLogin
+    success_url = reverse_lazy('inicio')
+
+    @method_decorator(csrf_protect)
+    @method_decorator(never_cache)
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            return super(Login, self).dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        login(self.request, form.get_user())
+        return super(Login, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        # Capturamos el contexto del padre.
+        context = super(Login, self).get_context_data(**kwargs)
+        context['titulo'] = "Login"  # Le agregamos la información necesaria.
+        return context  # Retornamos el contexto.
+
+def logoutUsuario(request):
+    logout(request)
+    return HttpResponseRedirect('/')

@@ -21,16 +21,22 @@ class UsuarioManager(BaseUserManager):
         usuario.save()
         return usuario
 
+
 class Usuario(AbstractBaseUser):
     # modelo que enlazara con la tabla de la base de datos usuario
     nombre = models.CharField(
         'Nombre de usuario', max_length=15, unique=True)
-    imagen = models.ImageField('Imagen de perfil', upload_to='perfil/',
-                            height_field=None, width_field=None, max_length=200,
-                            blank=True, null=True
-                            )
+
+    imagen = models.ImageField(
+        'Imagen de perfil', upload_to='perfil/',
+        height_field=None, width_field=None,
+        max_length=200, blank=True, null=True
+    )
+
     correo = models.EmailField(
-        'Correo electronico', max_length=60, blank=False, null=False)
+        'Correo electronico', max_length=60,
+        blank=False, null=False, unique=True
+    )
 
     admin = models.BooleanField(default=False)
     activo = models.BooleanField(default=True)

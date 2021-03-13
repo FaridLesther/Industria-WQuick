@@ -16,13 +16,3 @@ def inicio(request):
     # diccionario con parametros que se cargaran en la plantilla html
     parametros = {"titulo": 'Inicio'}
     return render(request, 'Index.html', parametros)
-
-
-def login(request):
-    parametros = {"titulo": 'Login'}
-    return render(request, 'Login.html', parametros)
-
-
-def registrar(request):
-    parametros = {"titulo": 'Registrar'}
-    return render(request, 'Registrar.html', parametros)

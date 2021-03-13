@@ -1,0 +1,162 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>{{ titulo }}</title>
+   <!--Iconos de google-->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!-- CDN de Materialize CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   <!-- css personalizado para el flexbox -->
+   <!--Logo de la empresas en las pestañas-->
+   <link rel="icon" type="image/png" href="{% static 'img/logo.jpeg' %}">
+   <!-- css wquick personalizado -->
+   <link rel="stylesheet" href="{% static 'css/WQuick.css' %}">
+   <style type="text/css">
+      .FondoPantalla {
+         background-image: url("./static/img/amarilla.jpg");
+         background-size: cover;
+      }
+
+      .FondoBlanco {
+         background-color: #fff;
+         margin: 5% 30% 0% 30%;
+         text-align: center;
+         padding-top: 2%;
+         padding-bottom: 3%;
+      }
+   </style>
+</head>
+
+<body class="FondoPantalla">
+
+   <div class="container-fluid center" style="padding-top: 2%;padding-bottom: 3%;">
+      <div class="row">
+         <div class="col s12 m6 offset-m3 l10 offset-l1 xl6 offset-xl3">
+            <div class="card white">
+               <div class="white">
+                  <span class="card-title black-text">
+                     <br>
+                     <a href="/">
+                        <div class="card-imag responsive-img">
+                           <img src="{% static 'img/Logo-large.jpeg' %}" alt="imagen dañada">
+                        </div>
+                     </a>
+
+                     <span style="color: #000;font-size: 20px;font-weight: bold;">
+                        Regístrate
+                     </span>
+                  </span>
+               </div>
+
+               <div class="card-content">
+                  <!--=============================== Formulario de agregar usuario ============================-->
+                  <form method="POST" id="frm_agregar">
+                     {% csrf_token %}
+
+                     <div class="row">
+                        {% if form.nombre.errors %}
+                        <div class="materialert error">
+                           <div class="material-icons">error</div>
+                           {{form.nombre.errors.as_text}}
+                        </div>
+                        {% endif %}
+                        <div class="col s3">
+                           <label style="color: #000;font-family: fuente1;font-size: 15px;">Nombre</label>
+                        </div>
+                        <div class="col s9">
+                           {{form.nombre}}
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        {% if form.correo.errors %}
+                        <div class="materialert error">
+                           <div class="material-icons">error</div>
+                           {{form.correo.errors.as_text}}
+                        </div>
+                        {% endif %}
+                        <div class="col s3">
+                           <label style="color: #000;font-family: fuente1;font-size: 15px;">Correo</label>
+                        </div>
+                        <div class="col s9">
+                           {{form.correo}}
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col s3">
+                           <label for="txt_clave"
+                              style="color: #000;font-family: fuente1;font-size: 15px;">Contraseña</label>
+                        </div>
+                        <div class="col s9">
+                           {{form.password1}}
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        {% if form.password2.errors %}
+                        <div class="materialert error">
+                           <div class="material-icons">error</div>
+                           {{form.password2.errors.as_text}}
+                        </div>
+                        {% endif %}
+                        <div class="col s3">
+                           <label style="color: #000;font-family: fuente1;font-size: 15px;">Confirmar contraseña
+                        </div>
+                        <div class="col s9">
+                           {{form.password2}}
+                        </div>
+                     </div>
+
+                     <div class="materialert error" id="alert_terminos" style="display: none; width: 100%;">
+                        <div class="material-icons">error</div>Debe aceptar los términos y condiciones
+                     </div>
+                     <div>
+                        <label for="chk_terminos">
+                           <input class="filled-in" type="checkbox" id="chk_terminos">
+                           <span><a href="">Aceptar terminos y condiciones del servicio</a></span>
+                        </label>
+                     </div>
+                     <br>
+
+                     <button id="btn_agregar" type="submit" class="btn green white-text waves-effect waves-grey">
+                        Crear Cuenta
+                     </button><br>
+                     <br>
+                     <a href="">¿Ya te encuentras registrado?</a>
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- CDN de Materialize JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   <!--Terminos y condiciones-->
+   <script>
+      const btn_agregar = document.getElementById('btn_agregar');
+
+      btn_agregar.onclick = (evento) => {
+         password = document.getElementById('txt_cclave').value
+
+         if (password != '') {
+            evento.preventDefault();
+            aceptar_terminos = document.getElementById('chk_terminos').checked
+            if (aceptar_terminos) {
+               document.getElementById("alert_terminos").style.display = "none";
+               document.getElementById('frm_agregar').submit()
+            } else {
+               document.getElementById("alert_terminos").style.display = "inline-flex";
+            }
+         }
+      };
+   </script>
+</body>
+
+</html>
