@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from usuarios import models
 
 
-class frmCrearUsuario(UserCreationForm):
+class frmRegistar(UserCreationForm):
     #  Formulario de registro de un usuario en la base de datos
     #  Autor: Lesther Valladares
     #  Version: 0.0.1
@@ -39,6 +39,7 @@ class frmCrearUsuario(UserCreationForm):
                     'type': 'text',
                     'style': 'border-radius: 2px;width: 90%;border: 1px solid #000;height: 5vh;',
                     'required': 'required',
+                    'maxlength': '25',
                 }
             ),
             'correo': forms.TextInput(
@@ -98,7 +99,7 @@ class frmLogin(AuthenticationForm):
         nombre = self.cleaned_data.get('username')
         usuarioEncontrado = models.Usuario.objects.filter(
             Q(nombre__iexact=nombre) | Q(correo__iexact=nombre))
-       
+
         if usuarioEncontrado:
             nombre = usuarioEncontrado[0]
         return nombre

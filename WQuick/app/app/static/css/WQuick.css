@@ -86,3 +86,169 @@ html {
 ::-webkit-input-placeholder {
     color: #000;
 }
+
+/*========================================== Estilos que puso nicoll para el login y registro ==========================================*/
+@media only screen and (max-width: 450px) {
+    .button {
+        padding: 5% 16% !important;
+    }
+
+    .FondoBlanco {
+        margin: 50% 5% 0% 5% !important;
+    }
+
+    td,
+    th {
+        padding: 2px 5px !important;
+    }
+
+    .textbox {
+        width: 90% !important;
+        height: 4vh !important;
+    }
+}
+
+.FondoBlanco {
+    background-color: #fff;
+    margin: 5% 30% 0% 30%;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 3%;
+}
+
+.FondoPantalla {
+    /*background:  url("/static/img/amarilla.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
+    background-image: url("/static/img/amarilla.jpg");
+    background-size: cover;
+}
+
+
+@font-face {
+    font-family: fuente1;
+    src: url("/static/fuente/fuente.ttf");
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* No añadir */
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.button {
+    background-color: #C8A900;
+    border: none;
+    color: white;
+    padding: 15px 85px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: fuente1;
+}
+
+.Sombras {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+}
+
+.Centro {
+    text-align: center;
+}
+
+.Bajar {
+    padding-top: 5%;
+}
+
+.textbox {
+    border-radius: 2px;
+    width: 80%;
+    border: 1px solid #000 !important;
+}
+
+.Titulo {
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: fuente1;
+}

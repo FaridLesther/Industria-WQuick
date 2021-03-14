@@ -25,7 +25,7 @@ class UsuarioManager(BaseUserManager):
 class Usuario(AbstractBaseUser):
     # modelo que enlazara con la tabla de la base de datos usuario
     nombre = models.CharField(
-        'Nombre de usuario', max_length=15, unique=True)
+        'Nombre de usuario', max_length=50, unique=True)
 
     imagen = models.ImageField(
         'Imagen de perfil', upload_to='perfil/',
@@ -34,7 +34,7 @@ class Usuario(AbstractBaseUser):
     )
 
     correo = models.EmailField(
-        'Correo electronico', max_length=60,
+        'Correo electronico', max_length=50,
         blank=False, null=False, unique=True
     )
 

@@ -16,7 +16,7 @@ path = os.path.dirname(__file__)
 
 class Registrar(CreateView):
     model = models.Usuario
-    form_class = forms.frmCrearUsuario
+    form_class = forms.frmRegistar
     template_name = 'usuarios/Registrar.html'
 
     def form_valid(self, form):
@@ -25,6 +25,11 @@ class Registrar(CreateView):
         usuario = form.save()
         login(self.request, usuario)
         return redirect('/')
+    
+    def get_context_data(self, **kwargs):
+        context = super(Registrar, self).get_context_data(**kwargs)
+        context['titulo'] = "Registro de usuarios"
+        return context
 
 
 class Login(FormView):
