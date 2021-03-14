@@ -162,7 +162,7 @@
       }
 
       .FondoPantalla {
-         background-image: url("./static/img/amarilla.jpg");
+         background-image: url("{%static 'img/amarilla.jpg' %}");
          background-size: cover;
       }
 
@@ -198,7 +198,7 @@
 
                   <table style="border-collapse: inherit;">
                      <tr>
-                        <th><label style="color: #000;font-size: 15px;">Usuario</label></th>
+                        <th><label style="color: #000;font-size: 15px;">Usuario o correo</label></th>
                         <th>
                            {{ form.username }}
                         </th>

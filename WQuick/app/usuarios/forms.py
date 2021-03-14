@@ -1,4 +1,5 @@
 from django import forms
+from django.db.models import Q
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login
 from usuarios import models
@@ -51,6 +52,20 @@ class frmCrearUsuario(UserCreationForm):
             ),
         }
 
+    def clean_nombre(self):
+        # metodo para obviar mayusculas y minusculas en el nombre de usuario
+        nombre = self.cleaned_data.get('nombre')
+        usuarioEncontrado = models.Usuario.objects.filter(
+            nombre__iexact=nombre)
+        if usuarioEncontrado:
+            raise forms.ValidationError('Nombre de usuario no disponible')
+        return nombre
+
+    def clean_correo(self):
+        # filtrar mayusculas del correo electronico
+        correo = self.cleaned_data.get('correo').lower()
+        return correo
+
     def clean_password2(self):
         #  Metodo de validación de los dos campos de contraseña
         # se valida que ambos tengan el mismo contenido
@@ -77,3 +92,13 @@ class frmLogin(AuthenticationForm):
         self.fields['password'].widget.attrs['class'] = 'validate black-text'
         self.fields['password'].widget.attrs['id'] = 'txt_clave'
         self.fields['password'].widget.attrs['style'] = 'border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;'
+
+    def clean_username(self):
+        # metodo para obviar mayusculas y minusculas en el nombre de usuario
+        nombre = self.cleaned_data.get('username')
+        usuarioEncontrado = models.Usuario.objects.filter(
+            Q(nombre__iexact=nombre) | Q(correo__iexact=nombre))
+       
+        if usuarioEncontrado:
+            nombre = usuarioEncontrado[0]
+        return nombre
