@@ -16,11 +16,11 @@ class frmRegistar(UserCreationForm):
     #    -  admin: contiene el valor booleano para el administrador
     password1 = forms.CharField(widget=forms.PasswordInput())
     password1.widget.attrs['id'] = 'txt_clave'
-    password1.widget.attrs['style'] = 'border-radius: 2px;width: 90%;border: 1px solid #000;height: 5vh;'
+    password1.widget.attrs['style'] = 'margin-left:17px; border-radius: 2px;width: 77%;border: 1px solid #000;height: 5vh;'
 
     password2 = forms.CharField(widget=forms.PasswordInput())
     password2.widget.attrs['id'] = 'txt_cclave'
-    password2.widget.attrs['style'] = 'border-radius: 2px;width: 90%;border: 1px solid #000;height: 5vh;'
+    password2.widget.attrs['style'] = 'margin-left:17px; border-radius: 2px;width: 77%;border: 1px solid #000;height: 5vh;'
 
     admin = forms.BooleanField(initial=False, required=False)
     admin.widget.attrs['class'] = 'filled-in'
@@ -37,7 +37,7 @@ class frmRegistar(UserCreationForm):
                     'class': 'black-text',
                     'id': 'txt_usuario',
                     'type': 'text',
-                    'style': 'border-radius: 2px;width: 90%;border: 1px solid #000;height: 5vh;',
+                    'style': 'margin-left:17px; border-radius: 2px;width: 77%;border: 1px solid #000;height: 5vh;',
                     'required': 'required',
                     'maxlength': '25',
                 }
@@ -47,7 +47,7 @@ class frmRegistar(UserCreationForm):
                     'class': 'black-text',
                     'id': 'txt_correo',
                     'type': 'text',
-                    'style': 'border-radius: 2px;width: 90%;border: 1px solid #000;height: 5vh;',
+                    'style': 'margin-left:17px; border-radius: 2px;width: 77%;border: 1px solid #000;height: 5vh;',
                     'required': 'required',
                 }
             ),
