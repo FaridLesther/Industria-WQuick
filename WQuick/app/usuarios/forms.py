@@ -102,4 +102,7 @@ class frmLogin(AuthenticationForm):
 
         if usuarioEncontrado:
             nombre = usuarioEncontrado[0]
+        else:
+            raise forms.ValidationError('Nombre de usuario o correo electrónico incorrecto')
         return nombre
+    
