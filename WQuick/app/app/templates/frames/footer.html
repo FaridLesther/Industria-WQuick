@@ -29,5 +29,12 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         M.AutoInit();
+
+        var sliders = document.querySelectorAll('.slider');
+        var instances = M.Slider.init(sliders, {
+            interval: 7000,
+            height: 400,
+            duration: 600
+        });
     });
 </script>
