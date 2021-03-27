@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Bootstrap Advance Admin Template</title>
+
+    <!-- BOOTSTRAP STYLES-->
+    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/font-awesome.css" rel="stylesheet" />
+     <!--WIZARD STYLES-->
+    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/wizard/normalize.css" rel="stylesheet" />
+    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/wizard/wizardMain.css" rel="stylesheet" />
+    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/wizard/jquery.steps.css" rel="stylesheet" />
+    <!--CUSTOM BASIC STYLES-->
+    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/basic.css" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<style>
+    @media only screen and (max-width: 321px){
+        .responsividad{
+        padding: 0% 0% 0% 0%!important;
+        }
+    }
+    @media only screen and (max-width: 415px){
+        .responsividad{
+        padding: 0% 0% 0% 0%!important;
+        }
+        .form-control {
+        width: 105%!important;
+        }
+        .form-control2 {
+        width: 248%!important;
+        }
+        .tamanio{
+        width: 248%!important;
+    }       
+    }
+    .responsividad{
+        padding: 2% 15% 0% 15%;
+    }
+    .form-control2 {
+        display: block;
+        width: 60%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+        box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }   
+</style>
+<body>
+    <div id="wrapper">
+        
+        <!-- /. NAV TOP  -->
+        
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" style="margin: 0 0 0 0px!important;">
+            <div id="page-inner" style="margin: 0px 20px 0px 0px!important;">
+                <!-- /. ROW  -->
+               <div class="row responsividad">
+                  <div class="col-md-12">                     
+         <div class="panel panel-default">
+                        <div style="text-align: center;" class="panel-heading">
+                            Crea tu Proyecto
+                        </div>
+                        <div class="panel-body">
+                             <div id="wizard">
+                <h2>Idea General del Proyecto</h2>
+                <!-- /. RADIO BUTTOM  -->
+                <section>
+                    <div class="form-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Programacion Web
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Diseño
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Tiendas Online
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Landing Page
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Aplicaciones Moviles
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Sistemas para Ordenadores
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Bases de Datos
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Servidores
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Infraestructura
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Otros
+                            </label>
+                        </div>
+                    </div>
+                </section>
+                <!-- /. RADIO BUTTOM  -->
+                <h2>Descripción del Proyecto</h2>
+                <section>
+                    <div class="form-group  ">
+                        <label>Titulo del proyecto</label>
+                        <input type="text" class="form-control" required="required" placeholder="Nombre de su Proyecto">
+                    </div>
+                    <div class="form-group ">
+                        <label>Haga una descripcion de su Proyecto</label>
+                        <textarea class="form-control" rows="8"></textarea>
+                    </div>
+                </section>
+
+                <h2>Informacion Adicional</h2>
+                <section>
+                    <div style="width: 40%!important;" class="form-group">
+                        <label>Experiencia Profesional que requieres</label>
+                        <select class="form-control2">
+                            <option>Basico</option>
+                            <option>Medio</option>
+                            <option>Intermedio</option>                            
+                            <option>Avanzado</option>
+                        </select>
+                    </div>
+                    <div style="width: 40%!important;" class="form-group">
+                        <label>Tiempo de Entrega</label>
+                        <select class="form-control2">
+                            <option>Día</option>
+                            <option>1</option>
+                            <option>2</option>                            
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>                            
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>                            
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>                            
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>                            
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>                            
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                            <option>21</option>                            
+                            <option>22</option>
+                            <option>23</option>
+                            <option>24</option>                            
+                            <option>25</option>
+                            <option>26</option>
+                            <option>27</option>                            
+                            <option>28</option>
+                            <option>29</option>
+                            <option>30</option>                            
+                            <option>31</option>
+                        </select>
+                        <select class="form-control2">
+                            <option>Mes</option>
+                            <option>Enero</option>
+                            <option>Febrero</option>                            
+                            <option>Marzo</option>
+                            <option>Abril</option>
+                            <option>Mayo</option>                            
+                            <option>Junio</option>
+                            <option>Julio</option>
+                            <option>Agosto</option>                            
+                            <option>Septiembre</option>
+                            <option>Octubre</option>
+                            <option>Noviembre</option>                            
+                            <option>Diciembre</option>
+                        </select>
+                        <select class="form-control2">
+                            <option>Año</option>
+                            <option>2021</option>
+                            <option>2022</option>
+                            <option>2023</option>                            
+                            <option>2024</option>
+                        </select>
+                    </div>
+                </section>
+            </div>
+                             
+                        </div>
+                    </div>
+                 </div>
+                </div>
+                   <!-- /. ROW  -->
+                
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/jquery.metisMenu.js"></script>
+     <!-- WIZARD SCRIPTS -->
+    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/wizard/jquery.cookie-1.3.1.js"></script>
+    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/wizard/jquery.steps.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/custom.js"></script>   
+</body>
+</html>
