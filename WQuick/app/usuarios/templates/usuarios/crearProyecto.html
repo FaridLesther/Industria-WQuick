@@ -1,250 +1,235 @@
+{% load static %}
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="es">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Bootstrap Advance Admin Template</title>
-
-    <!-- BOOTSTRAP STYLES-->
-    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- FONTAWESOME STYLES-->
-    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/font-awesome.css" rel="stylesheet" />
-     <!--WIZARD STYLES-->
-    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/wizard/normalize.css" rel="stylesheet" />
-    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/wizard/wizardMain.css" rel="stylesheet" />
-    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/wizard/jquery.steps.css" rel="stylesheet" />
-    <!--CUSTOM BASIC STYLES-->
-    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/basic.css" rel="stylesheet" />
-    <!--CUSTOM MAIN STYLES-->
-    <link href="../../../tema/bs-advance-admin/advance-admin/assets/css/custom.css" rel="stylesheet" />
-    <!-- GOOGLE FONTS-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ titulo }}</title>
+    <!--Iconos de google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CDN de Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'css/crearProyecto.css' %}">
+    <!--Logo de la empresas en las pestañas-->
+    <link rel="icon" type="image/png" href="{% static 'img/Logo.png' %}">
+    <!-- css wquick personalizado -->
+    <link rel="stylesheet" href="{% static 'css/WQuick.css' %}">
 </head>
-<style>
-    @media only screen and (max-width: 321px){
-        .responsividad{
-        padding: 0% 0% 0% 0%!important;
-        }
-    }
-    @media only screen and (max-width: 415px){
-        .responsividad{
-        padding: 0% 0% 0% 0%!important;
-        }
-        .form-control {
-        width: 105%!important;
-        }
-        .form-control2 {
-        width: 248%!important;
-        }
-        .tamanio{
-        width: 248%!important;
-    }       
-    }
-    .responsividad{
-        padding: 2% 15% 0% 15%;
-    }
-    .form-control2 {
-        display: block;
-        width: 60%;
-        height: 34px;
-        padding: 6px 12px;
-        font-size: 14px;
-        line-height: 1.42857143;
-        color: #555;
-        background-color: #fff;
-        background-image: none;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
-        box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
-        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    }   
-</style>
-<body>
-    <div id="wrapper">
-        
-        <!-- /. NAV TOP  -->
-        
-        <!-- /. NAV SIDE  -->
-        <div id="page-wrapper" style="margin: 0 0 0 0px!important;">
-            <div id="page-inner" style="margin: 0px 20px 0px 0px!important;">
-                <!-- /. ROW  -->
-               <div class="row responsividad">
-                  <div class="col-md-12">                     
-         <div class="panel panel-default">
-                        <div style="text-align: center;" class="panel-heading">
-                            Crea tu Proyecto
-                        </div>
-                        <div class="panel-body">
-                             <div id="wizard">
-                <h2>Idea General del Proyecto</h2>
-                <!-- /. RADIO BUTTOM  -->
-                <section>
-                    <div class="form-group">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Programacion Web
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Diseño
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Tiendas Online
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Landing Page
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Aplicaciones Moviles
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Sistemas para Ordenadores
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Bases de Datos
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Servidores
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Infraestructura
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Otros
-                            </label>
-                        </div>
-                    </div>
-                </section>
-                <!-- /. RADIO BUTTOM  -->
-                <h2>Descripción del Proyecto</h2>
-                <section>
-                    <div class="form-group  ">
-                        <label>Titulo del proyecto</label>
-                        <input type="text" class="form-control" required="required" placeholder="Nombre de su Proyecto">
-                    </div>
-                    <div class="form-group ">
-                        <label>Haga una descripcion de su Proyecto</label>
-                        <textarea class="form-control" rows="8"></textarea>
-                    </div>
-                </section>
 
-                <h2>Informacion Adicional</h2>
-                <section>
-                    <div style="width: 40%!important;" class="form-group">
-                        <label>Experiencia Profesional que requieres</label>
-                        <select class="form-control2">
-                            <option>Basico</option>
-                            <option>Medio</option>
-                            <option>Intermedio</option>                            
-                            <option>Avanzado</option>
-                        </select>
+<body>
+    {% include "frames/navbar.html" %}
+    <!--Contenido de la página-->
+    <main>
+        <form method="POST" id="frm_crearProyecto" class="form-register">
+            {% csrf_token %}
+            <div class="form-register__body">
+
+                <!--Primer formulario-->
+                <div class="card white step active" id="step-1">
+
+                    <span class="card-title">
+                        <br>
+                        <div class="container-fluid center">
+                            <span style="color: #000;font-size: 20px;font-weight: bold;">
+                                Creación de tu Proyecto
+                            </span>
+                        </div>
+                    </span>
+
+                    <div style="padding: 20px 15px 0;">
+                        {{ form.tipo }}
+                        <p>
+                            <label>
+                                <input name="categoria" type="radio" value="Programacion Web" checked />
+                                <span>Programacion Web</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="categoria" type="radio" value="Diseño" />
+                                <span>Diseño</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="categoria" type="radio" value="Tiendas Online" />
+                                <span>Tiendas Online</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="categoria" type="radio" value="Landing page" />
+                                <span>Landing page</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="categoria" type="radio" value="Aplicaciones Moviles" />
+                                <span>Aplicaciones Moviles</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="categoria" type="radio" value="Sistemas para Ordenadores" />
+                                <span>Sistemas para Ordenadores</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="categoria" type="radio" value="Servidores" />
+                                <span>Servidores</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="categoria" type="radio" value="Bases de Datos" />
+                                <span>Bases de Datos</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="categoria" type="radio" value="Infraestructura" />
+                                <span>Infraestructura</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="categoria" type="radio" value="Otros" />
+                                <span>Otros</span>
+                            </label>
+                        </p>
                     </div>
-                    <div style="width: 40%!important;" class="form-group">
-                        <label>Tiempo de Entrega</label>
-                        <select class="form-control2">
-                            <option>Día</option>
-                            <option>1</option>
-                            <option>2</option>                            
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>                            
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>                            
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>                            
-                            <option>12</option>
-                            <option>13</option>
-                            <option>14</option>                            
-                            <option>15</option>
-                            <option>16</option>
-                            <option>17</option>                            
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>                            
-                            <option>22</option>
-                            <option>23</option>
-                            <option>24</option>                            
-                            <option>25</option>
-                            <option>26</option>
-                            <option>27</option>                            
-                            <option>28</option>
-                            <option>29</option>
-                            <option>30</option>                            
-                            <option>31</option>
-                        </select>
-                        <select class="form-control2">
-                            <option>Mes</option>
-                            <option>Enero</option>
-                            <option>Febrero</option>                            
-                            <option>Marzo</option>
-                            <option>Abril</option>
-                            <option>Mayo</option>                            
-                            <option>Junio</option>
-                            <option>Julio</option>
-                            <option>Agosto</option>                            
-                            <option>Septiembre</option>
-                            <option>Octubre</option>
-                            <option>Noviembre</option>                            
-                            <option>Diciembre</option>
-                        </select>
-                        <select class="form-control2">
-                            <option>Año</option>
-                            <option>2021</option>
-                            <option>2022</option>
-                            <option>2023</option>                            
-                            <option>2024</option>
-                        </select>
+
+                    <div class="step__footer">
+                        <a class="waves-effect waves-light btn step__button step__button--next" data-to_step="2"
+                            data-step="1">
+                            Siguiente
+                        </a>
                     </div>
-                </section>
-            </div>
-                             
+                </div>
+
+                <div class="card white step" id="step-2">
+                    <span class="card-title black-text center">
+                        <br>
+                        <div class="container-fluid center">
+                            <span style="color: #000;font-size: 20px;font-weight: bold;">
+                                Descripcion del proyecto
+                            </span>
+                        </div>
+                    </span>
+
+                    <div style="padding: 20px 15px 0;">
+                        <div class="materialert error" id="alert_titulo" style="display: none; width: 100%;">
+                            <div class="material-icons">error</div>Escriba un titulo
+                        </div>
+                        <div class="input-field">
+                            {{ form.titulo }}
+                            <label for="txt_titulo">Titulo del proyecto</label>
+                        </div>
+
+                        <br>
+
+                        <div class="materialert error" id="alert_descripcion" style="display: none; width: 100%;">
+                            <div class="material-icons">error</div>Escriba una descripción
+                        </div>
+                        {{ form.descripcion }}
+                    </div>
+
+                    <div class="step__footer">
+                        <a class="waves-effect waves-light btn step__button step__button--back" data-to_step="1"
+                            data-step="2">
+                            Anterior
+                        </a>
+
+                        <a class="waves-effect waves-light btn step__button step__button--next" data-to_step="3"
+                            data-step="2">
+                            Siguiente
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card white step" id="step-3">
+
+                    <span class="card-title black-text center">
+                        <br>
+                        <div class="container-fluid center">
+                            <span style="color: #000;font-size: 20px;font-weight: bold;">
+                                Información adicional
+                            </span>
+                        </div>
+                    </span>
+
+                    <div style="padding: 20px 15px 0;">
+                        <div class="input-field col s12">
+                            {{ form.xp }}
+                            <label>Experiencia profesional</label>
+                        </div>
+                        <br>
+                        <div class="input-field">
+                            {{ form.fecha }}
+                            <label for="data">Fecha en que necesitas tu Proyecto</label>
+                            <br><br><br><br>
                         </div>
                     </div>
-                 </div>
+
+                    <div class="step__footer">
+                        <a class="waves-effect waves-light btn step__button step__button--back" data-to_step="2"
+                            data-step="3">
+                            Anterior
+                        </a>
+
+                        <button id="btnCrear" class="btn waves-effect waves-light" type="submit" name="action">
+                            Crear
+                            <i class="material-icons right">send</i>
+                        </button>
+
+                    </div>
                 </div>
-                   <!-- /. ROW  -->
-                
-            <!-- /. PAGE INNER  -->
-        </div>
-        <!-- /. PAGE WRAPPER  -->
-    </div>
-    <!-- /. WRAPPER  -->
-    
-    <!-- /. FOOTER  -->
-    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <!-- JQUERY SCRIPTS -->
-    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/jquery-1.10.2.js"></script>
-    <!-- BOOTSTRAP SCRIPTS -->
-    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/bootstrap.js"></script>
-    <!-- METISMENU SCRIPTS -->
-    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/jquery.metisMenu.js"></script>
-     <!-- WIZARD SCRIPTS -->
-    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/wizard/modernizr-2.6.2.min.js"></script>
-    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/wizard/jquery.cookie-1.3.1.js"></script>
-    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/wizard/jquery.steps.js"></script>
-    <!-- CUSTOM SCRIPTS -->
-    <script src="../../../tema/bs-advance-admin/advance-admin/assets/js/custom.js"></script>   
+            </div>
+
+            <ul class="progressbar">
+                <li class="progressbar__option active">paso 1</li>
+                <li class="progressbar__option">paso 2</li>
+                <li class="progressbar__option">paso 3</li>
+            </ul>
+
+        </form>
+    </main>
+
+    <!-- CDN de Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{% static 'js/crearProyecto.js' %}"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            M.AutoInit();
+            var selects = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(selects);
+
+            var datas = document.querySelectorAll('.datepicker');
+            var instances = M.Datepicker.init(datas, {
+                format: "dd-mm-yyyy",
+                firstDay: 1,
+                minDate: new Date(),
+                i18n: {
+                    months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+                        'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+                    ],
+                    monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
+                        'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
+                    ],
+                    weekdays: ['Domingo','Lunes','Martes',
+                        'Miércoles','Jueves','Viernes','Sabado'
+                    ],
+                    weekdaysShort: ['Domingo','Lunes','Martes',
+                        'Miércoles','Jueves','Viernes','Sábado'
+                    ],
+                    weekdaysAbbrev: ['D','L','M','M','J','V','S']
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>

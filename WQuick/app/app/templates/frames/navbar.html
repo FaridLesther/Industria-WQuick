@@ -36,7 +36,7 @@
                 <li>
                     <a href="" class="dropdown-trigger black-text" data-target="id_drop" style="min-width: 125px;">
                         {% if user.nombre %}
-                        {{ user.nombre }}
+                        {{ user.nombre|escape }}
                         {% else %}
                         Sesión
                         {% endif %}
@@ -61,7 +61,7 @@
     {% if user.nombre %}
     <li><a href="{% url 'logout' %}" class="d_dark black-text">Cerrar sesión</a></li>
     {% else %}
-    <li><a href="login" class="black-text">Iniciar sesión</a></li>
+    <li><a href="accounts/login/" class="black-text">Iniciar sesión</a></li>
     <li class="divider"></li>
     <li><a href="registrar" class="black-text">Registrarse</a></li>
     {% endif %}
@@ -72,7 +72,7 @@
 
     <li class="center">
         {% if user.nombre %}
-        <h5>{{user.nombre}}</h5>
+        <h5>{{user.nombre|escape}}</h5>
         {% else %}
         <h5>Sesión</h5>
         {% endif %}
@@ -88,7 +88,7 @@
     </li>
     {% else %}
     <li>
-        <a href="login" class="black-text" style="font-size: 15px;">
+        <a href="accounts/login/" class="black-text" style="font-size: 15px;">
             <i class="material-icons black-text" style="font-size: 35px;">account_box</i>
             Iniciar sesión
         </a>
