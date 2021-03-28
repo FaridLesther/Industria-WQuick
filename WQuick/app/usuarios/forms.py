@@ -191,7 +191,6 @@ class frmCrearProyecto(forms.ModelForm):
 
         proyecto.fecha_fin = fecha_fin
         proyecto.xp = self.cleaned_data.get('xp')
-        print(proyecto.fecha_fin)
 
         if commit:
             proyecto.save()
