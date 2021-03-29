@@ -34,14 +34,17 @@
             <!-- Lista desplegable de sesion no responsiva -->
             <ul class="right hide-on-med-and-down">
                 <li>
-                    <a href="" class="dropdown-trigger black-text" data-target="id_drop" style="min-width: 125px;">
-                        {% if user.nombre %}
-                        {{ user.nombre|escape }}
-                        {% else %}
+                    {% if user.nombre %}
+                    <i class="dropdown-trigger black-text" data-target="id_drop">
+                        <img class="responsive-img circle" alt="Avatar" id="avatar"
+                            style="height: 45px; margin-top: 8px;">
+                    </i>
+                    {% else %}
+                    <a class="dropdown-trigger black-text" data-target="id_drop">
                         Sesión
-                        {% endif %}
                         <i class="material-icons right">arrow_drop_down</i>
                     </a>
+                    {% endif %}
                 </li>
             </ul>
 
@@ -49,7 +52,7 @@
             <ul class="hide-on-med-and-down right">
                 <li><i href="" class="large material-icons black-text"
                         style="margin-left: 10px; margin-right: 20px;">message</i></li>
-                <li><i href="" class="large material-icons black-text">settings</i></li>
+                <li><i href="" class="large material-icons black-text" style="margin-right: 20px;">settings</i></li>
             </ul>
 
         </div>
@@ -57,7 +60,7 @@
 </div>
 
 <!--Menú de sessión no responsivo-->
-<ul class="dropdown-content" id="id_drop">
+<ul class="dropdown-content" id="id_drop" style="min-width: 125px;">
     {% if user.nombre %}
     <li><a href="{% url 'logout' %}" class="d_dark black-text">Cerrar sesión</a></li>
     {% else %}
@@ -69,9 +72,10 @@
 
 <!--Contenido del menú responsivo-->
 <ul class="sidenav" id="menu-responsive">
-
     <li class="center">
         {% if user.nombre %}
+        <i><img class="responsive-img circle" alt="Avatar" id="avatar2"
+            style="height: 50px; margin-bottom: -25px;"></i>
         <h5>{{user.nombre|escape}}</h5>
         {% else %}
         <h5>Sesión</h5>
@@ -126,3 +130,11 @@
     <li class="divider"></li>
 
 </ul>
+{% if user.nombre %}
+<script src="{% static 'js/avatar.js' %}"></script>
+<script>
+    let nombre = "{{ user.nombre|escape }}";
+    document.getElementById("avatar").src = generateAvatar(nombre[0], "white");
+    document.getElementById("avatar2").src = generateAvatar(nombre[0], "white");
+</script>
+{% endif %}
