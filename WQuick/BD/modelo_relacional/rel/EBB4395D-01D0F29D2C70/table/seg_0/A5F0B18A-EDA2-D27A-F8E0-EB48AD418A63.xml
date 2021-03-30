@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A5F0B18A-EDA2-D27A-F8E0-EB48AD418A63" name="Usuario">
+<createdBy>Farid</createdBy>
+<createdTime>2021-03-27 15:24:46 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="F97F41E6-0654-C15F-30FA-B9A125B092A9">
+<createdBy>Farid</createdBy>
+<createdTime>2021-03-27 15:27:05 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="04FF5FEB-01FC-A5DF-F9DA-C7D878621B22">
+<createdBy>Farid</createdBy>
+<createdTime>2021-03-27 15:27:05 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="correo" id="3255140C-0E91-90F6-6652-5B721195C283">
+<createdBy>Farid</createdBy>
+<createdTime>2021-03-27 15:27:05 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="imagen" id="B9705BCF-E5C0-2E3C-4C8B-AED5EDFF5139">
+<createdBy>Farid</createdBy>
+<createdTime>2021-03-27 15:27:32 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT010</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="admin" id="5298ABAB-66C6-77F3-6A59-CA2333863858">
+<createdBy>Farid</createdBy>
+<createdTime>2021-03-27 15:27:05 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="activo" id="CEC45494-DB4D-FA80-ECE3-6C728D610D26">
+<createdBy>Farid</createdBy>
+<createdTime>2021-03-27 15:27:05 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="51CB6DE6-8EED-E5E5-39BA-41D903B81945" name="Usuario_PK">
+<createdBy>Farid</createdBy>
+<createdTime>2021-03-27 15:27:05 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F97F41E6-0654-C15F-30FA-B9A125B092A9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="63E9743F-8715-9A29-7CDD-5CE09F160D2C" name="Usuario__UN">
+<createdBy>Farid</createdBy>
+<createdTime>2021-03-27 15:27:05 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="04FF5FEB-01FC-A5DF-F9DA-C7D878621B22"/>
+<colUsage columnID="3255140C-0E91-90F6-6652-5B721195C283"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -34,14 +34,17 @@
             <!-- Lista desplegable de sesion no responsiva -->
             <ul class="right hide-on-med-and-down">
                 <li>
-                    <a href="" class="dropdown-trigger black-text" data-target="id_drop" style="min-width: 125px;">
-                        {% if user.nombre %}
-                        {{ user.nombre }}
-                        {% else %}
+                    {% if user.nombre %}
+                    <i class="dropdown-trigger black-text" data-target="id_drop">
+                        <img class="responsive-img circle" alt="Avatar" id="avatar"
+                            style="height: 45px; margin-top: 8px;">
+                    </i>
+                    {% else %}
+                    <a class="dropdown-trigger black-text" data-target="id_drop">
                         Sesión
-                        {% endif %}
                         <i class="material-icons right">arrow_drop_down</i>
                     </a>
+                    {% endif %}
                 </li>
             </ul>
 
@@ -49,7 +52,7 @@
             <ul class="hide-on-med-and-down right">
                 <li><i href="" class="large material-icons black-text"
                         style="margin-left: 10px; margin-right: 20px;">message</i></li>
-                <li><i href="" class="large material-icons black-text">settings</i></li>
+                <li><i href="" class="large material-icons black-text" style="margin-right: 20px;">settings</i></li>
             </ul>
 
         </div>
@@ -57,11 +60,11 @@
 </div>
 
 <!--Menú de sessión no responsivo-->
-<ul class="dropdown-content" id="id_drop">
+<ul class="dropdown-content" id="id_drop" style="min-width: 125px;">
     {% if user.nombre %}
     <li><a href="{% url 'logout' %}" class="d_dark black-text">Cerrar sesión</a></li>
     {% else %}
-    <li><a href="login" class="black-text">Iniciar sesión</a></li>
+    <li><a href="accounts/login/" class="black-text">Iniciar sesión</a></li>
     <li class="divider"></li>
     <li><a href="registrar" class="black-text">Registrarse</a></li>
     {% endif %}
@@ -69,10 +72,11 @@
 
 <!--Contenido del menú responsivo-->
 <ul class="sidenav" id="menu-responsive">
-
     <li class="center">
         {% if user.nombre %}
-        <h5>{{user.nombre}}</h5>
+        <i><img class="responsive-img circle" alt="Avatar" id="avatar2"
+            style="height: 50px; margin-bottom: -25px;"></i>
+        <h5>{{user.nombre|escape}}</h5>
         {% else %}
         <h5>Sesión</h5>
         {% endif %}
@@ -88,7 +92,7 @@
     </li>
     {% else %}
     <li>
-        <a href="login" class="black-text" style="font-size: 15px;">
+        <a href="accounts/login/" class="black-text" style="font-size: 15px;">
             <i class="material-icons black-text" style="font-size: 35px;">account_box</i>
             Iniciar sesión
         </a>
@@ -126,3 +130,11 @@
     <li class="divider"></li>
 
 </ul>
+{% if user.nombre %}
+<script src="{% static 'js/avatar.js' %}"></script>
+<script>
+    let nombre = "{{ user.nombre|escape }}";
+    document.getElementById("avatar").src = generateAvatar(nombre[0], "white");
+    document.getElementById("avatar2").src = generateAvatar(nombre[0], "white");
+</script>
+{% endif %}

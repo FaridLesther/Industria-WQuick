@@ -3,6 +3,8 @@ from django.db.models import Q
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login
 from usuarios import models
+from datetime import datetime
+import time
 
 
 class frmRegistar(UserCreationForm):
@@ -57,7 +59,8 @@ class frmRegistar(UserCreationForm):
         # metodo para obviar mayusculas y minusculas en el nombre de usuario
         nombre = self.cleaned_data.get('nombre')
         usuarioEncontrado = models.Usuario.objects.filter(
-            nombre__iexact=nombre)
+            Q(nombre__iexact=nombre) | Q(correo__iexact=nombre))
+
         if usuarioEncontrado:
             raise forms.ValidationError('Nombre de usuario no disponible')
         return nombre
@@ -97,12 +100,98 @@ class frmLogin(AuthenticationForm):
     def clean_username(self):
         # metodo para obviar mayusculas y minusculas en el nombre de usuario
         nombre = self.cleaned_data.get('username')
+
         usuarioEncontrado = models.Usuario.objects.filter(
-            Q(nombre__iexact=nombre) | Q(correo__iexact=nombre))
+            Q(nombre__iexact=nombre) |
+            Q(correo__iexact=nombre)
+        ).values('nombre')
 
         if usuarioEncontrado:
-            nombre = usuarioEncontrado[0]
+            nombre = usuarioEncontrado[0]['nombre']
         else:
-            raise forms.ValidationError('Nombre de usuario o correo electrónico incorrecto')
+            raise forms.ValidationError(
+                'Nombre de usuario o correo electrónico incorrecto')
         return nombre
-    
+
+
+class frmCrearProyecto(forms.ModelForm):
+    #  Formulario de registro de un proyecto en la base de datos
+    #  Autor: Lesther Valladares
+    #  Version: 0.0.1
+    #  modelo: Proyecto
+
+    nivelesXP = (
+        (1, "Básico"),
+        (2, "Medio"),
+        (3, "Intermedio"),
+        (4, "Avanzado"),
+    )
+
+    tipo = forms.CharField(max_length=30)
+    tipo.widget.attrs['style'] = 'display: none;'
+    tipo.widget.attrs['id'] = 'txt_tipo'
+
+    fecha = forms.CharField(required=True)
+    fecha.widget.attrs['id'] = 'data'
+    fecha.widget.attrs['class'] = 'datepicker'
+    fecha.widget.attrs['onkeypress'] = 'return false;'
+
+    xp = forms.ChoiceField(label='Elija una opción', choices=nivelesXP)
+
+    #  Modelo del cual sera construido el formulario: Proyecto
+    #  es necesario especificar por lo menos un campo del modelo
+
+    class Meta:
+        model = models.Proyecto
+        fields = ('tipo', 'titulo', 'descripcion',)
+        widgets = {
+            'titulo': forms.TextInput(
+                attrs={
+                    'class': 'validate',
+                    'id': 'txt_titulo',
+                    'type': 'text',
+                    'required': 'required',
+                }
+            ),
+            'descripcion': forms.Textarea(
+                attrs={
+                    'cols': '60',
+                    'rows': '9',
+                    'id': 'txt-descripcion',
+                    'placeholder': 'Descipción del Proyecto',
+                    'style': 'max-width: 100%; height:135px;border: 1px dotted #848484;',
+                    'required': 'required',
+                }
+            ),
+        }
+
+    def clean_titulo(self):
+        titulo = self.cleaned_data.get('titulo')
+        titulo = titulo.replace('<', '')
+        titulo = titulo.replace('>', '')
+        titulo = titulo.replace('\\', '')
+        return titulo
+
+    def clean_descripcion(self):
+        descripcion = self.cleaned_data.get('descripcion')
+        descripcion = descripcion.replace('<', '')
+        descripcion = descripcion.replace('>', '')
+        descripcion = descripcion.replace('\\', '')
+        return descripcion
+
+    def save(self, commit=True, usuario=-1, fechaInicio=None):
+        proyecto = super().save(commit=False)
+        proyecto.tipo = self.cleaned_data.get('tipo')
+        proyecto.usuario_id = usuario
+        proyecto.fecha_inicio = fechaInicio
+
+        fecha_fin = self.cleaned_data.get('fecha')
+        fecha_fin = fecha_fin + time.strftime(' %H:%M:%S', time.localtime())
+        fecha_fin = datetime.strptime(fecha_fin, '%d-%m-%Y %H:%M:%S')
+
+        proyecto.fecha_fin = fecha_fin
+        proyecto.xp = self.cleaned_data.get('xp')
+
+        if commit:
+            proyecto.save()
+        return proyecto
