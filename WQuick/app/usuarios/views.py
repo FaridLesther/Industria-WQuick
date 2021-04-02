@@ -22,7 +22,6 @@ class Registrar(CreateView):
     template_name = 'usuarios/registrar.html'
 
     def get(self, *args, **kwargs):
-        print(self.request.user)
         if not (self.request.user.is_anonymous):
             return redirect('/')
         return super(Registrar, self).get(*args, **kwargs)
