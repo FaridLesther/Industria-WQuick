@@ -69,6 +69,9 @@ class Login(FormView):
             return super(Login, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
+        if('next' in self.request.GET):
+            self.success_url = self.request.GET['next']
+            
         login(self.request, form.get_user())
         return super(Login, self).form_valid(form)
 
