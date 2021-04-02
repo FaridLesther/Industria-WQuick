@@ -219,14 +219,20 @@
                     monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
                         'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
                     ],
-                    weekdays: ['Domingo','Lunes','Martes',
-                        'Miércoles','Jueves','Viernes','Sabado'
+                    weekdays: ['Domingo', 'Lunes', 'Martes',
+                        'Miércoles', 'Jueves', 'Viernes', 'Sabado'
                     ],
-                    weekdaysShort: ['Domingo','Lunes','Martes',
-                        'Miércoles','Jueves','Viernes','Sábado'
+                    weekdaysShort: ['Domingo', 'Lunes', 'Martes',
+                        'Miércoles', 'Jueves', 'Viernes', 'Sábado'
                     ],
-                    weekdaysAbbrev: ['D','L','M','M','J','V','S']
+                    weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S']
                 }
+            });
+
+            var drops = document.querySelectorAll('.auto-hover');
+            var instances = M.Dropdown.init(drops, {
+                coverTrigger: false,
+                hover: true
             });
         });
     </script>

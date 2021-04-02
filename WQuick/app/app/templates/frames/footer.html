@@ -36,5 +36,11 @@
             height: 400,
             duration: 600
         });
+
+        var drops = document.querySelectorAll('.auto-hover');
+        var instances = M.Dropdown.init(drops, {
+            coverTrigger: false,
+            hover: true
+        });
     });
 </script>

@@ -19,7 +19,7 @@ path = os.path.dirname(__file__)
 class Registrar(CreateView):
     model = models.Usuario
     form_class = forms.frmRegistar
-    template_name = 'usuarios/Registrar.html'
+    template_name = 'usuarios/registrar.html'
 
     def form_valid(self, form):
         # Si el formulario es valido se guarda lo que se obtiene de él en una variable usuario
@@ -51,7 +51,7 @@ class Registrar(CreateView):
 
 
 class Login(FormView):
-    template_name = 'usuarios/Login.html'
+    template_name = 'usuarios/login.html'
     form_class = forms.frmLogin
     success_url = reverse_lazy('inicio')
 
