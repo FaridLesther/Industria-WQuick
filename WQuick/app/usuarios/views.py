@@ -21,6 +21,12 @@ class Registrar(CreateView):
     form_class = forms.frmRegistar
     template_name = 'usuarios/registrar.html'
 
+    def get(self, *args, **kwargs):
+        print(self.request.user)
+        if not (self.request.user.is_anonymous):
+            return redirect('/')
+        return super(Registrar, self).get(*args, **kwargs)
+
     def form_valid(self, form):
         # Si el formulario es valido se guarda lo que se obtiene de él en una variable usuario
         # luego se hace login con ese usuario y se redirige al index
@@ -81,7 +87,7 @@ def logoutUsuario(request):
 
 def elige(request):
     parametros = {"titulo": 'Elige una opción'}
-    return render(request, 'usuarios/SeleccionarDeseas.html', parametros)
+    return render(request, 'usuarios/elige.html', parametros)
 
 
 class CrearProyecto(CreateView):
