@@ -2,7 +2,7 @@
 <div class="navbar-fixed">
     <nav class="nav-wrapper white black-text">
         <div class="nav-wrapper" style="margin-left: 20px; margin-right: 20px;">
-            <a href="" id="logo" class="left">
+            <a href="/" id="logo" class="left">
                 <img src="{%static 'img/Logo-large.jpeg'%}" alt="" style="height: 55px;">
             </a>
 
@@ -33,14 +33,18 @@
             </ul>
             <!-- Lista desplegable de sesion no responsiva -->
             <ul class="right hide-on-med-and-down">
+                {% if user.nombre %}
+                <li class="dropdown-trigger auto-hover" data-target="id_drop" style="margin-right: 5px; font-weight: bold;">
+                    {{ user.nombre|escape }}
+                </li>
                 <li>
-                    {% if user.nombre %}
-                    <i class="dropdown-trigger black-text" data-target="id_drop">
+                    <i class="dropdown-trigger auto-hover black-text" data-target="id_drop">
                         <img class="responsive-img circle" alt="Avatar" id="avatar"
                             style="height: 45px; margin-top: 8px;">
                     </i>
                     {% else %}
-                    <a class="dropdown-trigger black-text" data-target="id_drop">
+                <li>
+                    <a class="dropdown-trigger auto-hover black-text" data-target="id_drop">
                         Sesión
                         <i class="material-icons right">arrow_drop_down</i>
                     </a>
@@ -74,8 +78,7 @@
 <ul class="sidenav" id="menu-responsive">
     <li class="center">
         {% if user.nombre %}
-        <i><img class="responsive-img circle" alt="Avatar" id="avatar2"
-            style="height: 50px; margin-bottom: -25px;"></i>
+        <i><img class="responsive-img circle" alt="Avatar" id="avatar2" style="height: 50px; margin-bottom: -25px;"></i>
         <h5>{{user.nombre|escape}}</h5>
         {% else %}
         <h5>Sesión</h5>

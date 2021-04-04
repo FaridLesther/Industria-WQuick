@@ -19,7 +19,12 @@ path = os.path.dirname(__file__)
 class Registrar(CreateView):
     model = models.Usuario
     form_class = forms.frmRegistar
-    template_name = 'usuarios/Registrar.html'
+    template_name = 'usuarios/registrar.html'
+
+    def get(self, *args, **kwargs):
+        if not (self.request.user.is_anonymous):
+            return redirect('/')
+        return super(Registrar, self).get(*args, **kwargs)
 
     def form_valid(self, form):
         # Si el formulario es valido se guarda lo que se obtiene de él en una variable usuario
@@ -51,7 +56,7 @@ class Registrar(CreateView):
 
 
 class Login(FormView):
-    template_name = 'usuarios/Login.html'
+    template_name = 'usuarios/login.html'
     form_class = forms.frmLogin
     success_url = reverse_lazy('inicio')
 
@@ -64,6 +69,9 @@ class Login(FormView):
             return super(Login, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
+        if('next' in self.request.GET):
+            self.success_url = self.request.GET['next']
+            
         login(self.request, form.get_user())
         return super(Login, self).form_valid(form)
 
@@ -81,7 +89,7 @@ def logoutUsuario(request):
 
 def elige(request):
     parametros = {"titulo": 'Elige una opción'}
-    return render(request, 'usuarios/SeleccionarDeseas.html', parametros)
+    return render(request, 'usuarios/elige.html', parametros)
 
 
 class CrearProyecto(CreateView):
