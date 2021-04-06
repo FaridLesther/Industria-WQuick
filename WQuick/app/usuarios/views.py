@@ -95,7 +95,7 @@ def elige(request):
 class CrearProyecto(CreateView):
     model = models.Proyecto
     form_class = forms.frmCrearProyecto
-    template_name = 'usuarios/CrearProyecto.html'
+    template_name = 'usuarios/crearProyecto.html'
 
     def form_valid(self, form):
         fechaInicio = datetime.datetime.now()
