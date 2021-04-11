@@ -1,0 +1,111 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <!-- BOOTSTRAP STYLES-->
+    <link href="{% static 'tema/bs-advance-admin/advance-admin/assets/css/bootstrap.css' %}" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="{% static 'tema/bs-advance-admin/advance-admin/assets/css/font-awesome.css' %}" rel="stylesheet" />
+    <!--CUSTOM BASIC STYLES-->
+    <link href="{% static 'tema/bs-advance-admin/advance-admin/assets/css/basic.css' %}" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="{% static 'tema/bs-advance-admin/advance-admin/assets/css/custom.css' %}" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    {% include "frames/head.html" %}
+</head>
+<style>
+    .mcard {
+        padding-top: 15%;
+    }
+
+    @media only screen and (max-width: 321px) {
+        .main-box h5 {
+            font-size: 13px !important;
+        }
+
+        .mcard {
+            padding-top: 5%;
+        }
+    }
+
+    @media only screen and (max-width: 415px) {
+        .responsividad {
+            padding-left: 0% !important;
+            padding-top: 4% !important;
+            padding-right: 0% !important;
+        }
+    }
+
+    .responsividad {
+        padding-left: 15%;
+        padding-top: 8%;
+    }
+</style>
+
+<body>
+    {% include 'frames/navbar.html' %}
+    <div class="row responsividad">
+        <div class="col-md-5">
+            <div style=" height: 50vh;" class="mcard main-box mb-red">
+                <a href="#">
+                    <h5>Publica tu Proyecto<br><br><br><br><br>
+                        Encontraras los freelances adecuados que
+                        realizaran tu proyecto con una alta calidad.
+                    </h5>
+                    <div style="padding-top: 15%;">
+                        <a href="crearProyecto" class="btn yellow darken-2"
+                            style="font-weight: bold; min-width: 220px;">
+                            Crea tu Proyecto
+                        </a>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div style=" height: 50vh;" class="mcard main-box mb-dull">
+                <a href="#">
+                    <h5>Trabaja con Nosotros<br><br><br><br><br>
+                        Elige el proyecto que mas se adecue a tu experiencia
+                        y accede a nuevos clientes de manera sencilla.
+                    </h5>
+                    <div style="padding-top: 11%;">
+                        <a href="form_freelancer.html" class="btn yellow darken-2"
+                            style="font-weight: bold; min-width: 220px;">
+                            Trabaja con Nosotros
+                        </a>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- CDN de Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Inicializar todos los js de materialize-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="{% static 'tema/bs-advance-admin/advance-admin/assets/js/jquery-1.10.2.js' %}"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{% static 'tema/bs-advance-admin/advance-admin/assets/js/bootstrap.js' %}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{% static 'tema/bs-advance-admin/advance-admin/assets/js/jquery.metisMenu.js' %}"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="{% static 'tema/bs-advance-admin/advance-admin/assets/js/custom.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            M.AutoInit();
+            var drops = document.querySelectorAll('.auto-hover');
+            var instances = M.Dropdown.init(drops, {
+                coverTrigger: false,
+                hover: true
+            });
+            let navbar = document.getElementById('avatar');
+            navbar.style = 'height: 45px; margin-top: -8px;';
+        });
+    </script>
+</body>
+
+</html>

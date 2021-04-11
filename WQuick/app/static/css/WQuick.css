@@ -1,0 +1,253 @@
+/*======================== css flexbox para el contenido de la página y el footer ===========================*/
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/*========================================== Alertas personalizadas ==========================================*/
+html {
+    line-height: 1.5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.materialert {
+    position: relative;
+    min-width: 150px;
+    padding: 15px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.1s linear;
+    webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.materialert .material-icons {
+    margin-right: 10px;
+}
+
+.materialert .close-alert {
+    -webkit-appearance: none;
+    border: 0;
+    cursor: pointer;
+    color: inherit;
+    background: 0 0;
+    font-size: 22px;
+    line-height: 1;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .7);
+    filter: alpha(opacity=40);
+    margin-bottom: -5px;
+    position: absolute;
+    top: 16px;
+    right: 5px;
+}
+
+.materialert.info {
+    background-color: #039be5;
+    color: #fff;
+}
+
+.materialert.success {
+    background-color: #43a047;
+    color: #fff;
+}
+
+.materialert.error {
+    background-color: #c62828;
+    color: #fff;
+}
+
+.materialert.danger {
+    background-color: #c62828;
+    color: #fff;
+}
+
+.materialert.warning {
+    background-color: #fbc02d;
+    color: #fff;
+}
+
+/*========== Placeholders personalizados para inputs ========== */
+::-webkit-input-placeholder {
+    color: #000;
+}
+
+/*========================================== Estilos que puso nicoll para el login y registro ==========================================*/
+@media only screen and (max-width: 450px) {
+    .button {
+        padding: 5% 16% !important;
+    }
+
+    .FondoBlanco {
+        margin: 50% 5% 0% 5% !important;
+    }
+
+    td,
+    th {
+        padding: 2px 5px !important;
+    }
+
+    .textbox {
+        width: 90% !important;
+        height: 4vh !important;
+    }
+}
+
+.FondoBlanco {
+    background-color: #fff;
+    margin: 5% 30% 0% 30%;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 3%;
+}
+
+.FondoPantalla {
+    background:  url("/static/img/amarilla2.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+}
+
+
+@font-face {
+    font-family: fuente1;
+    src: url("/static/fuente/fuente.ttf");
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* No añadir */
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.button {
+    background-color: #C8A900;
+    border: none;
+    color: white;
+    padding: 15px 85px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: fuente1;
+}
+
+.Sombras {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+}
+
+.Centro {
+    text-align: center;
+}
+
+.Bajar {
+    padding-top: 5%;
+}
+
+.textbox {
+    border-radius: 2px;
+    width: 80%;
+    border: 1px solid #000 !important;
+}
+
+.Titulo {
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: fuente1;
+}

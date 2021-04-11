@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% include 'frames/head.html' %}
+</head>
+
+<body>
+    <!-- navbar barra superior de la pagina -->
+    {% include "frames/navbar.html" %}
+
+    <!--Contenido de la página-->
+    <main>
+
+        <div class="slider">
+            <ul class="slides">
+                <!-- imagenes 1-->
+                <li>
+                    <img src="{% static 'img/slider/1.jpg' %}" alt="">
+                    <div class="caption center-align">
+                        <h3><a href="registrar">letras de prueba para prueba</a></h3>
+                        <h5>letras mas pequeña</h5>
+                    </div>
+                </li>
+
+                <!-- imagenes 2-->
+                <li>
+                    <img src="{% static 'img/slider/2.jpg' %}" alt="">
+                    <div class="caption center-align">
+                        <h3>letras de prueba para prueba</h3>
+                        <h5>letras mas pequeña</h5>
+                    </div>
+                </li>
+
+                <!-- imagenes 3-->
+                <li>
+                    <img src="{% static 'img/slider/3.jpg' %}" alt="">
+                    <div class="caption center-align">
+                        <h3>letras de prueba para prueba</h3>
+                        <h5>letras mas pequeña</h5>
+                    </div>
+                </li>
+
+                <!-- imagenes 4-->
+                <li>
+                    <img src="{% static 'img/slider/4.jpg' %}" alt="">
+                    <div class="caption center-align">
+                        <h3><a href="registrar">letras de prueba para prueba</a></h3>
+                        <h5>letras mas pequeña</h5>
+                    </div>
+                </li>
+
+                <!-- imagenes 5-->
+                <li>
+                    <img src="{% static 'img/slider/5.jpg' %}" alt="">
+                    <div class="caption center-align">
+                        <h3>letras de prueba para prueba</h3>
+                        <h5>letras mas pequeña</h5>
+                    </div>
+                </li>
+
+                <!-- imagenes 6-->
+                <li>
+                    <img src="{% static 'img/slider/6.jpg' %}" alt="">
+                    <div class="caption center-align">
+                        <h3>letras de prueba para prueba</h3>
+                        <h5>letras mas pequeña</h5>
+                    </div>
+                </li>
+
+                <!-- imagenes 7-->
+                <li>
+                    <img src="{% static 'img/slider/7.jpg' %}" alt="">
+                    <div class="caption center-align">
+                        <h3>letras de prueba para prueba</h3>
+                        <h5>letras mas pequeña</h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <a href="/elige" class="btn waves-effect waves-light">Comienza ya</a>
+
+        <div class="row">
+            <div class="col s6">
+                <h4>Deja tus proyectos Tecnológico en manos de los expertos</h4>
+                <h5>-Proyectos de alta calidad</h5>
+                <h5>-Innovación</h5>
+                <h5>-Nuevas Tecnologias</h5>
+            </div>
+            <div class="col s6"></div>
+        </div>
+
+    </main>
+
+    <!--Espacio para el pie de página-->
+    {% include "frames/footer.html" %}
+</body>
+
+</html>

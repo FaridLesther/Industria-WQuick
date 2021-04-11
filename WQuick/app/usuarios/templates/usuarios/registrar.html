@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   {% include "frames/head.html" %}
+</head>
+
+<body class="FondoPantalla">
+
+   <div class="container-fluid center" style="padding-top: 2%;padding-bottom: 3%;">
+      <div class="row">
+         <div class="col s12 m6 offset-m3 l10 offset-l1 xl6 offset-xl3">
+            <div class="card white">
+               <div class="white">
+                  <span class="card-title black-text">
+                     <br>
+                     <a href="/">
+                        <div class="card-imag responsive-img">
+                           <img src="{% static 'img/Logo-large.jpeg' %}" alt="imagen dañada" style="width: 50%; max-width: 250px;">
+                        </div>
+                     </a>
+
+                     <span style="color: #000;font-size: 20px;font-weight: bold;">
+                        Regístrate
+                     </span>
+                  </span>
+               </div>
+
+               <div class="card-content">
+                  <!--=============================== Formulario de agregar usuario ============================-->
+                  <form method="POST" id="frm_agregar">
+                     {% csrf_token %}
+
+                     <div class="row">
+                        {% if form.nombre.errors %}
+                        <div class="materialert error">
+                           <div class="material-icons">error</div>
+                           {{form.nombre.errors.as_text}}
+                        </div>
+                        {% endif %}
+                        <div class="col s3">
+                           <label style="color: #000;font-family: fuente1;font-size: 18px; font-weight: bold;">Nombre</label>
+                        </div>
+                        <div class="col s9">
+                           {{form.nombre}}
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        {% if form.correo.errors %}
+                        <div class="materialert error">
+                           <div class="material-icons">error</div>
+                           {{form.correo.errors.as_text}}
+                        </div>
+                        {% endif %}
+                        <div class="col s3">
+                           <label style="color: #000;font-family: fuente1;font-size: 18px; font-weight: bold;">Correo</label>
+                        </div>
+                        <div class="col s9">
+                           {{form.correo}}
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col s3">
+                           <label for="txt_clave"
+                              style="color: #000;font-family: fuente1;font-size: 18px; font-weight: bold;">Contraseña</label>
+                        </div>
+                        <div class="col s9">
+                           {{form.password1}}
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        {% if form.password2.errors %}
+                        <div class="materialert error">
+                           <div class="material-icons">error</div>
+                           {{form.password2.errors.as_text}}
+                        </div>
+                        {% endif %}
+                        <div class="col s3">
+                           <label style="color: #000;font-family: fuente1; font-size: 18px; font-weight: bold;">Confirmar Contraseña</label>
+                        </div>
+                        <div class="col s9">
+                           {{form.password2}}
+                        </div>
+                     </div>
+
+                     <div class="materialert error" id="alert_terminos" style="display: none; width: 100%;">
+                        <div class="material-icons">error</div>Debe aceptar los términos y condiciones
+                     </div>
+                     <div>
+                        <label for="chk_terminos">
+                           <input class="filled-in" type="checkbox" id="chk_terminos">
+                           <span><a href="" style="font-weight: bold;">Aceptar terminos y condiciones del servicio</a></span>
+                        </label>
+                     </div>
+                     <br>
+
+                     <button id="btn_agregar" type="submit" class="btn orange white-text waves-effect waves-grey" style="width: 40%; font-size: large;">
+                        Crear Cuenta
+                     </button><br>
+                     <br>
+                     <a href="accounts/login/" style="font-weight: bold;">¿Ya te encuentras registrado?</a>
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- CDN de Materialize JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   <!--Terminos y condiciones-->
+   <script>
+      const btn_agregar = document.getElementById('btn_agregar');
+
+      btn_agregar.onclick = (evento) => {
+         password = document.getElementById('txt_cclave').value
+
+         if (password != '') {
+            evento.preventDefault();
+            aceptar_terminos = document.getElementById('chk_terminos').checked
+            if (aceptar_terminos) {
+               document.getElementById("alert_terminos").style.display = "none";
+               document.getElementById('frm_agregar').submit()
+            } else {
+               document.getElementById("alert_terminos").style.display = "inline-flex";
+            }
+         }
+      };
+   </script>
+</body>
+
+</html>

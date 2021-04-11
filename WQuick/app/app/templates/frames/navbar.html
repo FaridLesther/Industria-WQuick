@@ -1,0 +1,143 @@
+{% load static %}
+<div class="navbar-fixed">
+    <nav class="nav-wrapper white black-text">
+        <div class="nav-wrapper" style="margin-left: 20px; margin-right: 20px;">
+            <a href="/" id="logo" class="left">
+                <img src="{%static 'img/Logo-large.jpeg'%}" alt="" style="height: 55px;">
+            </a>
+
+            <!-- Barra de búsqueda -->
+            <ul class="hide-on-med-and-down left">
+                <li>
+                    <div class="center row">
+                        <div class="col s12 ">
+                            <div class="row" id="topbarsearch">
+                                <div class="input-field col s6 s12 black-text">
+                                    <i class=" material-icons prefix">search</i>
+                                    <input type="text" placeholder="buscar" id="autocomplete-input"
+                                        class="autocomplete ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <!--boton menu responsivo -->
+            <ul>
+                <li class="right">
+                    <a href="#" data-target="menu-responsive" class="sidenav-trigger">
+                        <i class="material-icons black-text">menu</i>
+                    </a>
+                </li>
+            </ul>
+            <!-- Lista desplegable de sesion no responsiva -->
+            <ul class="right hide-on-med-and-down">
+                {% if user.nombre %}
+                <li class="dropdown-trigger auto-hover" data-target="id_drop" style="margin-right: 5px; font-weight: bold;">
+                    {{ user.nombre|escape }}
+                </li>
+                <li>
+                    <i class="dropdown-trigger auto-hover black-text" data-target="id_drop">
+                        <img class="responsive-img circle" alt="Avatar" id="avatar"
+                            style="height: 45px; margin-top: 8px;">
+                    </i>
+                    {% else %}
+                <li>
+                    <a class="dropdown-trigger auto-hover black-text" data-target="id_drop">
+                        ¡Bienvenido!
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                    {% endif %}
+                </li>
+            </ul>
+
+            <!-- Botones random que no sabremos si dejaremos -->
+            <ul class="hide-on-med-and-down right">
+                <li><i href="" class="large material-icons black-text"
+                        style="margin-left: 10px; margin-right: 20px;">message</i></li>
+                <li><i href="" class="large material-icons black-text" style="margin-right: 20px;">settings</i></li>
+            </ul>
+
+        </div>
+    </nav>
+</div>
+
+<!--Menú de sessión no responsivo-->
+<ul class="dropdown-content" id="id_drop" style="min-width: 135px;">
+    {% if user.nombre %}
+    <li><a href="{% url 'logout' %}" class="d_dark black-text">Cerrar sesión</a></li>
+    {% else %}
+    <li><a href="accounts/login/" class="black-text">Iniciar sesión</a></li>
+    <li class="divider"></li>
+    <li><a href="registrar" class="black-text">Registrarse</a></li>
+    {% endif %}
+</ul>
+
+<!--Contenido del menú responsivo-->
+<ul class="sidenav" id="menu-responsive">
+    <li class="center">
+        {% if user.nombre %}
+        <i><img class="responsive-img circle" alt="Avatar" id="avatar2" style="height: 50px; margin-bottom: -25px;"></i>
+        <h5>{{user.nombre|escape}}</h5>
+        {% else %}
+        <h5>Sesión</h5>
+        {% endif %}
+    </li>
+    <li class="divider"></li>
+
+    {% if user.nombre %}
+    <li>
+        <a href="{% url 'logout' %}" class="black-text" style="font-size: 15px;">
+            <i class="material-icons black-text" style="font-size: 35px;">exit_to_app</i>
+            Cerrar sesión
+        </a>
+    </li>
+    {% else %}
+    <li>
+        <a href="accounts/login/" class="black-text" style="font-size: 15px;">
+            <i class="material-icons black-text" style="font-size: 35px;">account_box</i>
+            Iniciar sesión
+        </a>
+    </li>
+    <li class="divider"></li>
+
+    <li>
+        <a href="registrar" class="black-text" style="font-size: 15px;">
+            <i class="material-icons black-text" style="font-size: 35px;">recent_actors</i>
+            Registrarse
+        </a>
+    </li>
+    {% endif %}
+    <li class="divider"></li>
+
+    <li class="center">
+        <h5>Otros</h5>
+    </li>
+    <li class="divider"></li>
+
+    <li>
+        <a href="" class="black-text" style="font-size: 15px;">
+            <i class="material-icons black-text" style="font-size: 35px;">message</i>
+            Notificaciones
+        </a>
+    </li>
+    <li class="divider"></li>
+
+    <li>
+        <a href="" class="black-text" style="font-size: 15px;">
+            <i class="material-icons black-text" style="font-size: 35px;">settings</i>
+            Configuración
+        </a>
+    </li>
+    <li class="divider"></li>
+
+</ul>
+{% if user.nombre %}
+<script src="{% static 'js/avatar.js' %}"></script>
+<script>
+    let nombre = "{{ user.nombre|escape }}";
+    document.getElementById("avatar").src = generateAvatar(nombre[0], "white");
+    document.getElementById("avatar2").src = generateAvatar(nombre[0], "white");
+</script>
+{% endif %}
