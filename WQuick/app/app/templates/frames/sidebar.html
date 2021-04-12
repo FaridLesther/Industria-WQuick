@@ -1,0 +1,42 @@
+{% load static %}
+<style>
+    header,
+    main,
+    footer {
+        padding-left: 250px;
+    }
+
+    #slide-out {
+        margin-top: 64.5px;
+        z-index: 100;
+    }
+
+    @media only screen and (max-width : 992px) {
+
+        header,
+        main,
+        footer {
+            padding-left: 0;
+            margin-top: 50px;
+        }
+
+        #slide-out {
+            margin-top: 56px;
+        }
+    }
+</style>
+<ul id="slide-out" class="sidenav sidenav-fixed" style="max-width: 250px;">
+    <div class="container-fluid" style="text-align: center;">
+        <img src="{% static 'img/Logo.png' %}" alt="" style="max-height: 200px;">
+        <li class="divider" style="margin-top: 20px;"></li>
+        <li><a href="#!" class="black-text">Mis Proyectos</a></li>
+        <li class="divider"></li>
+        <li><a href="#!" class="black-text">Crear Proyecto</a></li>
+        <li class="divider"></li>
+        <li><a href="#!" class="black-text">Freelancers Contratados</a></li>
+        <li class="divider"></li>
+        <li><a href="#!" class="black-text">Contratar Freelancers</a></li>
+        <li class="divider"></li>
+    </div>
+    <br><br><br>
+</ul>
