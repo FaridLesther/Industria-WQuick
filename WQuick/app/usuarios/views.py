@@ -93,6 +93,7 @@ def elige(request):
 
 
 class CrearProyecto(CreateView):
+    #Vista para la plantilla crearProyecto.html
     model = models.Proyecto
     form_class = forms.frmCrearProyecto
     template_name = 'usuarios/crearProyecto.html'
@@ -109,6 +110,8 @@ class CrearProyecto(CreateView):
 
 
 class SerFreelancer(CreateView):
+    # Vista para la plantilla serFreelancer.html
+    # Esta vista se usa en el registro de un freelancer
     model = models.Freelancer
     form_class = forms.frmSerFreelancer
     template_name = 'usuarios/serFreelancer.html'
@@ -128,3 +131,7 @@ class SerFreelancer(CreateView):
         if idusuario:
             return redirect('/')
         return super(SerFreelancer, self).get(*args, **kwargs)
+
+def Perfil(request):
+    parametros = {'titulo':'Perfil de usuario'}
+    return render(request, 'usuarios/perfilUsuario.html', parametros)

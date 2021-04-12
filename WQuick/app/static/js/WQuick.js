@@ -36,6 +36,29 @@ document.addEventListener('DOMContentLoaded', function () {
         height: 400,
         duration: 600
     });
+    
+    /*=================== Funcionalidades de los seleccionadores de fechas datepicker ===================*/
+    var datas = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(datas, {
+        format: "dd-mm-yyyy",
+        firstDay: 1,
+        minDate: new Date(),
+        i18n: {
+            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+                'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+            ],
+            monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
+                'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
+            ],
+            weekdays: ['Domingo', 'Lunes', 'Martes',
+                'Miércoles', 'Jueves', 'Viernes', 'Sabado'
+            ],
+            weekdaysShort: ['Domingo', 'Lunes', 'Martes',
+                'Miércoles', 'Jueves', 'Viernes', 'Sábado'
+            ],
+            weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S']
+        }
+    });
 });
 
 /*=================== Tabulador en las TextAreas ===================*/

@@ -3,19 +3,8 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ titulo }}</title>
-    <!--Iconos de google-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- CDN de Materialize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    {% include 'frames/head.html' %}
     <link rel="stylesheet" href="{% static 'css/crearProyecto.css' %}">
-    <!--Logo de la empresas en las pestañas-->
-    <link rel="icon" type="image/png" href="{% static 'img/Logo.png' %}">
-    <!-- css wquick personalizado -->
-    <link rel="stylesheet" href="{% static 'css/WQuick.css' %}">
 </head>
 
 <body>
@@ -200,42 +189,10 @@
 
     <!-- CDN de Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Inicializar todos los js de materialize-->
+    <script src="{% static 'js/WQuick.js' %}"></script>
+    <!-- Eventos para el formulario crear proyecto -->
     <script src="{% static 'js/crearProyecto.js' %}"></script>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            M.AutoInit();
-            var selects = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(selects);
-
-            var datas = document.querySelectorAll('.datepicker');
-            var instances = M.Datepicker.init(datas, {
-                format: "dd-mm-yyyy",
-                firstDay: 1,
-                minDate: new Date(),
-                i18n: {
-                    months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
-                        'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-                    ],
-                    monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
-                        'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
-                    ],
-                    weekdays: ['Domingo', 'Lunes', 'Martes',
-                        'Miércoles', 'Jueves', 'Viernes', 'Sabado'
-                    ],
-                    weekdaysShort: ['Domingo', 'Lunes', 'Martes',
-                        'Miércoles', 'Jueves', 'Viernes', 'Sábado'
-                    ],
-                    weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S']
-                }
-            });
-
-            var drops = document.querySelectorAll('.auto-hover');
-            var instances = M.Dropdown.init(drops, {
-                coverTrigger: false,
-                hover: true
-            });
-        });
-    </script>
 </body>
 
 </html>
