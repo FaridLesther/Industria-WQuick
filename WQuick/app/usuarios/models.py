@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.core.validators import RegexValidator
+from django.contrib.postgres.fields import ArrayField
 
 
 class UsuarioManager(BaseUserManager):
@@ -87,3 +89,37 @@ class Proyecto(models.Model):
     xp = models.IntegerField()
     fecha_inicio = models.DateTimeField()
     fecha_fin = models.DateTimeField()
+
+
+class Freelancer(models.Model):
+    #  Modelo para la tabla proyecto en la base de datos
+    #  Autor: Lesther Valladares
+    #  Fecha: 10/04/2021
+    #  Version: 0.0.1
+    #  Atributos:
+    #    -  usuario: Llave foranea de el usuario que crea el proyecto (relación 1 a 1)
+    #    -  nombre:
+    #    -  apellido:
+    #    -  correo: Correo electronico de trabajo del freelancer
+    #    -  profesion: campo que contiene la profesion a la que se dedica el freelancer
+    #    -  xp: Campo numerico para puntuar la experiencia requerida del freelancer
+    #    -  telefono: numero telefonico del freelancer con el que se comunicara las empresas
+    #    -  idiomas: Lista de idiomas que domina el freelancer
+    #    -  descripcion: Contiene una descripcon de las habilidades del freelancer(obligatorio)
+    usuario = models.OneToOneField(
+        Usuario, null=False, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=15)
+    apellido = models.CharField(max_length=15)
+    correo = models.EmailField(
+        max_length=50, blank=False, null=False, unique=True)
+    profesion = models.CharField(max_length=30)
+    xp = models.IntegerField()
+    # tel: Campo usado para formatear el número de telefono y que sea valido
+    tel = RegexValidator(
+        regex=r'^\+?1?\d{9,15}$',
+        message="El número de telefono debe ingresarse en el formato: '+999999999'. hasta 15 digitos permitidos.")
+
+    telefono = models.CharField(validators=[tel], max_length=17, blank=False)
+
+    idiomas = ArrayField(models.CharField(max_length=10))
+    descripcion = models.CharField(max_length=500)

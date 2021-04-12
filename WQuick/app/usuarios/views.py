@@ -71,7 +71,7 @@ class Login(FormView):
     def form_valid(self, form):
         if('next' in self.request.GET):
             self.success_url = self.request.GET['next']
-            
+
         login(self.request, form.get_user())
         return super(Login, self).form_valid(form)
 
@@ -107,6 +107,24 @@ class CrearProyecto(CreateView):
         context['titulo'] = "Crear proyecto"
         return context
 
-def serFreelancer(request):
-    parametros = {'titulo': 'Ser Freelancer'}
-    return render(request, 'usuarios/serFreelancer.html', parametros)
+
+class SerFreelancer(CreateView):
+    model = models.Freelancer
+    form_class = forms.frmSerFreelancer
+    template_name = 'usuarios/serFreelancer.html'
+
+    def form_valid(self, form):
+        freelancer = form.save(True, self.request.user.id)
+        return redirect('/')
+
+    def get_context_data(self, **kwargs):
+        context = super(SerFreelancer, self).get_context_data(**kwargs)
+        context['titulo'] = "Ser Freelancer"
+        return context
+
+    def get(self, *args, **kwargs):
+        idusuario = models.Freelancer.objects.filter(usuario_id = self.request.user.id)
+
+        if idusuario:
+            return redirect('/')
+        return super(SerFreelancer, self).get(*args, **kwargs)

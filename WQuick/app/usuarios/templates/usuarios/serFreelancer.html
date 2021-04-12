@@ -18,23 +18,6 @@
         background: rgb(184, 127, 19);
         background-image: linear-gradient(90deg, rgba(184, 127, 19, 0.4277642067898525) 0%,
                 rgba(255, 239, 0, 1) 45%, rgba(255, 165, 28, 1) 100%);
-        overflow: hidden;
-    }
-
-    @media only screen and (max-width: 415px) {
-        .responsividad {
-            padding-left: 5% !important;
-            padding-top: 5% !important;
-        }
-
-        .form-control browser-default {
-            width: 96% !important;
-        }
-    }
-
-    .responsividad {
-        padding-left: 28%;
-        padding-top: 10px;
     }
 </style>
 
@@ -42,123 +25,195 @@
     {% include 'frames/navbar.html' %}
 
     <main>
-        <div class="col-md-9 col-sm-9 col-xs-30 responsividad">
-            <div class="panel panel-info">
-                <div style="text-align: center; background-color: hsl(180, 50%, 40%);" class="panel-heading">
-                    Trabaja como Freelancer
-                </div>
-                <div class="panel-body">
-                    <form role="form">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Nombre</label>
-                                    <input class="form-control browser-default" type="text" style="width: 100%;">
+
+
+
+        <div class="row">
+            <div class="col s12 m8 offset-m2">
+                <div class="card grey white">
+                    <div class="card-title center teal white-text">
+                        Trabaja como Freelancer
+                    </div>
+
+                    <div class="card-content">
+                        {% if form.nombre.errors %}
+                        <a id="alerta" class="alerta" style="display: none;"
+                            onclick="alerta('{{form.nombre.errors.as_text}}')">Toast!</a>
+                        {% endif %}
+
+                        {% if form.apellido.errors %}
+                        <a id="alerta" class="alerta" style="display: none;"
+                            onclick="alerta('{{form.apellido.errors.as_text}}')">Toast!</a>
+                        {% endif %}
+
+                        {% if form.correo.errors %}
+                        <a id="alerta" class="alerta" style="display: none;"
+                            onclick="alerta('{{form.correo.errors.as_text}}')">Toast!</a>
+                        {% endif %}
+
+                        {% if form.profesion.errors %}
+                        <a id="alerta" class="alerta" style="display: none;"
+                            onclick="alerta('{{form.profesion.errors.as_text}}')">Toast!</a>
+                        {% endif %}
+
+                        {% if form.telefono.errors %}
+                        <a id="alerta" class="alerta" style="display: none;"
+                            onclick="alerta('{{form.telefono.errors.as_text}}')">Toast!</a>
+                        {% endif %}
+
+                        {% if form.descripcion.errors %}
+                        <a id="alerta" class="alerta" style="display: none;"
+                            onclick="alerta('{{form.descripcion.errors.as_text}}')">Toast!</a>
+                        {% endif %}
+
+                        {% if form.idiomas.errors %}
+                        <a id="alerta" class="alerta" style="display: none;"
+                            onclick="alerta('{{form.idiomas.errors.as_text}}')">Toast!</a>
+                        {% endif %}
+
+                        <form method="POST" id="frm_serFreelancer" class="form-register">{% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Nombre</label>
+                                        {{form.nombre}}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Apellido</label>
-                                    <input class="form-control browser-default" type="text" style="width: 100%;">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Apellido</label>
+                                        {{form.apellido}}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Correo</label>
-                                    <input class="form-control browser-default" type="text" style="width: 100%;">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Correo</label>
+                                        {{form.correo}}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Profesión</label>
-                                    <input class="form-control browser-default" type="text" style="width: 100%;">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Profesión</label>
+                                        {{form.profesion}}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Nivel de Experiencia</label>
-                                    <select class="form-control browser-default" style="width: 100%;">
-                                        <option>Basico</option>
-                                        <option>Medio</option>
-                                        <option>Intermedio</option>
-                                        <option>Avanzado</option>
-                                    </select>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Nivel de Experiencia</label>
+                                        {{form.xp}}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Numero de Telefono</label>
-                                    <input class="form-control browser-default" type="text" style="width: 100%;">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Numero de Telefono</label>
+                                        {{form.telefono}}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Idiomas</label>
-                                    <input class="form-control browser-default" type="text" style="width: 100%;">
+                                <div class="container-fluid">
+                                    <div class="col s6 m3 offset-m2">
+                                        {{form.idiomas}}
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" value='0' />
+                                                <span style="font-size: small;">Ingles</span>
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" value='1' />
+                                                <span style="font-size: small;">Chino</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="col s6 m3">
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" value='2' />
+                                                <span style="font-size: small;">Alemán</span>
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" value='3' />
+                                                <span style="font-size: small;">Francés</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="col s12 m3">
+                                        <div class="row">
+                                            <div class="col s6 m12">
+                                                <p>
+                                                    <label>
+                                                        <input type="checkbox" value='4' />
+                                                        <span style="font-size: small;">Portugués</span>
+                                                    </label>
+                                                </p>
+                                            </div>
+                                            <div class="col s6 m12">
+                                                <p>
+                                                    <label>
+                                                        <input type="checkbox" value='5' />
+                                                        <span style="font-size: small;">Japonés</span>
+                                                    </label>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label>Algo mas sobre tí</label>
-                                    <textarea class="form-control browser-default" rows="5"
-                                        style="width: 100%;"></textarea>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Algo mas sobre tí</label>
+                                        {{form.descripcion}}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-12" style="text-align: center;">
-                                <button type="submit" class="btn btn-info">Guardar </button>
-                            </div>
+                                <div class="col-sm-12" style="text-align: center;">
+                                    <button id="btn-guardar" type="submit" class="btn btn-info">Guardar </button>
+                                </div>
 
-                        </div>
-                    </form>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- /. FOOTER  -->
+
     <!-- CDN de Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- Inicializar todos los js de materialize-->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            M.AutoInit();
+    <!-- scripts necesarios para el funcionamiento de los objetos de materialize -->
+    <script src="{% static 'js/WQuick.js' %}"></script>
 
-            var sliders = document.querySelectorAll('.slider');
-            var instances = M.Slider.init(sliders, {
-                interval: 7000,
-                height: 400,
-                duration: 600
-            });
-        });
-    </script>
-    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <!-- JQUERY SCRIPTS -->
-    <script src="tema/bs-advance-admin/advance-admin/assets/js/jquery-1.10.2.js"></script>
-    <!-- BOOTSTRAP SCRIPTS -->
-    <script src="tema/bs-advance-admin/advance-admin/assets/js/bootstrap.js"></script>
-    <!-- METISMENU SCRIPTS -->
-    <script src="tema/bs-advance-admin/advance-admin/assets/js/jquery.metisMenu.js"></script>
-    <!-- CUSTOM SCRIPTS -->
-    <script src="tema/bs-advance-admin/advance-admin/assets/js/custom.js"></script>
     <script>
+        //Habilitar la tecla tabulador para el textarea descripción (funcion de WQuick.js)
+        enableTab('txt-descripcion');
+
         document.addEventListener('DOMContentLoaded', function () {
-            M.AutoInit();
-            var drops = document.querySelectorAll('.auto-hover');
-            var instances = M.Dropdown.init(drops, {
-                coverTrigger: false,
-                hover: true
-            });
             let navbar = document.getElementById('avatar');
             navbar.style = 'height: 45px; margin-top: -8px;';
         });
+
+        var guardar = document.getElementById('btn-guardar');
+        guardar.onclick = (evento) => {
+            var listaIdiomas = document.getElementById('id_idiomas').options;
+            for (let i = 0; i < listaIdiomas.length; i++) {
+                listaIdiomas[i].selected = false;
+            }
+            idiomas = document.querySelectorAll('input[type="checkbox"]');
+            idiomas.forEach(chk_idioma => {
+                if (chk_idioma.checked) {
+                    listaIdiomas[chk_idioma.value].selected = true;
+                }
+            });
+        }
     </script>
 </body>
 

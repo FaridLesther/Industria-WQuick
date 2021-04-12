@@ -195,3 +195,119 @@ class frmCrearProyecto(forms.ModelForm):
         if commit:
             proyecto.save()
         return proyecto
+
+
+class frmSerFreelancer(forms.ModelForm):
+    #  Formulario de registro de un freelancer en la base de datos
+    #  Autor: Lesther Valladares
+    #  Version: 0.0.1
+    #  modelo: Freelancer
+
+    listaIdiomas = (
+        ('Ingles', 'Ingles'),
+        ('Chino', 'Chino'),
+        ('Alemán', 'Alemán'),
+        ('Francés', 'Francés'),
+        ('Portugués', 'Portugués'),
+        ('Japonés', 'Japonés'),
+    )
+
+    nivelesXP = (
+        (1, "Básico"),
+        (2, "Medio"),
+        (3, "Intermedio"),
+        (4, "Avanzado"),
+    )
+
+    idiomas = forms.MultipleChoiceField(choices=listaIdiomas, required=False)
+    idiomas.widget.attrs['class'] = 'browser-default'
+    idiomas.widget.attrs['style'] = 'display: none;'
+
+    xp = forms.ChoiceField(label='Elija una opción', choices=nivelesXP)
+    xp.widget.attrs['class'] = 'form-control browser-default'
+    xp.widget.attrs['style'] = 'width: 100%;'
+
+    class Meta:
+        model = models.Freelancer
+        fields = ('nombre', 'apellido', 'correo',
+                  'profesion', 'telefono', 'descripcion',)
+        widgets = {
+            'nombre': forms.TextInput(
+                attrs={
+                    'class': 'form-control browser-default',
+                    'style': 'width: 100%;',
+                    'type': 'text',
+                    'required': 'required',
+                }
+            ),
+            'apellido': forms.TextInput(
+                attrs={
+                    'class': 'form-control browser-default',
+                    'style': 'width: 100%;',
+                    'type': 'text',
+                    'required': 'required',
+                }
+            ),
+            'correo': forms.TextInput(
+                attrs={
+                    'class': 'form-control browser-default',
+                    'style': 'width: 100%;',
+                    'type': 'text',
+                    'required': 'required',
+                }
+            ),
+            'profesion': forms.TextInput(
+                attrs={
+                    'class': 'form-control browser-default',
+                    'style': 'width: 100%;',
+                    'type': 'text',
+                    'required': 'required',
+                }
+            ),
+            'telefono': forms.TextInput(
+                attrs={
+                    'class': 'form-control browser-default',
+                    'style': 'width: 100%;',
+                    'type': 'text',
+                    'required': 'required',
+                }
+            ),
+            'descripcion': forms.Textarea(
+                attrs={
+                    'rows': '5',
+                    'class': 'form-control browser-default',
+                    'id': 'txt-descripcion',
+                    'placeholder': 'Tecnologías dominadas, especialidades, entre otras cualidades.',
+                    'style': 'width: 100%;',
+                    'required': 'required',
+                }
+            ),
+        }
+
+    def clean_telefono(self):
+        telefono = str(self.cleaned_data.get('telefono'))
+        if telefono.__len__() < 8:
+            raise forms.ValidationError('Debe introducir un telefono válido')
+        if telefono[0] != '+':
+            return '+504'+self.cleaned_data.get('telefono')
+        return self.cleaned_data.get('telefono')
+
+    def clean_idiomas(self):
+        if len(self.cleaned_data.get('idiomas')) > 6:
+            raise forms.ValidationError(
+                'Más idiomas seleccionados de los disponibles')
+        return self.cleaned_data.get('idiomas')
+    
+    def clean_correo(self):
+        # filtrar mayusculas del correo electronico
+        correo = self.cleaned_data.get('correo').lower()
+        return correo
+
+    def save(self, commit=True, usuario=-1):
+        freelancer = super().save(commit=False)
+        freelancer.usuario_id = usuario
+        freelancer.xp = self.cleaned_data.get('xp')
+        freelancer.idiomas = self.cleaned_data.get('idiomas')
+        if commit:
+            freelancer.save()
+        return freelancer

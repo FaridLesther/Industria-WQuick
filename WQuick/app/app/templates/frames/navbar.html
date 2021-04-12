@@ -137,7 +137,7 @@
 <script src="{% static 'js/avatar.js' %}"></script>
 <script>
     let nombre = "{{ user.nombre|escape }}";
-    document.getElementById("avatar").src = generateAvatar(nombre[0], "white");
-    document.getElementById("avatar2").src = generateAvatar(nombre[0], "white");
+    document.getElementById("avatar").src = generateAvatar(nombre[0]);
+    document.getElementById("avatar2").src = generateAvatar(nombre[0]);
 </script>
 {% endif %}
