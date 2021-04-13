@@ -1,18 +1,186 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     {% include 'frames/head.html' %}
 </head>
-<body>
+
+<body class="grey lighten-2">
     {% include 'frames/navbar.html' %}
     {% include 'frames/sidebar.html' %}
+
     <main>
-        <h1>Contenido de la página</h1>
+        <div class="row mcard">
+            <div class="col s12 m10 offset-m1">
+                <section class="white" style="padding: 20px;">
+                    <div class="container-fluid">
+                        <form method="POST" id="frm_serFreelancer" class="form-register">{% csrf_token %}
+                            <div class="row">
+
+                                <div class="col s12 m5 offset-m1">
+                                    <div class="container-fluid" style="margin-bottom: 20px;">
+                                        <label style="font-size: 20px;">Datos de freelancer</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s1">
+                                            <i class="material-icons">description</i>
+                                        </div>
+                                        <div class="col s11">
+                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Nombre:
+                                                {{'Nombre del freelancer'}}</label>
+                                        </div>
+                                        <div class="col s12"><br></div>
+
+                                        <div class="col s1">
+                                            <i class="material-icons">description</i>
+                                        </div>
+                                        <div class="col s11">
+                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Apellido:
+                                                {{'Apellido del freelancer'}}</label>
+                                        </div>
+                                        <div class="col s12"><br></div>
+
+                                        <div class="col s1">
+                                            <i class="material-icons">work</i>
+                                        </div>
+                                        <div class="col s11">
+                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Profesión:
+                                                {{'Profesion del freelancer'}}</label>
+                                        </div>
+                                        <div class="col s12"><br></div>
+
+                                        <div class="col s1">
+                                            <i class="material-icons">mail</i>
+                                        </div>
+                                        <div class="col s11">
+                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Correo
+                                                electrónico: {{user.correo}}</label>
+                                        </div>
+                                        <div class="col s12"><br></div>
+
+                                        <div class="col s1">
+                                            <i class="material-icons">call</i>
+                                        </div>
+                                        <div class="col s11">
+                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Correo
+                                                Teléfono: {{'+50433525628'}}</label>
+                                        </div>
+                                        <div class="col s12"><br></div>
+
+                                        <div class="col s1">
+                                            <i class="material-icons">language</i>
+                                        </div>
+                                        <div class="col s11">
+                                            <label style="font-size: 15px;"
+                                                class="grey-text text-darken-2">Lenguajes:</label>
+                                            <div class="row">
+                                                <div class="col s6 m4">
+                                                    * Ingles
+                                                </div>
+                                                <div class="col s6 m4">
+                                                    * Chino
+                                                </div>
+                                                <div class="col s6 m4">
+                                                    * Alemán
+                                                </div>
+                                                <div class="col s6 m4">
+                                                    * Portuges
+                                                </div>
+                                                <div class="col s6 m4">
+                                                    * Japonés
+                                                </div>
+                                                <div class="col s6 m4">
+                                                    * Frances
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12"><br></div>
+
+                                        <div class="col s1">
+                                            <i class="material-icons">short_text</i>
+                                        </div>
+                                        <div class="col s11">
+                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Descripción:</label>
+                                            <div class="container-fluid">
+                                                <h6 style="font-size: 15px;">
+                                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi expedita quibusdam quisquam quam aliquid. Quibusdam,
+                                                 velit est neque consequuntur odit libero dolorum eaque illum rem. Perspiciatis saepe modi delectus voluptatum!
+                                                </h6>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col s12 m6" style="margin-bottom: 20px;">
+                                    <div class="container-fluid" style="margin-bottom: 20px;">
+                                        <label style="font-size: 20px;">Datos de usuario</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s1">
+                                            <i class="material-icons">account_box</i>
+                                        </div>
+                                        <div class="col s11">
+                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Nombre de
+                                                usuario: {{user.nombre}}</label>
+                                        </div>
+                                        <div class="col s12"><br></div>
+                                        <div class="col s1">
+                                            <i class="material-icons">mail</i>
+                                        </div>
+                                        <div class="col s11">
+                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Correo
+                                                electrónico: {{user.correo}}</label>
+                                        </div>
+
+                                        <!--style="text-align: center;"-->
+                                        <div class="col s12"></div>
+                                    </div>
+                                    <button id="btn-editar" class="btn grey darken-1">Cambiar contraseña </button>
+
+                                    <form method="POST">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">vpn_key</i>
+                                            <input disabled id="txt-clave" type="password" class="validate"
+                                            style="width: 80%;">
+                                            <label for="txt-clave">Antigua contraseña</label>
+                                        </div>
+    
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">vpn_key</i>
+                                            <input disabled id="txt-nclave" type="password" class="validate"
+                                            style="width: 80%;">
+                                            <label for="txt-nclave">Nueva contraseña</label>
+                                        </div>
+    
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">vpn_key</i>
+                                            <input disabled id="txt-cclave" type="password" class="validate"
+                                            style="width: 80%;">
+                                            <label for="txt-cclave">Confirmar contraseña</label>
+                                        </div>
+    
+                                    </form>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                
+                            </div>
+                    </div>
+
+            </div>
+            </form>
+        </div>
+        </section>
+        </div>
+        </div>
     </main>
 
-    <!-- CDN de Materialize JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{% static 'js/WQuick.js' %}"></script>
+    {% include 'frames/autocomplete.html' %}
 </body>
+
 </html>

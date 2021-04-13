@@ -24,10 +24,36 @@
             margin-top: 56px;
         }
     }
+
+    .imagen::placeholder {
+        color: grey;
+    }
 </style>
 <ul id="slide-out" class="sidenav sidenav-fixed" style="max-width: 250px;">
     <div class="container-fluid" style="text-align: center;">
-        <img src="{% static 'img/Logo.png' %}" alt="" style="max-height: 200px;">
+        {% if user.imagen %}
+        <img src="{{user.imagen.url}}" width="200" height="200" class="circle"
+            style="margin-top: 20px; max-height: 200px;">
+        {% else %}
+        <img src="{% static 'img/perfil.png' %}" class="responsive-img circle"
+            style="margin-top: 20px; max-height: 200px;">
+        {% endif %}
+
+        <form method="POST">{% csrf_token %}
+            <div class="file-field input-field" style="margin-top: -3px;">
+                <a>
+                    <span class="material-icons">add_a_photo</span>
+                    <input type="file" id='file-imagen'>
+                </a>
+                <div class="file-path-wrapper">
+                    <input id="txt-imagen" onchange="activarGuardar()" class="file-path validate imagen"
+                        placeholder="Cambiar imagen" type="text"
+                        style="border-bottom:0px; margin-bottom: -16px; margin-top: -15px;">
+                </div>
+            </div>
+            <button id="btn-guardari" class="btn grey dareken-4" style="display: none;">Guardar</button>
+        </form>
+
         <li class="divider" style="margin-top: 20px;"></li>
         <li><a href="#!" class="black-text">Mis Proyectos</a></li>
         <li class="divider"></li>
@@ -35,8 +61,63 @@
         <li class="divider"></li>
         <li><a href="#!" class="black-text">Freelancers Contratados</a></li>
         <li class="divider"></li>
-        <li><a href="#!" class="black-text">Contratar Freelancers</a></li>
+        <li><a href="#!" class="black-text">Solicitudes de Freelancers</a></li>
         <li class="divider"></li>
     </div>
     <br><br><br>
 </ul>
+
+<script type="text/javascript">
+    //Funcion que detecta los cambios en el textbox que describe la imagen
+    function activarGuardar() {
+        let btnGuardar = document.getElementById('btn-guardari');
+        let txtImagen = document.getElementById('txt-imagen');
+        if (txtImagen.value.length == 0) {
+            btnGuardar.style.display = 'none';
+        } else {
+            btnGuardar.style.display = 'inline-flex'
+        }
+    }
+
+    var btnGuardarI = document.getElementById('btn-guardari');
+
+    // funcion que válida la imagen que se subira de de perfil de usuario
+    btnGuardarI.onclick = (evento) => {
+        txtImagen = document.getElementById('txt-imagen');
+
+        //se comprueba que la imagen sea diferente a la imagen actual del usuario
+        // si la imagen es la misma se borra y no se realiza ninguna accion
+        // y se deshabilita el boton de guardar
+        if ('perfil/' + txtImagen.value == '{{user.imagen}}') {
+            evento.preventDefault();
+            txtImagen.value = '';
+            alert('La imagen que intenta guardar es la imagen actual de perfil');
+            btnGuardarI.style.display = 'none';
+            document.getElementById('file-imagen').value = '';
+            return; // Si la imagen es la misma de perfil actual ya no chequeo lo de abajo.
+        } else {
+            //EXTENSIONES Y TAMANO PERMITIDO.
+            var extensiones_permitidas = [".png", ".jpg", ".jpeg", ".gif"];
+            var tamano = 8; // EXPRESADO EN MB.
+            var rutayarchivo = document.getElementById('file-imagen').value;
+            var ultimo_punto = document.getElementById('file-imagen').value.lastIndexOf(".");
+            var extension = rutayarchivo.slice(ultimo_punto, rutayarchivo.length);
+
+            if (extensiones_permitidas.indexOf(extension) == -1) {
+                evento.preventDefault();
+                alert("Extensión de archivo imagen no valida");
+                txtImagen.value = '';
+                btnGuardarI.style.display = 'none';
+                document.getElementById('file-imagen').value = '';
+                return;
+            }
+
+            if ((document.getElementById('file-imagen').files[0].size / 1048576) > tamano) {
+                evento.preventDefault();
+                alert("El archivo no puede superar los " + tamano + "MB");
+                document.getElementById(all.id).value = "";
+                return;
+            }
+        }
+    }
+</script>

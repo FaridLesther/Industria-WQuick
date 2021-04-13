@@ -1,0 +1,14 @@
+<!-- CDN de Materialize JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var autos = document.querySelectorAll('.autocomplete');
+        var instances = M.Autocomplete.init(autos, {
+            data: {
+                "Apple": 'https://images.freeimages.com/images/large-previews/3cd/apple-1327446.jpg',
+                "Microsoft": 'https://media.istockphoto.com/photos/microsoft-corporation-logo-outside-the-executive-briefing-center-at-picture-id871450882?s=2048x2048',
+                "Google": 'https://media.istockphoto.com/photos/googles-headquarters-in-silicon-valley-in-mountain-view-california-picture-id1163973538?s=612x612'
+            },
+        });
+    });
+</script>
