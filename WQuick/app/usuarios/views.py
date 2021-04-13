@@ -141,3 +141,7 @@ def Perfil(request):
     if freelancer and freelancer.__len__() < 2:
         parametros['freelancer'] = freelancer[0]
     return render(request, 'usuarios/perfilUsuario.html', parametros)
+
+def MisProyectos(request):
+    parametros = {'titulo':'Mis proyectos'}
+    return render(request, 'usuarios/misProyectos.html', parametros)

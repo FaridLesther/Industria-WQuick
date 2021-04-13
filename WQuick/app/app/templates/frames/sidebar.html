@@ -54,8 +54,10 @@
             <button id="btn-guardari" class="btn grey dareken-4" style="display: none;">Guardar</button>
         </form>
 
+        {% if not titulo == 'Mis proyectos' %}
         <li class="divider" style="margin-top: 20px;"></li>
-        <li><a href="#!" class="black-text">Mis Proyectos</a></li>
+        <li><a href="/misProyectos" class="black-text">Mis Proyectos</a></li>
+        {% endif %}
         <li class="divider"></li>
         <li><a href="#!" class="black-text">Crear Proyecto</a></li>
         <li class="divider"></li>
