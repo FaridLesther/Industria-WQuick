@@ -72,6 +72,9 @@
 <!--Menú de sessión no responsivo-->
 <ul class="dropdown-content" id="id_drop" style="min-width: 135px;">
     {% if user.nombre %}
+    {% if not titulo == 'Perfil de usuario' %}
+    <li><a href="/perfil" class="d_dark black-text">Ver perfil</a></li>
+    {% endif %}
     <li><a href="{% url 'logout' %}" class="d_dark black-text">Cerrar sesión</a></li>
     {% else %}
     <li><a href="accounts/login/" class="black-text">Iniciar sesión</a></li>
@@ -98,6 +101,15 @@
     <li class="divider"></li>
 
     {% if user.nombre %}
+        {% if not titulo == 'Perfil de usuario' %}
+        <li>
+            <a href="/perfil" class="black-text" style="font-size: 15px;">
+                <i class="material-icons black-text" style="font-size: 35px;">account_box</i>
+                Ver perfil
+            </a>
+        </li>
+        <li class="divider"></li>
+        {% endif %}
     <li>
         <a href="{% url 'logout' %}" class="black-text" style="font-size: 15px;">
             <i class="material-icons black-text" style="font-size: 35px;">exit_to_app</i>

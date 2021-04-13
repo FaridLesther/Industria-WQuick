@@ -93,7 +93,7 @@ def elige(request):
 
 
 class CrearProyecto(CreateView):
-    #Vista para la plantilla crearProyecto.html
+    # Vista para la plantilla crearProyecto.html
     model = models.Proyecto
     form_class = forms.frmCrearProyecto
     template_name = 'usuarios/crearProyecto.html'
@@ -118,7 +118,7 @@ class SerFreelancer(CreateView):
 
     def form_valid(self, form):
         freelancer = form.save(True, self.request.user.id)
-        return redirect('/')
+        return redirect('/perfil')
 
     def get_context_data(self, **kwargs):
         context = super(SerFreelancer, self).get_context_data(**kwargs)
@@ -126,12 +126,18 @@ class SerFreelancer(CreateView):
         return context
 
     def get(self, *args, **kwargs):
-        idusuario = models.Freelancer.objects.filter(usuario_id = self.request.user.id)
-
+        idusuario = models.Freelancer.objects.filter(
+            usuario_id=self.request.user.id)
         if idusuario:
-            return redirect('/')
+            return redirect('/perfil')
         return super(SerFreelancer, self).get(*args, **kwargs)
 
+
 def Perfil(request):
-    parametros = {'titulo':'Perfil de usuario'}
+    freelancer = models.Freelancer.objects.filter(
+        usuario_id=request.user.id).values()
+    parametros = {'titulo': 'Perfil de usuario'}
+    parametros['freelancer'] = False
+    if freelancer and freelancer.__len__() < 2:
+        parametros['freelancer'] = freelancer[0]
     return render(request, 'usuarios/perfilUsuario.html', parametros)
