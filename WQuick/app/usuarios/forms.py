@@ -1,10 +1,11 @@
+from datetime import datetime
+import time
 from django import forms
 from django.db.models import Q
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.hashers import make_password
 from usuarios import models
-from datetime import datetime
-import time
 
 
 class frmRegistar(UserCreationForm):
@@ -297,7 +298,7 @@ class frmSerFreelancer(forms.ModelForm):
             raise forms.ValidationError(
                 'Más idiomas seleccionados de los disponibles')
         return self.cleaned_data.get('idiomas')
-    
+
     def clean_correo(self):
         # filtrar mayusculas del correo electronico
         correo = self.cleaned_data.get('correo').lower()
@@ -311,3 +312,95 @@ class frmSerFreelancer(forms.ModelForm):
         if commit:
             freelancer.save()
         return freelancer
+
+
+class FrmCambiarPass(forms.ModelForm):
+    #  Formulario de cambio de clave de usuario
+    #  Autor: Lesther Valladares
+    #  Version: 0.0.1
+    #  modelo: Usuario
+    foto = forms.FileField(required=False)
+    aClave = forms.CharField(widget=forms.PasswordInput())
+    aClave.widget.attrs['id'] = 'txt-clave'
+    aClave.widget.attrs['style'] = 'width: 80%;'
+    aClave.widget.attrs['disabled'] = 'disabled'
+
+    confirmarClave = forms.CharField(widget=forms.PasswordInput())
+    confirmarClave.widget.attrs['id'] = 'txt-cclave'
+    confirmarClave.widget.attrs['style'] = 'width: 80%;'
+    confirmarClave.widget.attrs['disabled'] = 'disabled'
+
+    campo = forms.CharField(widget=forms.PasswordInput(), required=False)
+    campo.widget.attrs['id'] = 'txt-campo'
+    campo.widget.attrs['style'] = 'display:none;'
+
+    campo2 = forms.CharField(widget=forms.PasswordInput(), required=False)
+    campo2.widget.attrs['id'] = 'txt-campo2'
+    campo2.widget.attrs['style'] = 'display:none;'
+
+    class Meta:
+        model = models.Usuario
+        fields = ('password',)
+        widgets = {
+            'password': forms.PasswordInput(
+                attrs={
+                    'required': 'required',
+                    'type': 'password',
+                    'id': 'txt-nclave',
+                    'class': 'validate',
+                    'style': 'width: 80%;',
+                    'disabled': 'disabled'
+                }
+            )
+        }
+
+    def clean_campo(self):
+        foto = self.cleaned_data.get('foto')
+        if not (foto is None):
+            print(self.cleaned_data.get('campo'))
+            idUsuario = self.cleaned_data.get('campo')
+            usuario = models.Usuario.objects.get(pk=idUsuario)
+            usuario.imagen = self.cleaned_data.get('foto')
+            usuario.save()
+            raise forms.ValidationError('foto true')
+        return self.cleaned_data.get('campo')
+
+    def clean_campo2(self):
+        foto = self.cleaned_data.get('foto')
+        if(foto is None):
+            clave = self.cleaned_data.get('aClave')
+            idUsuario = self.cleaned_data.get('campo2')
+            claveActual = models.Usuario.objects.filter(
+                id=idUsuario).values('password')
+            claveNueva = self.cleaned_data.get('password')
+
+            usuario = models.Usuario()
+            usuario.password = claveActual[0]['password']
+
+            if(not usuario.check_password(clave)):
+                raise forms.ValidationError(
+                    'La contraseña actual es inválida')
+
+            if(usuario.check_password(claveNueva)):
+                raise forms.ValidationError(
+                    'La nueva contraseña es la actual, debe ingresar una nueva contraseña')
+
+    def clean_confirmarClave(self):
+        foto = self.cleaned_data.get('foto')
+        if(foto is None):
+            nuevaClave = self.cleaned_data.get('password')
+            confirmarClave = self.cleaned_data.get('confirmarClave')
+
+            if nuevaClave != confirmarClave:
+                raise forms.ValidationError(
+                    'Las nuevas contraseñas no coinciden')
+            return nuevaClave
+        else:
+            return True
+
+    def save(self, commit=True, idUsuario=-1):
+        usuario = models.Usuario.objects.get(pk=idUsuario)
+        usuario.password = make_password(self.cleaned_data.get('password'))
+        if commit:
+            usuario.save()
+        return usuario

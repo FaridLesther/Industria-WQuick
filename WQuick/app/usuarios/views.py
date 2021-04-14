@@ -133,15 +133,26 @@ class SerFreelancer(CreateView):
         return super(SerFreelancer, self).get(*args, **kwargs)
 
 
-def Perfil(request):
-    freelancer = models.Freelancer.objects.filter(
-        usuario_id=request.user.id).values()
-    parametros = {'titulo': 'Perfil de usuario'}
-    parametros['freelancer'] = False
-    if freelancer and freelancer.__len__() < 2:
-        parametros['freelancer'] = freelancer[0]
-    return render(request, 'usuarios/perfilUsuario.html', parametros)
+class Perfil(CreateView):
+    model = models.Usuario
+    form_class = forms.FrmCambiarPass
+    template_name = 'usuarios/perfilUsuario.html'
+
+    def form_valid(self, form):
+        usuario = form.save(True, self.request.user.id)
+        return redirect('/perfil')
+
+    def get_context_data(self, **kwargs):
+        context = super(Perfil, self).get_context_data(**kwargs)
+        freelancer = models.Freelancer.objects.filter(
+            usuario_id=self.request.user.id).values()
+        context['titulo'] = 'Perfil de usuario'
+        context['freelancer'] = False
+        if freelancer and freelancer.__len__() < 2:
+            context['freelancer'] = freelancer[0]
+        return context
+
 
 def MisProyectos(request):
-    parametros = {'titulo':'Mis proyectos'}
+    parametros = {'titulo': 'Mis proyectos'}
     return render(request, 'usuarios/misProyectos.html', parametros)

@@ -4,40 +4,7 @@
 
 <head>
     {% include 'frames/head.html' %}
-    <style>
-        .bandera {
-            width: 300px;
-            height: 200px;
-            margin: 20px;
-            display: inline-block;
-            border: 1px solid #000;
-        }
-
-        .colombia {
-            background-image: linear-gradient(yellow 33%, blue 33%, blue 66.66%, red 66.66%);
-        }
-
-        .francia {
-            background-image: linear-gradient(90deg, red 33%, white 33%, white 66.66%, blue 66.66%);
-        }
-
-        .italia {
-            background-image: linear-gradient(90deg, green 33%, white 33%, white 66.66%, red 66.66%);
-        }
-
-        .alemania {
-            background-image: linear-gradient(black 33%, red 33%, red 66.66%, yellow 66.66%);
-            color: #fff;
-        }
-
-        .japon {
-            background-image: radial-gradient(circle, red 33%, white 33%, white);
-        }
-
-        .polonia {
-            background-image: linear-gradient(white 50%, red 50%, red);
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/banderas.css' %}">
 </head>
 
 <body class="grey lighten-2">
@@ -49,172 +16,234 @@
             <div class="col s12 m10 offset-m1">
                 <section class="white" style="padding: 20px;">
                     <div class="container-fluid">
-                        <form method="POST" id="frm_serFreelancer" class="form-register">{% csrf_token %}
-                            <div class="row">
+                        <div class="row">
 
-                                {% if freelancer %}
-                                <div class="col s12 m5 offset-m1">
-                                    <div class="container-fluid" style="margin-bottom: 20px;">
-                                        <label style="font-size: 20px;">Datos de freelancer</label>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s1">
-                                            <i class="material-icons">description</i>
-                                        </div>
-                                        <div class="col s11">
-                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Nombre:
-                                                {{freelancer.nombre}}</label>
-                                        </div>
-                                        <div class="col s12"><br></div>
-
-                                        <div class="col s1">
-                                            <i class="material-icons">description</i>
-                                        </div>
-                                        <div class="col s11">
-                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Apellido:
-                                                {{freelancer.apellido}}</label>
-                                        </div>
-                                        <div class="col s12"><br></div>
-
-                                        <div class="col s1">
-                                            <i class="material-icons">work</i>
-                                        </div>
-                                        <div class="col s11">
-                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Profesión:
-                                                {{freelancer.profesion}}</label>
-                                        </div>
-                                        <div class="col s12"><br></div>
-
-                                        <div class="col s1">
-                                            <i class="material-icons">mail</i>
-                                        </div>
-                                        <div class="col s11">
-                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Correo
-                                                electrónico: {{freelancer.correo}}</label>
-                                        </div>
-                                        <div class="col s12"><br></div>
-
-                                        <div class="col s1">
-                                            <i class="material-icons">call</i>
-                                        </div>
-                                        <div class="col s11">
-                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Correo
-                                                Teléfono: {{freelancer.telefono}}</label>
-                                        </div>
-                                        <div class="col s12"><br></div>
-
-                                        {% if freelancer.idiomas %}
-                                        <div class="col s1">
-                                            <i class="material-icons">
-                                                language
-                                            </i>
-                                        </div>
-                                        <label style="font-size: 15px; margin-left: 10px;"
-                                            class="grey-text text-darken-2">Lenguajes:
-                                        </label>
-                                        <div class="col s11">
-                                            <div class="row">
-                                                {% for lenguaje in freelancer.idiomas %}
-                                                <div class="col s6 m4">
-                                                    <label class="container-fluid alemania bandera black-text" 
-                                                    style="width: 20px; height: 15px; margin-bottom: -15px;">
-                                                        .........{{lenguaje}}
-                                                    </label>
-                                                </div>
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                        <div class="col s12"></div>
-                                        {% endif %}
-
-                                        <div class="col s1">
-                                            <i class="material-icons">short_text</i>
-                                        </div>
-                                        <div class="col s11">
-                                            <label style="font-size: 15px;"
-                                                class="grey-text text-darken-2">Descripción:</label>
-                                            <div class="container-fluid">
-                                                <h6 style="font-size: 15px;">
-                                                    {{freelancer.descripcion}}
-                                                </h6>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                            {% if freelancer %}
+                            <div class="col s12 m5 offset-m1">
+                                <div class="container-fluid" style="margin-bottom: 20px;">
+                                    <label style="font-size: 20px;">Datos de freelancer</label>
                                 </div>
+                                <div class="row">
+                                    <div class="col s1">
+                                        <i class="material-icons">description</i>
+                                    </div>
+                                    <div class="col s11">
+                                        <label style="font-size: 15px;" class="grey-text text-darken-2">Nombre:
+                                            {{freelancer.nombre}}</label>
+                                    </div>
+                                    <div class="col s12"><br></div>
+
+                                    <div class="col s1">
+                                        <i class="material-icons">description</i>
+                                    </div>
+                                    <div class="col s11">
+                                        <label style="font-size: 15px;" class="grey-text text-darken-2">Apellido:
+                                            {{freelancer.apellido}}</label>
+                                    </div>
+                                    <div class="col s12"><br></div>
+
+                                    <div class="col s1">
+                                        <i class="material-icons">work</i>
+                                    </div>
+                                    <div class="col s11">
+                                        <label style="font-size: 15px;" class="grey-text text-darken-2">Profesión:
+                                            {{freelancer.profesion}}</label>
+                                    </div>
+                                    <div class="col s12"><br></div>
+
+                                    <div class="col s1">
+                                        <i class="material-icons">mail</i>
+                                    </div>
+                                    <div class="col s11">
+                                        <label style="font-size: 15px;" class="grey-text text-darken-2">Correo
+                                            electrónico: {{freelancer.correo}}</label>
+                                    </div>
+                                    <div class="col s12"><br></div>
+
+                                    <div class="col s1">
+                                        <i class="material-icons">call</i>
+                                    </div>
+                                    <div class="col s11">
+                                        <label style="font-size: 15px;" class="grey-text text-darken-2">Correo
+                                            Teléfono: {{freelancer.telefono}}</label>
+                                    </div>
+                                    <div class="col s12"><br></div>
+
+                                    {% if freelancer.idiomas %}
+                                    <div class="col s1">
+                                        <i class="material-icons">
+                                            language
+                                        </i>
+                                    </div>
+                                    <label style="font-size: 15px; margin-left: 10px;"
+                                        class="grey-text text-darken-2">Lenguajes:
+                                    </label>
+                                    <div class="col s11">
+                                        <div class="row">
+                                            {% for lenguaje in freelancer.idiomas %}
+                                            <div class="col s6 m4">
+                                                <label {% if lenguaje == 'Ingles' %}
+                                                    class="container-fluid inglaterra bandera black-text" {% endif %}
+                                                    {% if lenguaje == 'Alemán' %}
+                                                    class="container-fluid alemania bandera black-text" {% endif %}
+                                                    {% if lenguaje == 'Francés' %}
+                                                    class="container-fluid francia bandera black-text" {% endif %}
+                                                    {% if lenguaje == 'Chino' %}
+                                                    class="container-fluid china bandera black-text" {% endif %}
+                                                    {% if lenguaje == 'Japonés' %}
+                                                    class="container-fluid japon bandera black-text" {% endif %}
+                                                    {% if lenguaje == 'Portugués' %}
+                                                    class="container-fluid portugal bandera black-text" {% endif %}
+                                                    style="width: 20px; height: 15px; margin-bottom: -15px;">
+                                                    <span style="margin-left: 23px;"></span>{{lenguaje}}
+                                                </label>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col s12"></div>
+                                    {% endif %}
+
+                                    <div class="col s1">
+                                        <i class="material-icons">short_text</i>
+                                    </div>
+                                    <div class="col s11">
+                                        <label style="font-size: 15px;"
+                                            class="grey-text text-darken-2">Descripción:</label>
+                                        <div class="container-fluid">
+                                            <h6 style="font-size: 15px;">
+                                                {{freelancer.descripcion}}
+                                            </h6>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            <div {% if not freelancer %} class="col s12 m6 offset-m3" {% else %} class="col s12 m6"
+                                {% endif %} style="margin-bottom: 20px;">
+                                <div class="container-fluid" {% if not freelancer %}
+                                    style="margin-bottom: 20px; text-align: center;" {% else %}
+                                    style="margin-bottom: 20px;" {% endif %}>
+                                    <label style="font-size: 20px;">Datos de usuario</label>
+                                </div>
+                                <div class="row">
+                                    <div class="col s1">
+                                        <i class="material-icons">account_box</i>
+                                    </div>
+                                    <div class="col s11">
+                                        <label style="font-size: 15px;" class="grey-text text-darken-2">Nombre de
+                                            usuario: {{user.nombre}}</label>
+                                    </div>
+                                    <div class="col s12"><br></div>
+                                    <div class="col s1">
+                                        <i class="material-icons">mail</i>
+                                    </div>
+                                    <div class="col s11">
+                                        <label style="font-size: 15px;" class="grey-text text-darken-2">Correo
+                                            electrónico: {{user.correo}}</label>
+                                    </div>
+                                    <div class="col s12"></div>
+                                </div>
+
+                                {% if form.campo.errors.as_text == '* foto true' %}
+                                <script>
+                                    document.getElementById('id_foto').value = '';
+                                    window.location = "{%  url 'perfil' %}";
+                                </script>
                                 {% endif %}
 
-                                <div {% if not freelancer %} class="col s12 m6 offset-m3" {% else %} class="col s12 m6"
-                                    {% endif %} style="margin-bottom: 20px;">
-                                    <div class="container-fluid" {% if not freelancer %}
-                                        style="margin-bottom: 20px; text-align: center;" {% else %}
-                                        style="margin-bottom: 20px;" {% endif %}>
-                                        <label style="font-size: 20px;">Datos de usuario</label>
+                                {% if not form.campo.errors.as_text == '* foto true' %}
+                                {% if form.campo.errors %}
+                                <a id="alerta" class="alerta" style="display: none;"
+                                    onclick="alerta('{{form.campo.errors.as_text}}')">Toast!</a>
+                                {% endif %}
+                                {% if form.campo2.errors %}
+                                <a id="alerta" class="alerta" style="display: none;"
+                                    onclick="alerta('{{form.campo2.errors.as_text}}')">Toast!</a>
+                                {% endif %}
+                                {% endif %}
+                                <form method="POST" id="frm-cambiarPass">{% csrf_token %}
+                                    {{form.campo2}}
+                                    <button id="btn-guardar" class="btn grey darken-1"
+                                        style="display: none;">Guardar</button>
+                                    <button id="btn-cambiar" class="btn grey darken-1">Cambiar contraseña </button>
+                                    
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">vpn_key</i>
+                                        {{form.aClave}}
+                                        <label for="txt-clave">Antigua contraseña</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="col s1">
-                                            <i class="material-icons">account_box</i>
-                                        </div>
-                                        <div class="col s11">
-                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Nombre de
-                                                usuario: {{user.nombre}}</label>
-                                        </div>
-                                        <div class="col s12"><br></div>
-                                        <div class="col s1">
-                                            <i class="material-icons">mail</i>
-                                        </div>
-                                        <div class="col s11">
-                                            <label style="font-size: 15px;" class="grey-text text-darken-2">Correo
-                                                electrónico: {{user.correo}}</label>
-                                        </div>
 
-                                        <!--style="text-align: center;"-->
-                                        <div class="col s12"></div>
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">vpn_key</i>
+                                        {{form.password}}
+                                        <label for="txt-nclave">Nueva contraseña</label>
                                     </div>
-                                    <button id="btn-editar" class="btn grey darken-1">Cambiar contraseña </button>
 
-                                    <form method="POST">
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">vpn_key</i>
-                                            <input disabled id="txt-clave" type="password" class="validate"
-                                                style="width: 80%;">
-                                            <label for="txt-clave">Antigua contraseña</label>
-                                        </div>
-
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">vpn_key</i>
-                                            <input disabled id="txt-nclave" type="password" class="validate"
-                                                style="width: 80%;">
-                                            <label for="txt-nclave">Nueva contraseña</label>
-                                        </div>
-
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">vpn_key</i>
-                                            <input disabled id="txt-cclave" type="password" class="validate"
-                                                style="width: 80%;">
-                                            <label for="txt-cclave">Confirmar contraseña</label>
-                                        </div>
-
-                                    </form>
-                                </div>
-
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">vpn_key</i>
+                                        {{form.confirmarClave}}
+                                        <label for="txt-cclave">Confirmar contraseña</label>
+                                    </div>
+                                </form>
                             </div>
-
-                            <div class="row">
-
-                            </div>
+                        </div>
                     </div>
-
+                </section>
             </div>
-            </form>
-        </div>
-        </section>
-        </div>
         </div>
     </main>
 
     <script src="{% static 'js/WQuick.js' %}"></script>
     {% include 'frames/autocomplete.html' %}
+    <script>
+        alertas = document.getElementsByClassName('alerta');
+        for (let i = 0; i < alertas.length; i++) {
+            alertas[i].click();
+        }
+
+        var idUsuario = document.getElementById('txt-campo');
+        idUsuario.value = '{{user.id}}';
+
+        let tel = document.getElementById('txt-campo2');
+        tel.value = '{{user.id}}';
+
+        var btnCambiar = document.getElementById('btn-cambiar');
+        var btnGuardar = document.getElementById('btn-guardar')
+        btnCambiar.onclick = (evento) => {
+            evento.preventDefault();
+            if (btnCambiar.innerHTML != 'Cancelar') {
+                btnCambiar.innerHTML = 'Cancelar';
+                btnGuardar.style.display = 'inline-flex';
+                document.getElementById('txt-clave').disabled = false;
+                document.getElementById('txt-cclave').disabled = false;
+                document.getElementById('txt-nclave').disabled = false;
+            } else {
+                btnCambiar.innerHTML = 'Cambiar Contraseña';
+                btnGuardar.style.display = 'none';
+                document.getElementById('txt-clave').disabled = true;
+                document.getElementById('txt-cclave').disabled = true;
+                document.getElementById('txt-nclave').disabled = true;
+            }
+        }
+
+        btnGuardar.onclick = (evento) => {
+            let clave = document.getElementById('txt-cclave').value;
+            let clave1 = document.getElementById('txt-nclave').value;
+            if (clave != clave1) {
+                evento.preventDefault();
+
+                M.toast({
+                    html: 'Las nuevas contraseñas no coinciden' +
+                        '<button id = "Acerrar" onclick = "cerrarToats()" class="btn-flat toast-action">Cerrar</button>',
+                    classes: 'red',
+                    displayLength: 5000
+                });
+            }
+        }
+    </script>
 </body>
 
 </html>

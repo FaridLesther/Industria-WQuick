@@ -34,12 +34,12 @@
             <!-- Lista desplegable de sesion no responsiva -->
             <ul class="right hide-on-med-and-down">
                 {% if user.nombre %}
-                <li class="dropdown-trigger auto-hover" data-target="id_drop"
+                <li data-target="id_drop"
                     style="margin-right: 5px; font-weight: bold;">
                     {{ user.nombre|escape }}
                 </li>
-                <li>
-                    <i class="dropdown-trigger auto-hover black-text" data-target="id_drop">
+                <li class="dropdown-trigger auto-hover black-text" data-target="id_drop">
+                    <i>
                         {% if user.imagen %}
                         <img src="{{user.imagen.url}}" class="responsive-img circle" alt="Avatar"
                             style="height: 45px; width: 45px; margin-top: 8px;">
@@ -48,7 +48,8 @@
                             style="height: 45px; margin-top: 8px;">
                         {% endif %}
                     </i>
-                    {% else %}
+                </li>
+                {% else %}
                 <li>
                     <a class="dropdown-trigger auto-hover black-text" data-target="id_drop">
                         ¡Bienvenido!
@@ -101,15 +102,15 @@
     <li class="divider"></li>
 
     {% if user.nombre %}
-        {% if not titulo == 'Perfil de usuario' %}
-        <li>
-            <a href="/perfil" class="black-text" style="font-size: 15px;">
-                <i class="material-icons black-text" style="font-size: 35px;">account_box</i>
-                Ver perfil
-            </a>
-        </li>
-        <li class="divider"></li>
-        {% endif %}
+    {% if not titulo == 'Perfil de usuario' %}
+    <li>
+        <a href="/perfil" class="black-text" style="font-size: 15px;">
+            <i class="material-icons black-text" style="font-size: 35px;">account_box</i>
+            Ver perfil
+        </a>
+    </li>
+    <li class="divider"></li>
+    {% endif %}
     <li>
         <a href="{% url 'logout' %}" class="black-text" style="font-size: 15px;">
             <i class="material-icons black-text" style="font-size: 35px;">exit_to_app</i>

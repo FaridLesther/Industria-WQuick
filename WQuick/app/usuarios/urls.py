@@ -11,6 +11,7 @@ urlpatterns = [
         views.CrearProyecto.as_view()), name="crearProyecto"),
     path('serFreelancer', login_required(
         views.SerFreelancer.as_view()), name='serFreelancer'),
-    path('perfil', login_required(views.Perfil), name='perfil'),
-    path('misProyectos', login_required(views.MisProyectos), name='misProyectos'),
+    path('perfil', login_required(views.Perfil.as_view()), name='perfil'),
+    path('misProyectos', login_required(
+        views.MisProyectos), name='misProyectos'),
 ]
