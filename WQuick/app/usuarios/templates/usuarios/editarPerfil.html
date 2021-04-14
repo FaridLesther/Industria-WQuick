@@ -1,0 +1,223 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% include 'frames/head.html' %}
+    <style>
+        .bandera {
+            width: 300px;
+            height: 200px;
+            margin: 20px;
+            display: inline-block;
+            border: 1px solid #000;
+        }
+
+        .colombia {
+            background-image: linear-gradient(yellow 33%, blue 33%, blue 66.66%, red 66.66%);
+        }
+
+        .francia {
+            background-image: linear-gradient(90deg, red 33%, white 33%, white 66.66%, blue 66.66%);
+        }
+
+        .italia {
+            background-image: linear-gradient(90deg, green 33%, white 33%, white 66.66%, red 66.66%);
+        }
+
+        .alemania {
+            background-image: linear-gradient(black 33%, red 33%, red 66.66%, yellow 66.66%);
+            color: #fff;
+        }
+
+        .japon {
+            background-image: radial-gradient(circle, red 33%, white 33%, white);
+        }
+
+        .polonia {
+            background-image: linear-gradient(white 50%, red 50%, red);
+        }
+    </style>
+</head>
+
+<body class="grey lighten-2">
+    {% include 'frames/navbar.html' %}
+    {% include 'frames/sidebar.html' %}
+
+    <main>
+        <div style="padding: 2% 11% 0% 11%;">
+            <div style="background-color: #fff; width: 100%; padding: 2% 0% 0% 0%;">
+                <div class="row">
+                    <div class="container-fluid" style="margin-bottom: 20px; text-align: center;">
+                        <label style="font-size: 20px;">Edita tus Datos</label>
+                    </div>
+                                
+                    <div class="col s12 m5 offset-m1">
+                        <div class="row">
+                            <div class="col s12"><br></div>
+                            <div class="col s1">
+                                <i class="material-icons">description</i>
+                            </div>
+                            <div class="col s11">
+                                <label style="font-size: 15px;" class="grey-text text-darken-2">Nombre:
+                                     Omar</label>
+                                <div class="container-fluid">
+                                    <h6 style="font-size: 15px;">
+                                        
+                                    </h6>
+                                </div>
+                            </div>
+                            
+                            <div class="col s12"><br></div>
+                            <div class="col s1">
+                                <i class="material-icons">mail</i>
+                            </div>
+                            <div class="col s11">
+                                <label style="font-size: 15px;" class="grey-text text-darken-2">Correo:
+                                     ejemplo@gmail.com</label>
+                                <div class="container-fluid">
+                                    <h6 style="font-size: 15px;">
+                                        
+                                    </h6>
+                                </div>
+                            </div>
+                                                       
+                            
+                            <div class="col s12"><br></div>
+
+                            
+                            <div class="col s1">
+                                <i class="material-icons">
+                                    language
+                                </i>
+                            </div>
+                            <label style="font-size: 15px; margin-left: 10px;" class="grey-text text-darken-2">Idiomas:</label>
+                            <div class="col s12"><br></div>
+                            <div class="col s6">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" value='0' />
+                                        <span style="font-size: small;">Ingles</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input type="checkbox" value='0' />
+                                        <span style="font-size: small;">Chino</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input type="checkbox" value='0' />
+                                        <span style="font-size: small;">Alemán</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="col s6">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" value='0' />
+                                        <span style="font-size: small;">Francés</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input type="checkbox" value='0' />
+                                        <span style="font-size: small;">Portugués</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input type="checkbox" value='0' />
+                                        <span style="font-size: small;">Japonés</span>
+                                    </label>
+                                </p>                                
+                            </div>                                                      
+                            <div style="text-align: center;">
+                                <select name="xp" class="form-control browser-default" style="width: 100%;" id="id_xp">
+                                    <option value="1">Básico</option>
+                                  
+                                    <option value="2">Medio</option>
+                                  
+                                    <option value="3">Intermedio</option>
+                                  
+                                    <option value="4">Avanzado</option>
+                                  
+                                  </select>
+                            </div>
+                        
+                            <div class="row">                            
+                                <!--style="text-align: center;"-->
+                                <div class="col s12"></div>
+                            </div>
+                            
+                        </div>
+                    </div>                    
+
+                    <div class="col s12 m6" style="margin-bottom: 20px;">
+                        <div class="row">                            
+                            <!--style="text-align: center;"-->
+                            <div class="col s12"></div>
+                        </div>
+                        <div class="col s12"></div>
+                            <div class="col s1">
+                                <i class="material-icons">description</i>
+                            </div>
+                            <div class="col s11">
+                                <label style="font-size: 15px;" class="grey-text text-darken-2">Apellido:
+                                     Flores</label>
+                                <div class="container-fluid">
+                                    <h6 style="font-size: 15px;">
+                                        
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="col s12"><br></div>
+
+                            <div class="col s1">
+                                <i class="material-icons">work</i>
+                            </div>
+                            <div class="col s11">
+                                <label style="font-size: 15px;" class="grey-text text-darken-2">Profesión:</label>
+                                <input type="text">
+                            </div>
+                            <div class="col s12"><br></div>
+
+                            <div class="col s1">
+                                <i class="material-icons">call</i>
+                            </div>
+                            <div class="col s11">
+                                <label style="font-size: 15px;" class="grey-text text-darken-2">Teléfono:</label>
+                                    <input type="text">
+                            </div>
+                            <div class="col s12"></div>                           
+
+                            <div class="col s1">
+                                <i class="material-icons">short_text</i>
+                            </div>
+                            <div class="col s11">
+                                <label style="font-size: 15px;" class="grey-text text-darken-2">Descripción:</label>
+                                <div >
+                                    <textarea style="height: 25vh;">
+
+                                    </textarea>
+                                </div>
+                            </div>
+                        
+                    </div>
+                    
+                </div>
+                <div style="text-align: center; padding-bottom: 3%;">                        
+                    <button id="btn-editar" class="btn grey darken-1">Cancelar </button>
+                    <button id="btn-editar" class="btn grey darken-1;" style=" background-color: #1e8a30!important">Guardar Cambios </button>
+                   
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="{% static 'js/WQuick.js' %}"></script>
+    {% include 'frames/autocomplete.html' %}
+</body>
+
+</html>

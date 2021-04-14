@@ -156,3 +156,7 @@ class Perfil(CreateView):
 def MisProyectos(request):
     parametros = {'titulo': 'Mis proyectos'}
     return render(request, 'usuarios/misProyectos.html', parametros)
+
+def EditarPerfil(request):
+    parametros = {'titulo':'Editar mi Perfil'}
+    return render(request, 'usuarios/editarPerfil.html', parametros)
