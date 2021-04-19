@@ -3,6 +3,27 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: #212121;
+}
+
+section {
+    background-color: #424242;
+
+}
+
+.sidenav {
+    background-color: #424242;
+}
+
+.divider {
+    background-color: #242424;
+    width: 80%;
+    margin-left: 25px;
+}
+
+.texto {
+    color: white;
+
 }
 
 main {
@@ -83,8 +104,52 @@ html {
 }
 
 /*========== Placeholders personalizados para inputs ========== */
-::-webkit-input-placeholder {
-    color: #000;
+::placeholder {
+    color: #ffcc80;
+}
+
+input {
+    color: #fb8c00;
+    /* Color orange darken-1*/
+}
+
+/*-----Colores de linea de input------*/
+input:focus {
+    border-bottom: 0.5px solid #ffca28 !important;
+    box-shadow: 0 0px 0 0 #fb8c00 !important;
+    /* Color orange darken-1*/
+}
+
+.material-icons {
+    color: #ffe0b2;
+}
+
+label {
+    color: white;
+    font-weight: bold;
+}
+
+span {
+    color: grey;
+}
+
+textarea {
+    color: white;
+}
+
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:after {
+    background-color: #dfa248bb;
+}
+
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:before,
+[type="radio"].with-gap:checked+span:after {
+    border: 2px solid #dfa248bb;
+}
+
+.card{
+    background-color: #424242;
 }
 
 /*========================================== Estilos que puso nicoll para el login y registro ==========================================*/
@@ -117,12 +182,12 @@ html {
 }
 
 .FondoPantalla {
-    background:  url("/static/img/amarilla2.jpg") no-repeat center center fixed;
+    background: url("/static/img/black.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    
+
 }
 
 
@@ -261,3 +326,38 @@ main {
         margin-top: -20px;
     }
 }
+
+/*
+.datepicker-date-display {
+    background-color: rgb(118, 186, 241);
+}
+
+.datepicker-cancel,
+.datepicker-clear,
+.datepicker-today,
+.datepicker-done {
+    color: rgb(69, 143, 204);
+}
+
+.datepicker-table td.is-today {
+    color: rgb(69, 143, 204);
+}
+
+.datepicker-table td.is-selected {
+    background-color: rgb(118, 186, 241);
+    color: #fff;
+}
+*/
+/*
+
+
+label.active {
+    color: royalblue !important;
+}*/
+
+/**/
+
+/*
+ul.dropdown-content.select-dropdown li span {
+    color: #000;
+}*/

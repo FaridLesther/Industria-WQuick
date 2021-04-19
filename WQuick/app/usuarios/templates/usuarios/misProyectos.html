@@ -4,41 +4,7 @@
 
 <head>
     {% include 'frames/head.html' %}
-    <style>
-        .bandera {
-            width: 300px;
-            height: 200px;
-            margin: 20px;
-            display: inline-block;
-            border: 1px solid #000;
-        }
-
-        .colombia {
-            background-image: linear-gradient(yellow 33%, blue 33%, blue 66.66%, red 66.66%);
-        }
-
-        .francia {
-            background-image: linear-gradient(90deg, red 33%, white 33%, white 66.66%, blue 66.66%);
-        }
-
-        .italia {
-            background-image: linear-gradient(90deg, green 33%, white 33%, white 66.66%, red 66.66%);
-        }
-
-        .alemania {
-            background-image: linear-gradient(black 33%, red 33%, red 66.66%, yellow 66.66%);
-            color: #fff;
-        }
-
-        .japon {
-            background-image: radial-gradient(circle, red 33%, white 33%, white);
-        }
-
-        .polonia {
-            background-image: linear-gradient(white 50%, red 50%, red);
-        }
-    </style>
-</head>
+    </head>
 
 <body class="grey lighten-2">
     {% include 'frames/navbar.html' %}
@@ -48,187 +14,80 @@
         <div style="padding: 2% 11% 0% 11%;">
             <div style="background-color: #fff; width: 100%; padding: 2% 0% 0% 0%;">
                 <div class="row">                                
-                    <div class="col s12 m5 offset-m1">
-                        <div class="container-fluid" style="margin-bottom: 20px;">
-                            <!-- nombre de la eleccion del proyecto -->
-                            <label style="font-size: 20px;">Diseño Web</label>
-                            <img style="width: 80%; margin-top: 5%;" src="../../../static/img/diseñoweb.jpg">
-                        </div>
+                    {% for proyecto in proyectos %}
                         <div class="row">
-                            
-                            <div class="col s1">
-                                <i class="material-icons">work</i>
-                            </div>
-                            <div class="col s11">
-                                <label style="font-size: 15px;" class="grey-text text-darken-2">Experiencia Profesional:
-                                    Básico</label>
-                            </div>
-                            
-                            <div class="col s12"><br></div>
-                            <div class="col s1">
-                                <i class="material-icons">short_text</i>
-                            </div>
-                            <div class="col s11">
-                                <label style="font-size: 15px;" class="grey-text text-darken-2">Fecha de entrega:
-                                     6/6/6</label>
-                                <div class="container-fluid">
-                                    <h6 style="font-size: 15px;">
-                                        
-                                    </h6>
+                            <div class="col s12 m5 offset-m1">
+                                <div class="container-fluid" style="margin-bottom: 20px;">
+                                    <!-- nombre de la eleccion del proyecto -->
+                                    <label style="font-size: 20px;">{{proyecto.tipo}}</label>
+                                    <img style="width: 80%; margin-top: 5%;" src="../../../static/img/diseñoweb.jpg">
+                                </div>
+                                <div class="row">
+                                    
+                                    <div class="col s1">
+                                        <i class="material-icons">work</i>
+                                    </div>
+                                    <div class="col s11">
+                                        <label style="font-size: 15px;" class="grey-text text-darken-2">Experiencia Profesional:
+                                            {% if proyecto.xp is 1 %}
+                                                {{"Básico"}}
+                                                {% elif proyecto.xp is 2 %}
+                                                {{"Medio"}}
+                                                {% elif proyecto.xp == 3 %}
+                                                {{"Intermedio"}}
+                                                {% else%}
+                                                {{"Avanzado"}}
+                                            {% endif %}
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="col s12"><br></div>
+                                    <div class="col s1">
+                                        <i class="material-icons">short_text</i>
+                                    </div>
+                                    <div class="col s11">
+                                        <label style="font-size: 15px;" class="grey-text text-darken-2">Fecha de entrega:
+                                            {{proyecto.fecha_fin}}</label>
+                                        <div class="container-fluid">
+                                            <h6 style="font-size: 15px;">
+                                                
+                                            </h6>
+                                        </div>
+                                    </div>
+    
                                 </div>
                             </div>
-
-                        </div>
-                    </div>
-                    
-
-                    <div class="col s12 m6" style="margin-bottom: 20px;">
-                        <div class="container-fluid" style="margin-bottom: 20px;">
-                            <label style="font-size: 20px;">Titulo del Proyecto</label>
-                        </div>
-                        <div class="row">
-                            <div class="col s11">
-                                <label style="font-size: 15px;"
-                                    class="grey-text text-darken-2">Descripción:</label>
-                                <div class="container-fluid">
-                                    <h6 style="font-size: 15px;">
-                                        quiero un diseño web en el que pueda promocionar mir productos....
-                                    </h6>
+                            
+    
+                            <div class="col s12 m6" style="margin-bottom: 20px;">
+                                <div class="container-fluid" style="margin-bottom: 20px;">
+                                    <label style="font-size: 20px;">{{proyecto.titulo}}</label>
                                 </div>
+                                <div class="row">
+                                    <div class="col s11">
+                                        <label style="font-size: 15px;"
+                                            class="grey-text text-darken-2">Descripción:</label>
+                                        <div class="container-fluid">
+                                            <h6 style="font-size: 15px;">
+                                                {{proyecto.descripcion}}
+                                            </h6>
+                                        </div>
+                                    </div>
+    
+                                    <!--style="text-align: center;"-->
+                                    <div class="col s12"></div>
+                                </div>
+                                <button id="btn-editar" class="btn grey darken-1">Editar Proyecto </button>
+                                <button id="btn-editar" class="btn grey darken-1" style="background-color: #880a0a!important;">Eliminar Proyecto </button>
+                            
                             </div>
-
-                            <!--style="text-align: center;"-->
-                            <div class="col s12"></div>
+                            
                         </div>
-                        <button id="btn-editar" class="btn grey darken-1">Editar Proyecto </button>
-                        <button id="btn-editar" class="btn grey darken-1" style="background-color: #880a0a!important;">Eliminar Proyecto </button>
-                       
-                    </div>
+                        <hr>
+                    {% endfor %}
 
                 </div>
-                <hr>
-                <div class="row">                                
-                    <div class="col s12 m5 offset-m1">
-                        <div class="container-fluid" style="margin-bottom: 20px;">
-                            <!-- nombre de la eleccion del proyecto -->
-                            <label style="font-size: 20px;">Aplicaciones Moviles</label>
-                            <img style="width: 80%; margin-top: 5%;" src="../../../static/img/apps.jpg">
-                        </div>
-                        <div class="row">
-                            
-                            <div class="col s1">
-                                <i class="material-icons">work</i>
-                            </div>
-                            <div class="col s11">
-                                <label style="font-size: 15px;" class="grey-text text-darken-2">Experiencia Profesional:
-                                    Básico</label>
-                            </div>
-                            
-                            <div class="col s12"><br></div>
-                            <div class="col s1">
-                                <i class="material-icons">short_text</i>
-                            </div>
-                            <div class="col s11">
-                                <label style="font-size: 15px;" class="grey-text text-darken-2">Fecha de entrega:
-                                     6/6/6</label>
-                                <div class="container-fluid">
-                                    <h6 style="font-size: 15px;">
-                                        
-                                    </h6>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    
-
-                    <div class="col s12 m6" style="margin-bottom: 20px;">
-                        <div class="container-fluid" style="margin-bottom: 20px;">
-                            <label style="font-size: 20px;">Titulo del Proyecto</label>
-                        </div>
-                        <div class="row">
-                            <div class="col s11">
-                                <label style="font-size: 15px;"
-                                    class="grey-text text-darken-2">Descripción:</label>
-                                <div class="container-fluid">
-                                    <h6 style="font-size: 15px;">
-                                        quiero un diseño web en el que pueda promocionar mir productos....
-                                    </h6>
-                                </div>
-                            </div>
-
-                            <!--style="text-align: center;"-->
-                            <div class="col s12"></div>
-                        </div>
-                        <button id="btn-editar" class="btn grey darken-1">Editar Proyecto </button>
-                        <button id="btn-editar" class="btn grey darken-1" style="background-color: #880a0a!important;">Eliminar Proyecto </button>
-                       
-                    </div>
-
-                </div>
-                <hr>
-                <div class="row">                                
-                    <div class="col s12 m5 offset-m1">
-                        <div class="container-fluid" style="margin-bottom: 20px;">
-                            <!-- nombre de la eleccion del proyecto -->
-                            <label style="font-size: 20px;">Base de Datos</label>
-                            <img style="width: 80%; margin-top: 5%;" src="../../../static/img/bd.jpg">
-                        </div>
-                        <div class="row">
-                            
-                            <div class="col s1">
-                                <i class="material-icons">work</i>
-                            </div>
-                            <div class="col s11">
-                                <label style="font-size: 15px;" class="grey-text text-darken-2">Experiencia Profesional:
-                                    Básico</label>
-                            </div>
-                            
-                            <div class="col s12"><br></div>
-                            <div class="col s1">
-                                <i class="material-icons">short_text</i>
-                            </div>
-                            <div class="col s11">
-                                <label style="font-size: 15px;" class="grey-text text-darken-2">Fecha de entrega:
-                                     6/6/6</label>
-                                <div class="container-fluid">
-                                    <h6 style="font-size: 15px;">
-                                        
-                                    </h6>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    
-
-                    <div class="col s12 m6" style="margin-bottom: 20px;">
-                        <div class="container-fluid" style="margin-bottom: 20px;">
-                            <label style="font-size: 20px;">Titulo del Proyecto</label>
-                        </div>
-                        <div class="row">
-                            <div class="col s11">
-                                <label style="font-size: 15px;"
-                                    class="grey-text text-darken-2">Descripción:</label>
-                                <div class="container-fluid">
-                                    <h6 style="font-size: 15px;">
-                                        quiero un diseño web en el que pueda promocionar mir productos....
-                                    </h6>
-                                </div>
-                            </div>
-
-                            <!--style="text-align: center;"-->
-                            <div class="col s12"></div>
-                        </div>
-                        <button id="btn-editar" class="btn grey darken-1">Editar Proyecto </button>
-                        <button id="btn-editar" class="btn grey darken-1" style="background-color: #880a0a!important;">Eliminar Proyecto </button>
-                       
-                    </div>
-
-                </div>
-                <hr>
             </div>
-            
         </div>
     </main>
 

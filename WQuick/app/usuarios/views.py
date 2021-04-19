@@ -166,7 +166,10 @@ class Perfil(CreateView):
 
 
 def MisProyectos(request):
-    parametros = {'titulo': 'Mis proyectos'}
+    mproyectos = models.Proyecto.objects.filter(usuario_id=request.user.id).values()
+    parametros = {'titulo': 'Mis proyectos','proyectos': False}
+    if mproyectos.exists():
+        parametros["proyectos"] = mproyectos
     return render(request, 'usuarios/misProyectos.html', parametros)
 
 

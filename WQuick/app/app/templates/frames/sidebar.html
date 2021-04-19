@@ -26,7 +26,7 @@
     }
 
     .imagen::placeholder {
-        color: grey;
+        color: #ffc19dde;
     }
 </style>
 <ul id="slide-out" class="sidenav sidenav-fixed" style="max-width: 250px;">
@@ -57,17 +57,21 @@
         </form>
         {% endif %}
 
-        {% if not titulo == 'Mis proyectos' %}
-        <li class="divider" style="margin-top: 20px;"></li>
-        <li><a href="/misProyectos" class="black-text">Mis Proyectos</a></li>
-        {% endif %}
-        <li class="divider"></li>
-        <li><a href="#!" class="black-text">Crear Proyecto</a></li>
-        <li class="divider"></li>
-        <li><a href="#!" class="black-text">Freelancers Contratados</a></li>
-        <li class="divider"></li>
-        <li><a href="#!" class="black-text">Solicitudes de Freelancers</a></li>
-        <li class="divider"></li>
+        <div class="container-fluid center">
+            {% if not titulo == 'Mis proyectos' %}
+            <li class="divider" style=" margin-left: 20px;" style="margin-top: 20px;"></li>
+            <li><a style="color: #ffc19dde;" href="{% url 'misProyectos' %}" >Mis Proyectos</a></li>
+            {% endif %}
+            <li class="divider" style=" margin-left: 20px;"></li>
+            <li><a style="color: #ffc19dde;"  href="{% url 'crearProyecto' %}" >Crear Proyecto</a></li>
+            <li class="divider" style=" margin-left: 20px;"></li>
+            <li><a style="color: #ffc19dde;" href="#!" >Freelancers Contratados</a></li>
+            <li class="divider" style=" margin-left: 20px;"></li>
+            <li><a style="color: #ffc19dde;" href="#!" >Solicitudes de Freelancers</a></li>
+            <li class="divider" style=" margin-left: 20px;"></li>
+            
+        </div>
+      
     </div>
     <br><br><br>
 </ul>
@@ -81,7 +85,8 @@
         if (txtImagen.value.length == 0) {
             btnGuardar.style.display = 'none';
         } else {
-            btnGuardar.style.display = 'inline-flex'
+            btnGuardar.style.display = 'inline-flex';
+            document.getElementById('btn-guardari').click()
         }
     }
     var imagenActual = '{{user.imagen}}';
