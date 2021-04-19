@@ -4,11 +4,11 @@ for (let i = 0; i < alertas.length; i++) {
     alertas[i].click();
 }
 
-function alerta(alerta) {
+function alerta(alerta, clase = 'red') {
     M.toast({
         html: alerta +
             '<button id = "Acerrar" onclick = "cerrarToats()" class="btn-flat toast-action">Cerrar</button>',
-        classes: 'red',
+        classes: clase,
         displayLength: 5000
     });
 }

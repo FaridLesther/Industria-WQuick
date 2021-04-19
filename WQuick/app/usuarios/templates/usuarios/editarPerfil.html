@@ -4,220 +4,239 @@
 
 <head>
     {% include 'frames/head.html' %}
-    <style>
-        .bandera {
-            width: 300px;
-            height: 200px;
-            margin: 20px;
-            display: inline-block;
-            border: 1px solid #000;
-        }
-
-        .colombia {
-            background-image: linear-gradient(yellow 33%, blue 33%, blue 66.66%, red 66.66%);
-        }
-
-        .francia {
-            background-image: linear-gradient(90deg, red 33%, white 33%, white 66.66%, blue 66.66%);
-        }
-
-        .italia {
-            background-image: linear-gradient(90deg, green 33%, white 33%, white 66.66%, red 66.66%);
-        }
-
-        .alemania {
-            background-image: linear-gradient(black 33%, red 33%, red 66.66%, yellow 66.66%);
-            color: #fff;
-        }
-
-        .japon {
-            background-image: radial-gradient(circle, red 33%, white 33%, white);
-        }
-
-        .polonia {
-            background-image: linear-gradient(white 50%, red 50%, red);
-        }
-    </style>
 </head>
 
 <body class="grey lighten-2">
     {% include 'frames/navbar.html' %}
     {% include 'frames/sidebar.html' %}
-
     <main>
-        <div style="padding: 2% 11% 0% 11%;">
-            <div style="background-color: #fff; width: 100%; padding: 2% 0% 0% 0%;">
-                <div class="row">
-                    <div class="container-fluid" style="margin-bottom: 20px; text-align: center;">
-                        <label style="font-size: 20px;">Edita tus Datos</label>
-                    </div>
-                                
-                    <div class="col s12 m5 offset-m1">
-                        <div class="row">
-                            <div class="col s12"><br></div>
-                            <div class="col s1">
-                                <i class="material-icons">description</i>
-                            </div>
-                            <div class="col s11">
-                                <label style="font-size: 15px;" class="grey-text text-darken-2">Nombre:
-                                     Omar</label>
-                                <div class="container-fluid">
-                                    <h6 style="font-size: 15px;">
-                                        
-                                    </h6>
-                                </div>
-                            </div>
-                            
-                            <div class="col s12"><br></div>
-                            <div class="col s1">
-                                <i class="material-icons">mail</i>
-                            </div>
-                            <div class="col s11">
-                                <label style="font-size: 15px;" class="grey-text text-darken-2">Correo:
-                                     ejemplo@gmail.com</label>
-                                <div class="container-fluid">
-                                    <h6 style="font-size: 15px;">
-                                        
-                                    </h6>
-                                </div>
-                            </div>
-                                                       
-                            
-                            <div class="col s12"><br></div>
+        {% if form.nombre.errors %}
+        <a id="alerta" class="alerta" style="display: none;"
+            onclick="alerta('{{form.nombre.errors.as_text}}')">Toast!</a>
+        {% endif %}
 
-                            
-                            <div class="col s1">
-                                <i class="material-icons">
-                                    language
-                                </i>
+        {% if form.apellido.errors %}
+        <a id="alerta" class="alerta" style="display: none;"
+            onclick="alerta('{{form.apellido.errors.as_text}}')">Toast!</a>
+        {% endif %}
+
+        {% if form.correo.errors %}
+        <a id="alerta" class="alerta" style="display: none;"
+            onclick="alerta('{{form.correo.errors.as_text}}')">Toast!</a>
+        {% endif %}
+
+        {% if form.profesion.errors %}
+        <a id="alerta" class="alerta" style="display: none;"
+            onclick="alerta('{{form.profesion.errors.as_text}}')">Toast!</a>
+        {% endif %}
+
+        {% if form.telefono.errors %}
+        <a id="alerta" class="alerta" style="display: none;"
+            onclick="alerta('{{form.telefono.errors.as_text}}')">Toast!</a>
+        {% endif %}
+
+        {% if form.descripcion.errors %}
+        <a id="alerta" class="alerta" style="display: none;"
+            onclick="alerta('{{form.descripcion.errors.as_text}}')">Toast!</a>
+        {% endif %}
+
+        {% if form.idiomas.errors %}
+        <a id="alerta" class="alerta" style="display: none;"
+            onclick="alerta('{{form.idiomas.errors.as_text}}')">Toast!</a>
+        {% endif %}
+
+        <div class="row mcard">
+            <div class="col s12 m10 offset-m1">
+                <section class="white" style="padding: 5px;">
+                    <div class="row">
+                        <div class="col s12 m10 offset-m1">
+                            <div class="container-fluid">
+                                <form id="frm-editarfreelancer" method="POST">{% csrf_token %}
+                                    <div class="container-fluid center">
+                                        <label style="font-size: 20px;">Edita tus Datos</label>
+                                        <br><br>
+                                    </div>
+
+                                    <div class="col s12 m6">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">description</i>
+                                            {{form.nombre}}
+                                            <label for="id_nombre">Nombre</label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">description</i>
+                                            {{form.apellido}}
+                                            <label for="txt-apellido">Apellido</label>
+                                        </div>
+
+                                        <div class="col s1">
+                                            <i class="material-icons">
+                                                language
+                                            </i>
+                                        </div>
+                                        <div class="col s11">
+                                            <label style="font-size: 15px; margin-left: 10px;"
+                                                class="grey-text text-darken-2">Idiomas:</label>
+                                        </div>
+                                        {{form.idiomas}}
+                                        <div class="col s5">
+                                            <p>
+                                                <label>
+                                                    <input id='Ingles'
+                                                        {% if 'Ingles' in freelancer.idiomas %}{{'checked'}}{% endif %}
+                                                        type="checkbox" value='0' />
+                                                    <span style="font-size: small;">Ingles</span>
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <label>
+                                                    <input type="checkbox"
+                                                        {% if 'Chino' in freelancer.idiomas %}{{'checked'}}{% endif %}
+                                                        value='1' />
+                                                    <span style="font-size: small;">Chino</span>
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <label>
+                                                    <input type="checkbox"
+                                                        {% if 'Alemán' in freelancer.idiomas %}{{'checked'}}{% endif %}
+                                                        value='2' />
+                                                    <span style="font-size: small;">Alemán</span>
+                                                </label>
+                                            </p>
+                                        </div>
+                                        <div class="col s6">
+                                            <p>
+                                                <label>
+                                                    <input type="checkbox"
+                                                        {% if 'Francés' in freelancer.idiomas %}{{'checked'}}{% endif %}
+                                                        value='3' />
+                                                    <span style="font-size: small;">Francés</span>
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <label>
+                                                    <input type="checkbox"
+                                                        {% if 'Portugués' in freelancer.idiomas %}{{'checked'}}{% endif %}
+                                                        value='4' />
+                                                    <span style="font-size: small;">Portugués</span>
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <label>
+                                                    <input type="checkbox"
+                                                        {% if 'Japonés' in freelancer.idiomas %}{{'checked'}}{% endif %}
+                                                        value='5' />
+                                                    <span style="font-size: small;">Japonés</span>
+                                                </label>
+                                            </p>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <div class="select-wrapper">
+                                                {{form.xp}}
+                                            </div>
+                                            <label>Experiencia profesional</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s12 m6" style="margin-bottom: 20px;">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">mail</i>
+                                            {{form.correo}}
+                                            <label for="txt-correo">Correo electrónico</label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">work</i>
+                                            {{form.profesion}}
+                                            <label for="txt-profesion">Profesión</label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">call</i>
+                                            {{form.telefono}}
+                                            <label for="txt-telefono">Teléfono</label>
+                                        </div>
+
+                                        <div class="col s1">
+                                            <i class="material-icons">short_text</i>
+                                        </div>
+                                        <div class="col s11">
+                                            <label style="font-size: 15px;"
+                                                class="grey-text text-darken-2">Descripción:</label>
+                                            <div>
+                                                {{form.descripcion}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="center" style="margin-bottom: 20px;">
+                                        <a href="{% url 'perfil' %}" class="btn grey darken-1">Cancelar</a>
+                                        <button id="btn-guardar" type="submit" class="btn green darken-1;">Guardar
+                                            Cambios </button>
+                                    </div>
+                                </form>
                             </div>
-                            <label style="font-size: 15px; margin-left: 10px;" class="grey-text text-darken-2">Idiomas:</label>
-                            <div class="col s12"><br></div>
-                            <div class="col s6">
-                                <p>
-                                    <label>
-                                        <input type="checkbox" value='0' />
-                                        <span style="font-size: small;">Ingles</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" value='0' />
-                                        <span style="font-size: small;">Chino</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" value='0' />
-                                        <span style="font-size: small;">Alemán</span>
-                                    </label>
-                                </p>
-                            </div>
-                            <div class="col s6">
-                                <p>
-                                    <label>
-                                        <input type="checkbox" value='0' />
-                                        <span style="font-size: small;">Francés</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" value='0' />
-                                        <span style="font-size: small;">Portugués</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input type="checkbox" value='0' />
-                                        <span style="font-size: small;">Japonés</span>
-                                    </label>
-                                </p>                                
-                            </div>                                                      
-                            <div style="text-align: center;">
-                                <select name="xp" class="form-control browser-default" style="width: 100%;" id="id_xp">
-                                    <option value="1">Básico</option>
-                                  
-                                    <option value="2">Medio</option>
-                                  
-                                    <option value="3">Intermedio</option>
-                                  
-                                    <option value="4">Avanzado</option>
-                                  
-                                  </select>
-                            </div>
-                        
-                            <div class="row">                            
-                                <!--style="text-align: center;"-->
-                                <div class="col s12"></div>
-                            </div>
-                            
                         </div>
-                    </div>                    
-
-                    <div class="col s12 m6" style="margin-bottom: 20px;">
-                        <div class="row">                            
-                            <!--style="text-align: center;"-->
-                            <div class="col s12"></div>
-                        </div>
-                        <div class="col s12"></div>
-                            <div class="col s1">
-                                <i class="material-icons">description</i>
-                            </div>
-                            <div class="col s11">
-                                <label style="font-size: 15px;" class="grey-text text-darken-2">Apellido:
-                                     Flores</label>
-                                <div class="container-fluid">
-                                    <h6 style="font-size: 15px;">
-                                        
-                                    </h6>
-                                </div>
-                            </div>
-                            <div class="col s12"><br></div>
-
-                            <div class="col s1">
-                                <i class="material-icons">work</i>
-                            </div>
-                            <div class="col s11">
-                                <label style="font-size: 15px;" class="grey-text text-darken-2">Profesión:</label>
-                                <input type="text">
-                            </div>
-                            <div class="col s12"><br></div>
-
-                            <div class="col s1">
-                                <i class="material-icons">call</i>
-                            </div>
-                            <div class="col s11">
-                                <label style="font-size: 15px;" class="grey-text text-darken-2">Teléfono:</label>
-                                    <input type="text">
-                            </div>
-                            <div class="col s12"></div>                           
-
-                            <div class="col s1">
-                                <i class="material-icons">short_text</i>
-                            </div>
-                            <div class="col s11">
-                                <label style="font-size: 15px;" class="grey-text text-darken-2">Descripción:</label>
-                                <div >
-                                    <textarea style="height: 25vh;">
-
-                                    </textarea>
-                                </div>
-                            </div>
-                        
                     </div>
-                    
-                </div>
-                <div style="text-align: center; padding-bottom: 3%;">                        
-                    <button id="btn-editar" class="btn grey darken-1">Cancelar </button>
-                    <button id="btn-editar" class="btn grey darken-1;" style=" background-color: #1e8a30!important">Guardar Cambios </button>
-                   
-                </div>
+                </section>
             </div>
         </div>
     </main>
 
     <script src="{% static 'js/WQuick.js' %}"></script>
     {% include 'frames/autocomplete.html' %}
+    <script>
+        alertas = document.getElementsByClassName('alerta');
+        for (let i = 0; i < alertas.length; i++) {
+            alertas[i].click();
+        }
+
+        nombre = document.getElementById('id_nombre');
+        nombre.value = '{{freelancer.nombre}}';
+        nombre.className = 'validate';
+
+        apellido = document.getElementById('id_apellido');
+        apellido.value = '{{freelancer.apellido}}';
+        apellido.className = 'validate';
+
+        descripcion = document.getElementById('txt-descripcion');
+        descripcion.value = `{{freelancer.descripcion}}`;
+        descripcion.style = 'max-width: 100%; border: 1px dotted #848484; height: 120px;'
+
+        telefono = document.getElementById('id_telefono');
+        telefono.value = '{{freelancer.telefono}}';
+        telefono.className = 'validate';
+
+        correo = document.getElementById('id_correo');
+        correo.value = '{{freelancer.correo}}';
+        correo.className = 'validate';
+
+        profesion = document.getElementById('id_profesion');
+        profesion.value = '{{freelancer.profesion}}';
+        profesion.className = 'validate';
+
+        xp = document.getElementById('id_xp');
+        xp.value = '{{freelancer.xp}}';
+        xp.className = '';
+        
+        guardarEditar = document.getElementById('btn-guardar')
+        guardarEditar.onclick = (evento) => {
+            evento.preventDefault();
+            var listaIdiomas = document.getElementById('id_idiomas').options;
+            for (let i = 0; i < listaIdiomas.length; i++) {
+                listaIdiomas[i].selected = false;
+            }
+            idiomas = document.querySelectorAll('input[type="checkbox"]');
+            idiomas.forEach(chk_idioma => {
+                if (chk_idioma.checked) {
+                    listaIdiomas[chk_idioma.value].selected = true;
+                }
+            });
+
+            document.getElementById('frm-editarfreelancer').submit();
+        }
+    </script>
 </body>
 
 </html>

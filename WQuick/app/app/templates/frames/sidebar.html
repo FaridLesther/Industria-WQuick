@@ -32,7 +32,7 @@
 <ul id="slide-out" class="sidenav sidenav-fixed" style="max-width: 250px;">
     <div class="container-fluid" style="text-align: center;">
         {% if user.imagen %}
-        <img src="{{user.imagen.url}}" width="200" height="200" class="circle"
+        <img src="{{user.imagen.url}}" id="userImagen" width="200" height="200" class="circle"
             style="margin-top: 20px; max-height: 200px;">
         {% else %}
         <img src="{% static 'img/perfil.png' %}" class="responsive-img circle"
@@ -40,12 +40,11 @@
         {% endif %}
 
         {% if titulo == 'Perfil de usuario' %}
-        <form method="POST" id="fileinfo" enctype="multipart/form-data">{% csrf_token %}
-            {{form.campo}}
+        <form id="fileinfo" name="fileinfo" enctype="multipart/form-data">{% csrf_token %}
             <div class="file-field input-field" style="margin-top: -3px;">
                 <a>
                     <span class="material-icons">add_a_photo</span>
-                    {{form.foto}}
+                    <input type="file" id="id_foto" name="foto">
                     <!--<input type="file" id='file-imagen'>-->
                 </a>
                 <div class="file-path-wrapper">
@@ -73,6 +72,7 @@
     <br><br><br>
 </ul>
 
+{% if titulo == 'Perfil de usuario' %}
 <script type="text/javascript">
     //Funcion que detecta los cambios en el textbox que describe la imagen
     function activarGuardar() {
@@ -86,4 +86,7 @@
     }
     var imagenActual = '{{user.imagen}}';
 </script>
+<script src="{% static 'js/getCookie.js' %}"></script>
+<script src="{% static 'js/enviarDatos.js' %}"></script>
 <script src="{% static 'js/cargarImagenPerfil.js'%}"></script>
+{% endif %}

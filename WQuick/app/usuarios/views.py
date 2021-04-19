@@ -12,13 +12,14 @@ from django.http import HttpResponseRedirect
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.core.mail import send_mail
 from usuarios import forms, models
+from usuarios.src.imagenPerfil import cargarImagen
 
 path = os.path.dirname(__file__)
 
 
 class Registrar(CreateView):
     model = models.Usuario
-    form_class = forms.frmRegistar
+    form_class = forms.FrmRegistar
     template_name = 'usuarios/registrar.html'
 
     def get(self, *args, **kwargs):
@@ -57,7 +58,7 @@ class Registrar(CreateView):
 
 class Login(FormView):
     template_name = 'usuarios/login.html'
-    form_class = forms.frmLogin
+    form_class = forms.FrmLogin
     success_url = reverse_lazy('inicio')
 
     @method_decorator(csrf_protect)
@@ -95,7 +96,7 @@ def elige(request):
 class CrearProyecto(CreateView):
     # Vista para la plantilla crearProyecto.html
     model = models.Proyecto
-    form_class = forms.frmCrearProyecto
+    form_class = forms.FrmCrearProyecto
     template_name = 'usuarios/crearProyecto.html'
 
     def form_valid(self, form):
@@ -113,7 +114,7 @@ class SerFreelancer(CreateView):
     # Vista para la plantilla serFreelancer.html
     # Esta vista se usa en el registro de un freelancer
     model = models.Freelancer
-    form_class = forms.frmSerFreelancer
+    form_class = forms.FrmSerFreelancer
     template_name = 'usuarios/serFreelancer.html'
 
     def form_valid(self, form):
@@ -152,11 +153,40 @@ class Perfil(CreateView):
             context['freelancer'] = freelancer[0]
         return context
 
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.is_ajax():
+            return cargarImagen(self.request)
+        else:
+            response_kwargs.setdefault('content_type', self.content_type)
+            return self.response_class(
+                request=self.request,
+                template=self.get_template_names(),
+                context=context,
+            )
+
 
 def MisProyectos(request):
     parametros = {'titulo': 'Mis proyectos'}
     return render(request, 'usuarios/misProyectos.html', parametros)
 
-def EditarPerfil(request):
-    parametros = {'titulo':'Editar mi Perfil'}
-    return render(request, 'usuarios/editarPerfil.html', parametros)
+
+class EditarPerfil(CreateView):
+    model = models.Freelancer
+    template_name = 'usuarios/editarPerfil.html'
+    form_class = forms.FrmEditarFreelancer
+    success_url = reverse_lazy('perfil')
+
+    def form_valid(self, form):
+        freelancer = form.save(True, self.request.user.id)
+        return redirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super(EditarPerfil, self).get_context_data(**kwargs)
+        context['titulo'] = 'Editar mi Perfil'
+        freelancer = models.Freelancer.objects.filter(
+            usuario_id=self.request.user.id).values()
+        context['freelancer'] = False
+        if freelancer and freelancer.__len__() < 2:
+            context['freelancer'] = freelancer[0]
+
+        return context

@@ -23,13 +23,23 @@
                                 <div class="container-fluid" style="margin-bottom: 20px;">
                                     <label style="font-size: 20px;">Datos de freelancer</label>
                                 </div>
+
+                                <div class="col s10 offset-s8">
+
+                                </div>
+
                                 <div class="row">
                                     <div class="col s1">
                                         <i class="material-icons">description</i>
                                     </div>
                                     <div class="col s11">
                                         <label style="font-size: 15px;" class="grey-text text-darken-2">Nombre:
-                                            {{freelancer.nombre}}</label>
+                                            {{freelancer.nombre|escape}}
+                                            <a href="{% url 'editarPerfil' %}"
+                                                class="waves-effect waves-light btn-small grey darken-2">
+                                                Editar
+                                            </a>
+                                        </label>
                                     </div>
                                     <div class="col s12"><br></div>
 
@@ -38,7 +48,7 @@
                                     </div>
                                     <div class="col s11">
                                         <label style="font-size: 15px;" class="grey-text text-darken-2">Apellido:
-                                            {{freelancer.apellido}}</label>
+                                            {{freelancer.apellido|escape}}</label>
                                     </div>
                                     <div class="col s12"><br></div>
 
@@ -47,7 +57,28 @@
                                     </div>
                                     <div class="col s11">
                                         <label style="font-size: 15px;" class="grey-text text-darken-2">Profesión:
-                                            {{freelancer.profesion}}</label>
+                                            {{freelancer.profesion|escape}}</label>
+                                    </div>
+                                    <div class="col s12"><br></div>
+
+                                    <div class="col s1">
+                                        <i class="material-icons">work</i>
+                                    </div>
+                                    <div class="col s11">
+                                        <label style="font-size: 15px;" class="grey-text text-darken-2">Experiencia profesional:
+                                            {% if freelancer.xp == 1 %}
+                                            {{'Básico'}}
+                                            {% endif %}
+                                            {% if freelancer.xp == 2 %}
+                                            {{'Medio'}}
+                                            {% endif %}
+                                            {% if freelancer.xp == 3 %}
+                                            {{'Intermedio'}}
+                                            {% endif %}
+                                            {% if freelancer.xp == 4 %}
+                                            {{'Avanzado'}}
+                                            {% endif %}
+                                        </label>
                                     </div>
                                     <div class="col s12"><br></div>
 
@@ -56,7 +87,7 @@
                                     </div>
                                     <div class="col s11">
                                         <label style="font-size: 15px;" class="grey-text text-darken-2">Correo
-                                            electrónico: {{freelancer.correo}}</label>
+                                            electrónico: {{freelancer.correo|escape}}</label>
                                     </div>
                                     <div class="col s12"><br></div>
 
@@ -65,7 +96,7 @@
                                     </div>
                                     <div class="col s11">
                                         <label style="font-size: 15px;" class="grey-text text-darken-2">Correo
-                                            Teléfono: {{freelancer.telefono}}</label>
+                                            Teléfono: {{freelancer.telefono|escape}}</label>
                                     </div>
                                     <div class="col s12"><br></div>
 
@@ -95,7 +126,7 @@
                                                     {% if lenguaje == 'Portugués' %}
                                                     class="container-fluid portugal bandera black-text" {% endif %}
                                                     style="width: 20px; height: 15px; margin-bottom: -15px;">
-                                                    <span style="margin-left: 23px;"></span>{{lenguaje}}
+                                                    <span style="margin-left: 23px;"></span>{{lenguaje|escape}}
                                                 </label>
                                             </div>
                                             {% endfor %}
@@ -111,9 +142,8 @@
                                         <label style="font-size: 15px;"
                                             class="grey-text text-darken-2">Descripción:</label>
                                         <div class="container-fluid">
-                                            <h6 style="font-size: 15px;">
-                                                {{freelancer.descripcion}}
-                                            </h6>
+                                            <textarea disabled
+                                                style="height: 150px; resize: none; border: none;">{{freelancer.descripcion}}</textarea>
                                         </div>
                                     </div>
 
@@ -134,7 +164,7 @@
                                     </div>
                                     <div class="col s11">
                                         <label style="font-size: 15px;" class="grey-text text-darken-2">Nombre de
-                                            usuario: {{user.nombre}}</label>
+                                            usuario: {{user.nombre|escape}}</label>
                                     </div>
                                     <div class="col s12"><br></div>
                                     <div class="col s1">
@@ -142,38 +172,27 @@
                                     </div>
                                     <div class="col s11">
                                         <label style="font-size: 15px;" class="grey-text text-darken-2">Correo
-                                            electrónico: {{user.correo}}</label>
+                                            electrónico: {{user.correo|escape}}</label>
                                     </div>
                                     <div class="col s12"></div>
                                 </div>
 
-                                {% if form.campo.errors.as_text == '* foto true' %}
-                                <script>
-                                    document.getElementById('id_foto').value = '';
-                                    window.location = "{%  url 'perfil' %}";
-                                </script>
-                                {% endif %}
-
-                                {% if not form.campo.errors.as_text == '* foto true' %}
                                 {% if form.campo.errors %}
                                 <a id="alerta" class="alerta" style="display: none;"
                                     onclick="alerta('{{form.campo.errors.as_text}}')">Toast!</a>
                                 {% endif %}
-                                {% if form.campo2.errors %}
-                                <a id="alerta" class="alerta" style="display: none;"
-                                    onclick="alerta('{{form.campo2.errors.as_text}}')">Toast!</a>
-                                {% endif %}
-                                {% endif %}
+
                                 <form method="POST" id="frm-cambiarPass">{% csrf_token %}
-                                    {{form.campo2}}
-                                    <button id="btn-guardar" class="btn grey darken-1"
+                                    {{form.campo}}
+                                    <button id="btn-guardar" class="btn-small grey darken-1"
                                         style="display: none;">Guardar</button>
-                                    <button id="btn-cambiar" class="btn grey darken-1">Cambiar contraseña </button>
-                                    
+                                    <button id="btn-cambiar" class="btn-small grey darken-1">Cambiar contraseña
+                                    </button>
+
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix">vpn_key</i>
                                         {{form.aClave}}
-                                        <label for="txt-clave">Antigua contraseña</label>
+                                        <label for="txt-clave">Actual contraseña</label>
                                     </div>
 
                                     <div class="input-field col s12">
@@ -204,11 +223,14 @@
             alertas[i].click();
         }
 
-        var idUsuario = document.getElementById('txt-campo');
-        idUsuario.value = '{{user.id}}';
-
-        let tel = document.getElementById('txt-campo2');
+        var tel = document.getElementById('txt-campo');
         tel.value = '{{user.id}}';
+
+        function desHabilitar(valor = true) {
+            document.getElementById('txt-clave').disabled = valor;
+            document.getElementById('txt-cclave').disabled = valor;
+            document.getElementById('txt-nclave').disabled = valor;
+        }
 
         var btnCambiar = document.getElementById('btn-cambiar');
         var btnGuardar = document.getElementById('btn-guardar')
@@ -216,16 +238,12 @@
             evento.preventDefault();
             if (btnCambiar.innerHTML != 'Cancelar') {
                 btnCambiar.innerHTML = 'Cancelar';
-                btnGuardar.style.display = 'inline-flex';
-                document.getElementById('txt-clave').disabled = false;
-                document.getElementById('txt-cclave').disabled = false;
-                document.getElementById('txt-nclave').disabled = false;
+                btnGuardar.style.display = 'inline-flex'
+                desHabilitar(false)
             } else {
                 btnCambiar.innerHTML = 'Cambiar Contraseña';
                 btnGuardar.style.display = 'none';
-                document.getElementById('txt-clave').disabled = true;
-                document.getElementById('txt-cclave').disabled = true;
-                document.getElementById('txt-nclave').disabled = true;
+                desHabilitar(true)
             }
         }
 
@@ -234,13 +252,7 @@
             let clave1 = document.getElementById('txt-nclave').value;
             if (clave != clave1) {
                 evento.preventDefault();
-
-                M.toast({
-                    html: 'Las nuevas contraseñas no coinciden' +
-                        '<button id = "Acerrar" onclick = "cerrarToats()" class="btn-flat toast-action">Cerrar</button>',
-                    classes: 'red',
-                    displayLength: 5000
-                });
+                alerta('Las nuevas contraseñas no coinciden', 'red')
             }
         }
     </script>

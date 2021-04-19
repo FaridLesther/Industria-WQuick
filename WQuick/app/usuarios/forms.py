@@ -8,7 +8,7 @@ from django.contrib.auth.hashers import make_password
 from usuarios import models
 
 
-class frmRegistar(UserCreationForm):
+class FrmRegistar(UserCreationForm):
     #  Formulario de registro de un usuario en la base de datos
     #  Autor: Lesther Valladares
     #  Version: 0.0.1
@@ -81,7 +81,7 @@ class frmRegistar(UserCreationForm):
         return password2
 
 
-class frmLogin(AuthenticationForm):
+class FrmLogin(AuthenticationForm):
     #  Formulario de inicio de sesión (Login)
     #  Autor: Lesther Valladares
     #  Version: 0.0.1
@@ -89,7 +89,7 @@ class frmLogin(AuthenticationForm):
     #    -  nombre: nombre de usuario registrado en la base de datos
     #    -  password: contraseña del usuario que ingresara al programa
     def __init__(self, *args, **kwargs):
-        super(frmLogin, self).__init__(*args, **kwargs)
+        super(FrmLogin, self).__init__(*args, **kwargs)
         self.fields['username'].widget.attrs['class'] = 'validate black-text'
         self.fields['username'].widget.attrs['id'] = 'txt_usuario'
         self.fields['username'].widget.attrs['style'] = 'border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;'
@@ -115,7 +115,7 @@ class frmLogin(AuthenticationForm):
         return nombre
 
 
-class frmCrearProyecto(forms.ModelForm):
+class FrmCrearProyecto(forms.ModelForm):
     #  Formulario de registro de un proyecto en la base de datos
     #  Autor: Lesther Valladares
     #  Version: 0.0.1
@@ -198,7 +198,7 @@ class frmCrearProyecto(forms.ModelForm):
         return proyecto
 
 
-class frmSerFreelancer(forms.ModelForm):
+class FrmSerFreelancer(forms.ModelForm):
     #  Formulario de registro de un freelancer en la base de datos
     #  Autor: Lesther Valladares
     #  Version: 0.0.1
@@ -319,7 +319,6 @@ class FrmCambiarPass(forms.ModelForm):
     #  Autor: Lesther Valladares
     #  Version: 0.0.1
     #  modelo: Usuario
-    foto = forms.FileField(required=False)
     aClave = forms.CharField(widget=forms.PasswordInput())
     aClave.widget.attrs['id'] = 'txt-clave'
     aClave.widget.attrs['style'] = 'width: 80%;'
@@ -334,10 +333,6 @@ class FrmCambiarPass(forms.ModelForm):
     campo.widget.attrs['id'] = 'txt-campo'
     campo.widget.attrs['style'] = 'display:none;'
 
-    campo2 = forms.CharField(widget=forms.PasswordInput(), required=False)
-    campo2.widget.attrs['id'] = 'txt-campo2'
-    campo2.widget.attrs['style'] = 'display:none;'
-
     class Meta:
         model = models.Usuario
         fields = ('password',)
@@ -347,7 +342,6 @@ class FrmCambiarPass(forms.ModelForm):
                     'required': 'required',
                     'type': 'password',
                     'id': 'txt-nclave',
-                    'class': 'validate',
                     'style': 'width: 80%;',
                     'disabled': 'disabled'
                 }
@@ -355,48 +349,36 @@ class FrmCambiarPass(forms.ModelForm):
         }
 
     def clean_campo(self):
-        foto = self.cleaned_data.get('foto')
-        if not (foto is None):
-            print(self.cleaned_data.get('campo'))
-            idUsuario = self.cleaned_data.get('campo')
-            usuario = models.Usuario.objects.get(pk=idUsuario)
-            usuario.imagen = self.cleaned_data.get('foto')
-            usuario.save()
-            raise forms.ValidationError('foto true')
-        return self.cleaned_data.get('campo')
+        clave = self.cleaned_data.get('aClave')
+        idUsuario = self.cleaned_data.get('campo')
 
-    def clean_campo2(self):
-        foto = self.cleaned_data.get('foto')
-        if(foto is None):
-            clave = self.cleaned_data.get('aClave')
-            idUsuario = self.cleaned_data.get('campo2')
+        if idUsuario:
             claveActual = models.Usuario.objects.filter(
                 id=idUsuario).values('password')
-            claveNueva = self.cleaned_data.get('password')
+        else:
+            claveActual = [{'password': -1}]
 
-            usuario = models.Usuario()
-            usuario.password = claveActual[0]['password']
+        claveNueva = self.cleaned_data.get('password')
 
-            if(not usuario.check_password(clave)):
-                raise forms.ValidationError(
-                    'La contraseña actual es inválida')
+        usuario = models.Usuario()
+        usuario.password = claveActual[0]['password']
 
-            if(usuario.check_password(claveNueva)):
-                raise forms.ValidationError(
-                    'La nueva contraseña es la actual, debe ingresar una nueva contraseña')
+        if(not usuario.check_password(clave)):
+            raise forms.ValidationError(
+                'La contraseña actual es inválida')
+
+        if(usuario.check_password(claveNueva)):
+            raise forms.ValidationError(
+                'La nueva contraseña es la actual, debe ingresar una nueva contraseña')
 
     def clean_confirmarClave(self):
-        foto = self.cleaned_data.get('foto')
-        if(foto is None):
-            nuevaClave = self.cleaned_data.get('password')
-            confirmarClave = self.cleaned_data.get('confirmarClave')
+        nuevaClave = self.cleaned_data.get('password')
+        confirmarClave = self.cleaned_data.get('confirmarClave')
 
-            if nuevaClave != confirmarClave:
-                raise forms.ValidationError(
-                    'Las nuevas contraseñas no coinciden')
-            return nuevaClave
-        else:
-            return True
+        if nuevaClave != confirmarClave:
+            raise forms.ValidationError(
+                'Las nuevas contraseñas no coinciden')
+        return nuevaClave
 
     def save(self, commit=True, idUsuario=-1):
         usuario = models.Usuario.objects.get(pk=idUsuario)
@@ -404,3 +386,122 @@ class FrmCambiarPass(forms.ModelForm):
         if commit:
             usuario.save()
         return usuario
+
+
+class FrmEditarFreelancer(forms.ModelForm):
+    #  Formulario de registro de un freelancer en la base de datos
+    #  Autor: Lesther Valladares
+    #  Version: 0.0.1
+    #  modelo: Freelancer
+
+    listaIdiomas = (
+        ('Ingles', 'Ingles'),
+        ('Chino', 'Chino'),
+        ('Alemán', 'Alemán'),
+        ('Francés', 'Francés'),
+        ('Portugués', 'Portugués'),
+        ('Japonés', 'Japonés'),
+    )
+
+    nivelesXP = (
+        (1, "Básico"),
+        (2, "Medio"),
+        (3, "Intermedio"),
+        (4, "Avanzado"),
+    )
+
+    correo = forms.CharField(required=True)
+    correo.widget.attrs['class'] = 'form-control browser-default'
+
+    idiomas = forms.MultipleChoiceField(choices=listaIdiomas, required=False)
+    idiomas.widget.attrs['class'] = 'browser-default'
+    idiomas.widget.attrs['style'] = 'display: none;'
+
+    xp = forms.ChoiceField(label='Elija una opción', choices=nivelesXP)
+    xp.widget.attrs['class'] = 'form-control browser-default'
+    xp.widget.attrs['style'] = 'width: 100%;'
+
+    class Meta:
+        model = models.Freelancer
+        fields = ('nombre', 'apellido',
+                  'profesion', 'telefono', 'descripcion',)
+        widgets = {
+            'nombre': forms.TextInput(
+                attrs={
+                    'class': 'form-control browser-default',
+                    'style': 'width: 100%;',
+                    'type': 'text',
+                    'required': 'required',
+                }
+            ),
+            'apellido': forms.TextInput(
+                attrs={
+                    'class': 'form-control browser-default',
+                    'style': 'width: 100%;',
+                    'type': 'text',
+                    'required': 'required',
+                }
+            ),
+            'profesion': forms.TextInput(
+                attrs={
+                    'class': 'form-control browser-default',
+                    'style': 'width: 100%;',
+                    'type': 'text',
+                    'required': 'required',
+                }
+            ),
+            'telefono': forms.TextInput(
+                attrs={
+                    'class': 'form-control browser-default',
+                    'style': 'width: 100%;',
+                    'type': 'text',
+                    'required': 'required',
+                }
+            ),
+            'descripcion': forms.Textarea(
+                attrs={
+                    'rows': '5',
+                    'class': 'form-control browser-default',
+                    'id': 'txt-descripcion',
+                    'placeholder': 'Tecnologías dominadas, especialidades, entre otras cualidades.',
+                    'style': 'width: 100%;',
+                    'required': 'required',
+                }
+            ),
+        }
+
+    def clean_telefono(self):
+        telefono = str(self.cleaned_data.get('telefono'))
+        if telefono.__len__() < 8:
+            raise forms.ValidationError('Debe introducir un telefono válido')
+        if telefono[0] != '+':
+            return '+504'+self.cleaned_data.get('telefono')
+        return self.cleaned_data.get('telefono')
+
+    def clean_idiomas(self):
+        if len(self.cleaned_data.get('idiomas')) > 6:
+            raise forms.ValidationError(
+                'Más idiomas seleccionados de los disponibles')
+        return self.cleaned_data.get('idiomas')
+
+    def clean_correo(self):
+        # filtrar mayusculas del correo electronico
+        correo = self.cleaned_data.get('correo').lower()
+        return correo
+
+    def save(self, commit=True, usuario=-1):
+        try:
+            freelancer = models.Freelancer.objects.get(usuario_id=usuario)
+            freelancer.nombre = self.cleaned_data.get('nombre')
+            freelancer.apellido = self.cleaned_data.get('apellido')
+            freelancer.correo = self.cleaned_data.get('correo')
+            freelancer.profesion = self.cleaned_data.get('profesion')
+            freelancer.telefono = self.cleaned_data.get('telefono')
+            freelancer.descripcion = self.cleaned_data.get('descripcion')
+            freelancer.xp = self.cleaned_data.get('xp')
+            freelancer.idiomas = self.cleaned_data.get('idiomas')
+            if commit:
+                freelancer.save()
+        except models.Freelancer.DoesNotExist:
+            freelancer = None
+        return freelancer
