@@ -5,7 +5,11 @@ main {
     align-items: center;
     font-size: 16px;
     font-family: sans-serif;
-
+    background: url("/static/img/black.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     overflow: hidden;
 }
 
@@ -42,7 +46,7 @@ main {
 }
 
 :root {
-    --color-header-step: hsl(180, 50%, 40%);
+    --color-header-step: hsl(41, 72%, 52%);
 }
 
 .progressbar__option:before {

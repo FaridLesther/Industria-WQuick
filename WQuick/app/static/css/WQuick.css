@@ -15,7 +15,7 @@ section {
     background-color: #424242;
 }
 
-.divider {
+.side-divider {
     background-color: #242424;
     width: 80%;
     margin-left: 25px;
@@ -28,6 +28,11 @@ section {
 
 main {
     flex: 1 0 auto;
+}
+
+/*==================== color de las cars(tarjetas) en materialize ====================*/
+.card {
+    background-color: #424242;
 }
 
 /*========================================== Alertas personalizadas ==========================================*/
@@ -113,30 +118,50 @@ input {
     /* Color orange darken-1*/
 }
 
-/*-----Colores de linea de input------*/
+/*==================== Colores de linea de inputs ====================*/
 input:focus {
     border-bottom: 0.5px solid #ffca28 !important;
     box-shadow: 0 0px 0 0 #fb8c00 !important;
     /* Color orange darken-1*/
 }
 
+label.active {
+    color: #ffca28 !important;
+}
+
+.material-icons.active {
+    color: #ffca28 !important;
+}
+
+/*==================== Colores de linea de input ====================*/
+
+[type="checkbox"].filled-in:checked+span:not(.lever):before {
+    border-right: 2px solid cyan;
+    border-bottom: 2px solid cyan;
+}
+
+/*==================== color de los iconos por defecto en materialize ====================*/
 .material-icons {
     color: #ffe0b2;
 }
 
+/*==================== color de las etiquetas por defecto en materialize ====================*/
 label {
-    color: white;
+    /* grey-text text-lighten-2 */
+    color: #e0e0e0;
     font-weight: bold;
 }
 
 span {
-    color: grey;
+    color: #9f9e9e;
 }
 
+/*==================== color de las textareas por defecto en materialize ====================*/
 textarea {
     color: white;
 }
 
+/*==================== color de los radio buttons en materialize ====================*/
 [type="radio"]:checked+span:after,
 [type="radio"].with-gap:checked+span:after {
     background-color: #dfa248bb;
@@ -148,8 +173,51 @@ textarea {
     border: 2px solid #dfa248bb;
 }
 
-.card{
-    background-color: #424242;
+/*==================== color de los botones comunes en materialize ====================*/
+.btn {
+    background-color: #dfa248bb;
+}
+
+.btn:hover {
+    background-color: #fdc46fbb;
+}
+
+/*==================== color de los check buttons en materialize ====================*/
+input[type="checkbox"]:checked+span:not(.lever)::before {
+    border-bottom: 2px solid #ffca28;
+    border-right: 2px solid #ffca28;
+}
+
+/*==================== color de los selects en materialize ====================*/
+ul.dropdown-content.select-dropdown li span {
+    color: #ffca28;
+    background-color: #5b5a5a;
+    clear: none !important;
+}
+
+.dropdown-content {
+    background-color: rgb(73, 72, 72);
+}
+
+.link {
+    background: black;
+}
+
+.link:hover {
+    background-color: rgb(48, 48, 48);
+}
+
+.select-dropdown{
+    color:#f7f7f7;
+}
+/*========================================== Autocomplete barra de búsqueda ==========================================*/
+.dropdown-content li>a,
+.dropdown-content li>span {
+    color: white !important;
+}
+
+.autocomplete-content li .highlight {
+    color: #ffca28 !important;
 }
 
 /*========================================== Estilos que puso nicoll para el login y registro ==========================================*/
@@ -206,7 +274,6 @@ main {
     flex: 1 0 auto;
 }
 
-/* No añadir */
 /* The container */
 .container {
     display: block;
@@ -327,37 +394,33 @@ main {
     }
 }
 
-/*
+
+/*========================================== Colores del manejador de fechas ==========================================*/
+
 .datepicker-date-display {
-    background-color: rgb(118, 186, 241);
+    background-color: #424242;
+    color: black;
+}
+
+.datepicker-calendar-container {
+    background-color: grey;
+    color: black;
 }
 
 .datepicker-cancel,
 .datepicker-clear,
 .datepicker-today,
 .datepicker-done {
-    color: rgb(69, 143, 204);
+    color: white;
+    font-weight: bold;
 }
 
 .datepicker-table td.is-today {
-    color: rgb(69, 143, 204);
+    color: white;
+    font-weight: bold;
 }
 
 .datepicker-table td.is-selected {
-    background-color: rgb(118, 186, 241);
+    background-color: #fb8c00;
     color: #fff;
 }
-*/
-/*
-
-
-label.active {
-    color: royalblue !important;
-}*/
-
-/**/
-
-/*
-ul.dropdown-content.select-dropdown li span {
-    color: #000;
-}*/

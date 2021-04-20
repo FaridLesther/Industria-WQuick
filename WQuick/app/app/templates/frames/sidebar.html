@@ -50,7 +50,7 @@
                 <div class="file-path-wrapper">
                     <input id="txt-imagen" onchange="activarGuardar()" class="file-path validate imagen"
                         placeholder="Cambiar imagen" type="text"
-                        style="border-bottom:0px; margin-bottom: -16px; margin-top: -15px;">
+                        style="border: 0px; border-bottom:0px; margin-bottom: -16px; margin-top: -15px;">
                 </div>
             </div>
             <button id="btn-guardari" class="btn grey dareken-4" style="display: none;">Guardar</button>
@@ -59,19 +59,22 @@
 
         <div class="container-fluid center">
             {% if not titulo == 'Mis proyectos' %}
-            <li class="divider" style=" margin-left: 20px;" style="margin-top: 20px;"></li>
+            <li class="divider side-divider" style=" margin-left: 20px;" style="margin-top: 20px;"></li>
             <li><a style="color: #ffc19dde;" href="{% url 'misProyectos' %}" >Mis Proyectos</a></li>
             {% endif %}
-            <li class="divider" style=" margin-left: 20px;"></li>
+
+            <li class="divider side-divider" style=" margin-left: 20px;"></li>
             <li><a style="color: #ffc19dde;"  href="{% url 'crearProyecto' %}" >Crear Proyecto</a></li>
-            <li class="divider" style=" margin-left: 20px;"></li>
+
+            <li class="divider side-divider" style=" margin-left: 20px;"></li>
             <li><a style="color: #ffc19dde;" href="#!" >Freelancers Contratados</a></li>
-            <li class="divider" style=" margin-left: 20px;"></li>
+
+            <li class="divider side-divider" style=" margin-left: 20px;"></li>
             <li><a style="color: #ffc19dde;" href="#!" >Solicitudes de Freelancers</a></li>
-            <li class="divider" style=" margin-left: 20px;"></li>
             
-        </div>
-      
+            <li class="divider side-divider" style=" margin-left: 20px;"></li>
+            
+        </div>   
     </div>
     <br><br><br>
 </ul>

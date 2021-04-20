@@ -411,14 +411,13 @@ class FrmEditarFreelancer(forms.ModelForm):
     )
 
     correo = forms.CharField(required=True)
-    correo.widget.attrs['class'] = 'form-control browser-default'
+    correo.widget.attrs['class'] = 'grey-text text-lighten-2'
 
     idiomas = forms.MultipleChoiceField(choices=listaIdiomas, required=False)
     idiomas.widget.attrs['class'] = 'browser-default'
     idiomas.widget.attrs['style'] = 'display: none;'
 
     xp = forms.ChoiceField(label='Elija una opción', choices=nivelesXP)
-    xp.widget.attrs['class'] = 'form-control browser-default'
     xp.widget.attrs['style'] = 'width: 100%;'
 
     class Meta:
@@ -428,32 +427,28 @@ class FrmEditarFreelancer(forms.ModelForm):
         widgets = {
             'nombre': forms.TextInput(
                 attrs={
-                    'class': 'form-control browser-default',
-                    'style': 'width: 100%;',
+                    'class': 'grey-text text-lighten-2',
                     'type': 'text',
                     'required': 'required',
                 }
             ),
             'apellido': forms.TextInput(
                 attrs={
-                    'class': 'form-control browser-default',
-                    'style': 'width: 100%;',
+                    'class': 'grey-text text-lighten-2',
                     'type': 'text',
                     'required': 'required',
                 }
             ),
             'profesion': forms.TextInput(
                 attrs={
-                    'class': 'form-control browser-default',
-                    'style': 'width: 100%;',
+                    'class': 'grey-text text-lighten-2',
                     'type': 'text',
                     'required': 'required',
                 }
             ),
             'telefono': forms.TextInput(
                 attrs={
-                    'class': 'form-control browser-default',
-                    'style': 'width: 100%;',
+                    'class': 'grey-text text-lighten-2',
                     'type': 'text',
                     'required': 'required',
                 }
@@ -461,7 +456,7 @@ class FrmEditarFreelancer(forms.ModelForm):
             'descripcion': forms.Textarea(
                 attrs={
                     'rows': '5',
-                    'class': 'form-control browser-default',
+                    'class': 'grey-text text-lighten-2',
                     'id': 'txt-descripcion',
                     'placeholder': 'Tecnologías dominadas, especialidades, entre otras cualidades.',
                     'style': 'width: 100%;',

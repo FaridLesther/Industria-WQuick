@@ -6,7 +6,7 @@
     {% include 'frames/head.html' %}
 </head>
 
-<body >
+<body>
     {% include 'frames/navbar.html' %}
     {% include 'frames/sidebar.html' %}
     <main>
@@ -76,8 +76,7 @@
                                             </i>
                                         </div>
                                         <div class="col s11">
-                                            <label style="font-size: 15px; margin-left: 10px;"
-                                                class="grey-text text-darken-2">Idiomas:</label>
+                                            <label style="font-size: 15px; margin-left: 10px;">Idiomas:</label>
                                         </div>
                                         {{form.idiomas}}
                                         <div class="col s5">
@@ -163,8 +162,8 @@
                                             <i class="material-icons">short_text</i>
                                         </div>
                                         <div class="col s11">
-                                            <label style="font-size: 15px;"
-                                                class="grey-text text-darken-2">Descripción:</label>
+                                            <label class="grey-text text-lighten-1"
+                                                style="font-size: 15px;">Descripción:</label>
                                             <div>
                                                 {{form.descripcion}}
                                             </div>
@@ -194,11 +193,9 @@
 
         nombre = document.getElementById('id_nombre');
         nombre.value = '{{freelancer.nombre}}';
-        nombre.className = 'validate';
 
         apellido = document.getElementById('id_apellido');
         apellido.value = '{{freelancer.apellido}}';
-        apellido.className = 'validate';
 
         descripcion = document.getElementById('txt-descripcion');
         descripcion.value = `{{freelancer.descripcion}}`;
@@ -206,20 +203,16 @@
 
         telefono = document.getElementById('id_telefono');
         telefono.value = '{{freelancer.telefono}}';
-        telefono.className = 'validate';
 
         correo = document.getElementById('id_correo');
         correo.value = '{{freelancer.correo}}';
-        correo.className = 'validate';
 
         profesion = document.getElementById('id_profesion');
         profesion.value = '{{freelancer.profesion}}';
-        profesion.className = 'validate';
 
         xp = document.getElementById('id_xp');
         xp.value = '{{freelancer.xp}}';
-        xp.className = '';
-        
+
         guardarEditar = document.getElementById('btn-guardar')
         guardarEditar.onclick = (evento) => {
             evento.preventDefault();
