@@ -226,7 +226,7 @@ class FrmSerFreelancer(forms.ModelForm):
 
     xp = forms.ChoiceField(label='Elija una opción', choices=nivelesXP)
     xp.widget.attrs['class'] = 'form-control browser-default'
-    xp.widget.attrs['style'] = 'width: 100%;'
+    xp.widget.attrs['style'] = 'width: 100%; color:#d6d6d6; background-color:#212121; border-color:#212121;'
 
     class Meta:
         model = models.Freelancer
@@ -236,7 +236,7 @@ class FrmSerFreelancer(forms.ModelForm):
             'nombre': forms.TextInput(
                 attrs={
                     'class': 'form-control browser-default',
-                    'style': 'width: 100%;',
+                    'style': 'width: 100%; color:#d6d6d6; background-color:#212121; border-color:#212121;',
                     'type': 'text',
                     'required': 'required',
                 }
@@ -244,7 +244,7 @@ class FrmSerFreelancer(forms.ModelForm):
             'apellido': forms.TextInput(
                 attrs={
                     'class': 'form-control browser-default',
-                    'style': 'width: 100%;',
+                    'style': 'width: 100%; color:#d6d6d6; background-color:#212121; border-color:#212121;',
                     'type': 'text',
                     'required': 'required',
                 }
@@ -252,7 +252,7 @@ class FrmSerFreelancer(forms.ModelForm):
             'correo': forms.TextInput(
                 attrs={
                     'class': 'form-control browser-default',
-                    'style': 'width: 100%;',
+                    'style': 'width: 100%; color:#d6d6d6; background-color:#212121; border-color:#212121;',
                     'type': 'text',
                     'required': 'required',
                 }
@@ -260,7 +260,7 @@ class FrmSerFreelancer(forms.ModelForm):
             'profesion': forms.TextInput(
                 attrs={
                     'class': 'form-control browser-default',
-                    'style': 'width: 100%;',
+                    'style': 'width: 100%; color:#d6d6d6; background-color:#212121; border-color:#212121;',
                     'type': 'text',
                     'required': 'required',
                 }
@@ -268,7 +268,7 @@ class FrmSerFreelancer(forms.ModelForm):
             'telefono': forms.TextInput(
                 attrs={
                     'class': 'form-control browser-default',
-                    'style': 'width: 100%;',
+                    'style': 'width: 100%; color:#d6d6d6; background-color:#212121; border-color:#212121;',
                     'type': 'text',
                     'required': 'required',
                 }
@@ -279,7 +279,7 @@ class FrmSerFreelancer(forms.ModelForm):
                     'class': 'form-control browser-default',
                     'id': 'txt-descripcion',
                     'placeholder': 'Tecnologías dominadas, especialidades, entre otras cualidades.',
-                    'style': 'width: 100%;',
+                    'style': 'width: 100%; color:#d6d6d6; background-color:#212121; border-color:#212121;',
                     'required': 'required',
                 }
             ),
@@ -305,10 +305,16 @@ class FrmSerFreelancer(forms.ModelForm):
         return correo
 
     def save(self, commit=True, usuario=-1):
-        freelancer = super().save(commit=False)
-        freelancer.usuario_id = usuario
-        freelancer.xp = self.cleaned_data.get('xp')
-        freelancer.idiomas = self.cleaned_data.get('idiomas')
+        try:
+            freelancer = models.Freelancer.objects.get(usuario_id=usuario)
+        except models.Freelancer.DoesNotExist:
+            freelancer = None
+            
+        if freelancer == None:
+            freelancer = super().save(commit=False)
+            freelancer.usuario_id = usuario
+            freelancer.xp = self.cleaned_data.get('xp')
+            freelancer.idiomas = self.cleaned_data.get('idiomas')
         if commit:
             freelancer.save()
         return freelancer

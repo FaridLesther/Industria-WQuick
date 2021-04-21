@@ -1,14 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
     <!-- BOOTSTRAP STYLES-->
     <link href="{% static 'tema/bs-advance-admin/advance-admin/assets/css/bootstrap.css' %}" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
     <link href="{% static 'tema/bs-advance-admin/advance-admin/assets/css/font-awesome.css' %}" rel="stylesheet" />
-    <!--CUSTOM BASIC STYLES-->
-    <link href="{% static 'tema/bs-advance-admin/advance-admin/assets/css/basic.css '%}" rel="stylesheet" />
     <!--CUSTOM MAIN STYLES-->
     <link href="{% static 'tema/bs-advance-admin/advance-admin/assets/css/custom.css' %}" rel="stylesheet" />
     {% include "frames/head.html" %}
@@ -20,7 +18,7 @@
         <div class="row">
             <div class="col s12 m8 offset-m2">
                 <div class="card">
-                    <div class="card-title center grey darken-2 white-text">
+                    <div class="card-title center grey darken-2" style="color:#d6d6d6;">
                         Trabaja como Freelancer
                     </div>
 
