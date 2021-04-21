@@ -185,7 +185,13 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             let navbar = document.getElementById('avatar');
-            navbar.style = 'height: 45px; margin-top: -8px;';
+            if(navbar != null){
+                navbar.style = 'height: 45px; margin-top: -8px;';
+            }else{
+                let navbar = document.getElementsByName('avatar');
+                navbar[0].style = 'height: 45px; width: 45px; margin-top: -8px;';
+                navbar[0].className = 'circle';
+            }
         });
 
         var guardar = document.getElementById('btn-guardar');

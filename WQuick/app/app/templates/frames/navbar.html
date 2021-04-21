@@ -40,7 +40,7 @@
                 <li class="dropdown-trigger auto-hover " data-target="id_drop">
                     <i>
                         {% if user.imagen %}
-                        <img src="{{user.imagen.url}}" class="responsive-img circle" alt="Avatar"
+                        <img src="{{user.imagen.url}}" class="responsive-img circle" name="avatar" alt="Avatar"
                             style="height: 45px; width: 45px; margin-top: 8px;">
                         {% else %}
                         <img class="responsive-img circle" alt="Avatar" id="avatar"
@@ -50,10 +50,10 @@
                 </li>
                 {% else %}
                 <li class="dropdown-trigger auto-hover " data-target="id_drop">
-                        ¡Bienvenido!
-                        <i class="material-icons right">arrow_drop_down</i>
+                    ¡Bienvenido!
+                    <i class="material-icons right">arrow_drop_down</i>
                 </li>
-                {% endif %}  
+                {% endif %}
             </ul>
 
             <!-- Botones random que no sabremos si dejaremos -->
