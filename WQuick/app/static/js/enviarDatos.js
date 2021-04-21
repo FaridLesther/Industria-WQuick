@@ -20,11 +20,14 @@ function enviar(datos, metodo, objetos = {}, url) {
           if(!isObjEmpty(respuesta['datos'])){
             for (let i in objetos) {
               if(i == 'img'){
-                objetos[i].src = respuesta['datos']['img']
+                if(objetos[i].length >= 1){
+                  for(let j=0; j < objetos[i].length; j++){
+                    objetos[i][j].src = respuesta['datos']['img']
+                  }
+                }
               }
             }
           }
-
         }
       })
       .catch(error => console.error('Error:', error));

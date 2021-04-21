@@ -36,7 +36,13 @@ btnGuardarI.onclick = (evento) => {
   
         let datos = new FormData();  
         let imagen = document.getElementById('id_foto')
-        let imagenPerfil = {'img': document.getElementById('userImagen')};
+
+        let imagenNavbar = document.getElementById('avatar');
+        if(imagenNavbar == null){
+            imagenNavbar = document.getElementsByName('avatar')[0];
+        }
+
+        let imagenPerfil = {'img': [document.getElementById('userImagen'), imagenNavbar]};
         datos.append('imagen', imagen.files[0])
         enviar(datos, 'POST', imagenPerfil, '/perfil');
         btnGuardarI.style.display = 'none';
