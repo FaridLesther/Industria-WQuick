@@ -158,7 +158,15 @@ span {
 
 /*==================== color de las textareas por defecto en materialize ====================*/
 textarea {
-    color: white;
+    color: #e0e0e0;
+    min-width: 100%;
+}
+
+textarea:focus{
+    outline: none !important;
+    border:1px solid #dfa248bb;
+    box-shadow: 0 0 10px #dfa248bb;
+    min-width: 100%;
 }
 
 /*==================== color de los radio buttons en materialize ====================*/

@@ -98,11 +98,12 @@ class CrearProyecto(CreateView):
     model = models.Proyecto
     form_class = forms.FrmCrearProyecto
     template_name = 'usuarios/crearProyecto.html'
+    success_url = reverse_lazy('misProyectos')
 
     def form_valid(self, form):
         fechaInicio = datetime.datetime.now()
         proyecto = form.save(True, self.request.user.id, fechaInicio)
-        return redirect('/')
+        return redirect(self.success_url)
 
     def get_context_data(self, **kwargs):
         context = super(CrearProyecto, self).get_context_data(**kwargs)

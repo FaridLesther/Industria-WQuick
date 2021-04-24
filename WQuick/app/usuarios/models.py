@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.core.validators import RegexValidator
 from django.contrib.postgres.fields import ArrayField
+from django.core.paginator import Paginator
 
 
 class UsuarioManager(BaseUserManager):
@@ -84,7 +85,7 @@ class Proyecto(models.Model):
     #    -  fecha_fin: Fecha en la que se espera que termine el proyecto
     usuario = models.ForeignKey(Usuario, null=False, on_delete=models.CASCADE)
     tipo = models.CharField(max_length=30)
-    titulo = models.CharField(max_length=25)
+    titulo = models.CharField(max_length=40)
     descripcion = models.CharField(max_length=500)
     xp = models.IntegerField()
     fecha_inicio = models.DateTimeField()
