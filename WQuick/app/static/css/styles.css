@@ -171,12 +171,13 @@ body {
 .card__img {
     width: auto;
     height: 200px;
-    text-align: center;
+    position: relative;
+    left: auto;
     border-radius: 10px 0 0 10px;
 }
 
 .cards__text {
-    text-align: left;
+    text-align: center;
     width: 90%;
     margin: 0 auto;
 }
