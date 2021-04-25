@@ -31,8 +31,9 @@ body {
 }
 
 .hero {
+    height: auto;
     width: 100%;
-    min-height: 100vh;
+
     background: linear-gradient(180deg, var(--black2) 0%, var(--black1) 100%);
 }
 
@@ -72,21 +73,30 @@ body {
 }
 
 .hero__main {
-
+    background: linear-gradient(180deg, var(--black2) 0%, var(--black1) 100%);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0;
+    height: 600px;
 }
 
 .mockup {
     object-fit: cover;
-    width: 46%;
-    max-height: 95vh;
+    width: 70%;
+    max-height: 100%;
+}
+
+.slider {
+    object-fit: cover;
+    width: auto;
+    max-height: 100%;
 }
 
 .hero__textos {
-    width: 48%;
+    width: 50%;
+    position: relative;
+    left: 6%;
 }
 
 .title {
@@ -157,38 +167,39 @@ body {
 }
 
 .card {
+    height: 600px;
     width: 30%;
     padding: 30px 0;
     overflow: hidden;
     background: linear-gradient(180deg, var(--black2) 0%, var(--black1) 100%);
     border-radius: 10px;
     position: relative;
-    text-align: right;
+    text-align: center;
     margin-bottom: 60px;
     box-shadow: 0 0 6px var(--color_shadow);
 }
 
 .card__img {
-    width: auto;
+    align-content: center;
     height: 200px;
     position: relative;
-    left: auto;
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px;
 }
 
 .cards__text {
     text-align: center;
     width: 90%;
     margin: 0 auto;
+    position: relative;
+    top: -3%;
 }
 
 .card__list {
     color: var(--gold2);
     font-weight: 700;
-    margin: 25px 0 12px;
+    margin: 20px 0 5px;
     font-size: 18px;
 }
-
 
 .card__title {
     font-size: 40px;
@@ -211,6 +222,8 @@ body {
     font-weight: 700;
     text-align: center;
     padding: 12px 0;
+    position: relative;
+    bottom: 10px;
 }
 
 .card__date {
@@ -560,6 +573,11 @@ body {
         height: auto;
     }
 
+    .slider {
+        width: 550px;
+        height: auto;
+    }
+
     .title {
         font-size: 50px;
     }
@@ -674,6 +692,8 @@ body {
     .hero__textos {
         width: 100%;
         text-align: center;
+        position: relative;
+        left: 0;
     }
 
     .mockup {
@@ -681,75 +701,87 @@ body {
         margin-bottom: 20px;
     }
 
-    .title {
-        font-size: 35px;
+    .slider {
+        width: 60%;
+        margin-bottom: 20px;
     }
 
-    .copy {
-        font-size: 20px;
-    }
+}
 
-    .subtitle {
-        font-size: 35px;
-        text-align: center;
-    }
+.title {
+    font-size: 35px;
+}
 
-    .copy__section {
-        font-size: 20px;
-        text-align: center;
-    }
+.copy {
+    font-size: 20px;
+}
 
-    .services .card {
-        width: 80%;
-    }
+.subtitle {
+    font-size: 35px;
+    text-align: center;
+}
 
-    .container-bg {
-        justify-content: space-evenly;
-    }
+.copy__section {
+    font-size: 20px;
+    text-align: center;
+}
 
-    .card {
-        margin-bottom: 40px;
-        width: 65%;
-    }
+.services .card {
+    width: 80%;
+}
 
-    .card__title {
-        font-size: 35px;
-    }
+.container-bg {
+    justify-content: space-evenly;
+}
 
-    .card__button {
-        width: 100%;
-    }
+.card {
+    margin-bottom: 40px;
+    width: 65%;
+}
 
-    .background {
-        width: 65%;
-        margin-bottom: 40px;
-    }
+.card__title {
+    font-size: 35px;
+}
 
-    .background__copy {
-        display: none;
-    }
+.card__button {
+    width: 100%;
+}
 
-    .testimony__card {
-        width: 65%;
-    }
+.background {
+    width: 65%;
+    margin-bottom: 40px;
+}
 
-    .testimony__name {
-        font-size: 20px;
-    }
+.background__copy {
+    display: none;
+}
 
-    .container--modifier {
-        width: 80%;
-    }
+.testimony__card {
+    width: 65%;
+}
 
-    .item__contact {
-        width: 100%;
-        padding: 30px 0;
-    }
+.testimony__name {
+    font-size: 20px;
+}
+
+.container--modifier {
+    width: 80%;
+}
+
+.item__contact {
+    width: 100%;
+    padding: 30px 0;
+}
 }
 
 @media screen and (max-width:500px) {
     .mockup {
         width: 80%;
+        margin-bottom: 15px;
+    }
+
+    .slider {
+        width: 100%;
         margin-bottom: 15px;
     }
 
