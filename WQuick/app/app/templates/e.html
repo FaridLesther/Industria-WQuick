@@ -12,8 +12,15 @@
         <section class="container hero__main">  
             <div class="hero__textos">
                 <h1 class="title">La mejor <span class="title--active">Experiencia Digital.</span></h1> 
-                <p class="copy">Nos encargamos de llevar tu idea al <span class="copy__active">siguiente nivel</span></p>
-                <a href="registrar" class="cta">Regístrate</a>
+                <p class="copy">Te ayudamos a hacer realidad <span class="copy__active">tus proyectos</span></p>
+                {% if user.nombre %}
+                <a href="crearProyecto" class="cta">¡Comienza tu proyecto!</a>
+                    {% else %}
+                    <span class="copy">¡Inicia ya! </span>
+                    <a href="registrar" class="cta">Regístrate</a>
+                    <p class="copy"> si ya estás registrado puedes</p>
+                    <span><a href="accounts/login" class="cta">Inicia Sesión</a></span>
+                {% endif %}
             </div>
             <img src="{% static 'img/mockup.png' %}" class="mockup">
         </section>
@@ -21,12 +28,12 @@
     <main>
         <section class="services">
             <div class="container">
-                <h2 class="subtitle">Nuestros servicios<span class="point">.</span></h2>
-                <p class="copy__section">Ofrecemos las soluciones perfectas para revolución digital</p>
+                <h2 class="subtitle">Puedes encontrar profesionales altamente capacitados<span class="point">.</span></h2>
+                <p class="copy__section">según las necesidades de tu proyecto en distintas áreas dentro de la revolución digital</p>
 
                 <article class="container-cards">
                     <div class="card">
-                        <img src="{% static 'img/slider/1.jpg' %}" class="card__img">
+                        <span><img src="{% static 'img/slider/1.jpg' %}" class="card__img"></span>
                         <div class="cards__text">
                             <p class="card__list">Especialistas en diseño UX / UI</p>
                             <h3 class="card__title">Diseño web<span class="point">.</span></h3>
