@@ -1,7 +1,7 @@
 {% if paginacion.num_pages > 1%}
 <ul class="pagination" style="font-weight: 5px;">
     {% if listaObjetos.has_previous %}
-    <li class="waves-effect"><a href="?page={{ listaObjetos.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+    <li class="waves-effect"><a href="?pagina={{ listaObjetos.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
     {% else %}
     <li class="disabled"><i class="material-icons">chevron_left</i></li>
     {% endif %}
