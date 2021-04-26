@@ -1,0 +1,55 @@
+{% if paginacion.num_pages > 1%}
+<ul class="pagination" style="font-weight: 5px;">
+    {% if listaObjetos.has_previous %}
+    <li class="waves-effect"><a href="?pagina={{ listaObjetos.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+    {% else %}
+    <li class="disabled"><i class="material-icons">chevron_left</i></li>
+    {% endif %}
+    
+    {% for page in paginacion.page_range %}
+        {% if forloop.last and page != listaObjetos.number and paginacion.num_pages > 5 %} 
+            {% if listaObjetos.next_page_number != paginacion.num_pages%}
+            <li class="waves-effect">
+                <a href="?pagina={{ listaObjetos.number | add:1}}">
+                    <span style="margin-left: -6px; margin-right: -6px;">...</span>
+                </a>
+            </li>
+            {% endif %}
+        <li class="waves-effect">
+            <a href="?pagina={{paginacion.num_pages}}">
+                <span style="margin-left: -5px; margin-right: -5px;">
+                    {{paginacion.num_pages}}
+                </span>
+            </a>
+        </li>
+        {% endif %}
+        
+        {% if page == listaObjetos.number and page > 3 %}
+        <li class="waves-effect">
+            <a href="?pagina={{ page | add:-1 }}">
+                <span style="margin-left: -10px; margin-right: -10px;">...</span>
+            </a>
+        </li>    
+        {% endif %}
+
+        {% if page < 4 or page == listaObjetos.number %}
+        <li class="waves-effect {% if page == listaObjetos.number %}active orange darken-3{% endif %}">
+            <a href="?pagina={{ page }}">
+                <span {% if page == listaObjetos.number %}class = "white-text"{% endif %} 
+                    style="margin-left: -2px; margin-right: -2px;">
+                    {{ page }}
+                </span>
+            </a>
+        </li>
+        {% endif %}
+
+    {% endfor %}
+
+    {% if listaObjetos.has_next %}
+    <li class="waves-effect"><a href="?pagina={{ listaObjetos.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+    {% else %}
+    <li class="disabled"><i class="material-icons">chevron_right</i></li>
+    {% endif %}
+</ul>
+
+{% endif %}

@@ -160,7 +160,7 @@ class FrmCrearProyecto(forms.ModelForm):
                     'rows': '9',
                     'id': 'txt-descripcion',
                     'placeholder': 'Descipción del Proyecto',
-                    'style': 'max-width: 100%; height:135px;border: 1px dotted #848484;',
+                    'style': 'max-width: 100%; height:135px;border: 1px dotted #848484; color: #fb8c00;',
                     'required': 'required',
                 }
             ),
@@ -309,7 +309,7 @@ class FrmSerFreelancer(forms.ModelForm):
             freelancer = models.Freelancer.objects.get(usuario_id=usuario)
         except models.Freelancer.DoesNotExist:
             freelancer = None
-            
+
         if freelancer == None:
             freelancer = super().save(commit=False)
             freelancer.usuario_id = usuario

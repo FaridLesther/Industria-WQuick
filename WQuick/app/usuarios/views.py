@@ -11,6 +11,7 @@ from django.contrib.auth import login, logout
 from django.http import HttpResponseRedirect
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.core.mail import send_mail
+from django.core.paginator import Paginator
 from usuarios import forms, models
 from usuarios.src.imagenPerfil import cargarImagen
 
@@ -98,11 +99,12 @@ class CrearProyecto(CreateView):
     model = models.Proyecto
     form_class = forms.FrmCrearProyecto
     template_name = 'usuarios/crearProyecto.html'
+    success_url = reverse_lazy('misProyectos')
 
     def form_valid(self, form):
         fechaInicio = datetime.datetime.now()
         proyecto = form.save(True, self.request.user.id, fechaInicio)
-        return redirect('/')
+        return redirect(self.success_url)
 
     def get_context_data(self, **kwargs):
         context = super(CrearProyecto, self).get_context_data(**kwargs)
@@ -166,10 +168,19 @@ class Perfil(CreateView):
 
 
 def MisProyectos(request):
-    mproyectos = models.Proyecto.objects.filter(usuario_id=request.user.id).values()
-    parametros = {'titulo': 'Mis proyectos','proyectos': False}
-    if mproyectos.exists():
-        parametros["proyectos"] = mproyectos
+    mproyectos = models.Proyecto.objects.filter(
+        usuario_id=request.user.id).values()
+    # Paginator recibe una lista de objetos y la cantidad de
+    # paginas  en la que se van a cortar
+    paginacion = Paginator(mproyectos, 5)
+    pagina = request.GET.get('pagina', 1)
+    mproyectos = paginacion.get_page(pagina)
+    # lista objetos contiene todos los proyectos que se van a
+    # dibujar en la pagina
+    parametros = {'titulo': 'Mis proyectos', 'listaObjetos': False}
+    if mproyectos:
+        parametros["listaObjetos"] = mproyectos
+        parametros["paginacion"] = paginacion
     return render(request, 'usuarios/misProyectos.html', parametros)
 
 

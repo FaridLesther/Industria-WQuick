@@ -86,17 +86,37 @@
     <li class="center">
         {% if user.nombre %}
         {% if user.imagen %}
-        <i><img src="{{user.imagen.url}}" class="responsive-img circle" alt="Avatar"
-                style="height: 50px; width: 50px; margin-bottom: -25px;"></i>
+        <i><img src="{{user.imagen.url}}" name="avatar" class="responsive-img circle" alt="Avatar"
+                style="height: 50px; width: 50px; margin-bottom: -30px;"></i>
         {% else %}
-        <i><img class="responsive-img circle" alt="Avatar" id="avatar2" style="height: 50px; margin-bottom: -25px;"></i>
+        <i><img class="responsive-img circle" alt="Avatar" id="avatar2"
+                style="height: 50px; width: 50px; margin-bottom: -25px;"></i>
         {% endif %}
-        <h5 class="grey-text text-lighten-3">{{user.nombre|escape}}</h5>
+        <h5 class="grey-text text-lighten-3">{{user.nombre|escape}}
+
+            {% if titulo == 'Perfil de usuario' %}
+            <form id="fileinfo" name="fileinfo" enctype="multipart/form-data">{% csrf_token %}
+                <div class="file-field input-field" style="margin-top: -3px;">
+                    <a>
+                        <span class="material-icons">add_a_photo</span>
+                        <input type="file" id="id_foto" name="foto">
+                        <!--<input type="file" id='file-imagen'>-->
+                    </a>
+                    <div class="file-path-wrapper">
+                        <input id="txt-imagen2" onchange="activarGuardar()" class="file-path validate imagen"
+                            placeholder="Cambiar imagen" type="text"
+                            style=" border: 0px; margin-left: 80px; margin-bottom: -16px; margin-top: -15px;">
+                    </div>
+                </div>
+            </form>
+            {% endif %}
+
+        </h5>
         {% else %}
         <h5 class="grey-text text-lighten-3">Sesión</h5>
         {% endif %}
     </li>
-    <li class="divider"></li>
+    <li class="divider side-divider" style=" margin-left: 20px;"></li>
 
     {% if user.nombre %}
     {% if not titulo == 'Perfil de usuario' %}
@@ -106,12 +126,12 @@
             <span>Ver perfil</span>
         </a>
     </li>
-    <li class="divider"></li>
+    <li class="divider side-divider" style=" margin-left: 20px;"></li>
     {% endif %}
     <li>
-        <a href="{% url 'logout' %}" class="" style="font-size: 15px;">
+        <a href="{% url 'logout' %}" class="" style="font-size: 15px;" >
             <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">exit_to_app</i>
-            <span>Cerrar sesión</span>
+            <span style="color: #ffc19dde;">Cerrar sesión</span>
         </a>
     </li>
     {% else %}
@@ -121,7 +141,7 @@
             <span>Iniciar sesión</span>
         </a>
     </li>
-    <li class="divider"></li>
+    <li class="divider side-divider" style=" margin-left: 20px;"></li>
 
     <li>
         <a href="{% url 'registrar' %}" class="" style="font-size: 15px;">
@@ -130,28 +150,56 @@
         </a>
     </li>
     {% endif %}
-    <li class="divider"></li>
+
+    {% if not titulo == 'Mis proyectos' %}
+    <li class="divider side-divider side-divider" style=" margin-left: 20px;" style="margin-top: 20px;"></li>
+    <li><a style="color: #ffc19dde;" href="{% url 'misProyectos' %}">
+        <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
+        Mis Proyectos
+    </a></li>
+    {% endif %}
+
+    <li class="divider side-divider side-divider" style=" margin-left: 20px;"></li>
+    <li><a style="color: #ffc19dde;" href="{% url 'crearProyecto' %}">
+        <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
+        Crear Proyecto
+    </a></li>
+
+    <li class="divider side-divider side-divider" style=" margin-left: 20px;"></li>
+    <li><a style="color: #ffc19dde;" href="#!">
+        <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
+        Freelancers Contratados
+    </a></li>
+
+    <li class="divider side-divider side-divider" style=" margin-left: 20px;"></li>
+    <li><a style="color: #ffc19dde;" href="#!">
+        <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
+        Solicitudes de Freelancers</a>
+    </li>
+
+    <li class="divider side-divider side-divider" style=" margin-left: 20px;"></li>
+
 
     <li class="center">
         <h5 class="grey-text text-lighten-3">Otros</h5>
     </li>
-    <li class="divider"></li>
+    <li class="divider side-divider" style=" margin-left: 20px;"></li>
 
     <li>
         <a href="" class="" style="font-size: 15px;">
             <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
-            <span>Notificaciones</span>
+            <span style="color: #ffc19dde;">Notificaciones</span>
         </a>
     </li>
-    <li class="divider"></li>
+    <li class="divider side-divider" style=" margin-left: 20px;"></li>
 
     <li>
         <a href="" class="white-text" style="font-size: 15px;">
             <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">settings</i>
-            <span>Configuración</span>
+            <span style="color: #ffc19dde;">Configuración</span>
         </a>
     </li>
-    <li class="divider"></li>
+    <li class="divider side-divider" style=" margin-left: 20px;"></li>
 
 </ul>
 {% if user.nombre %}
