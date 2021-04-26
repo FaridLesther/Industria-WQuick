@@ -41,11 +41,11 @@
         {% endif %}
 
         {% if titulo == 'Perfil de usuario' %}
-        <form id="fileinfo" name="fileinfo" enctype="multipart/form-data">{% csrf_token %}
+        <form id="f" name="fileinfo" enctype="multipart/form-data">{% csrf_token %}
             <div class="file-field input-field" style="margin-top: -3px;">
                 <a>
                     <span class="material-icons">add_a_photo</span>
-                    <input type="file" id="id_foto" name="foto">
+                    <input type="file" id="id_foto2" name="foto">
                     <!--<input type="file" id='file-imagen'>-->
                 </a>
                 <div class="file-path-wrapper">
@@ -84,7 +84,12 @@
     //Funcion que detecta los cambios en el textbox que describe la imagen
     function activarGuardar() {
         let btnGuardar = document.getElementById('btn-guardari');
-        let txtImagen = document.getElementById('txt-imagen');
+        let txtImagen = '';
+        if(document.getElementById('txt-imagen').value == ''){
+            txtImagen = document.getElementById('txt-imagen2');
+        }else{
+            txtImagen = document.getElementById('txt-imagen');
+        }
         if (txtImagen.value.length == 0) {
             btnGuardar.style.display = 'none';
         } else {
