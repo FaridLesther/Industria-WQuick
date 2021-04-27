@@ -12,17 +12,17 @@
    <div class="container-fluid center" style="padding-top: 2%;padding-bottom: 3%;">
       <div class="row">
          <div class="col s12 m6 offset-m3 l10 offset-l1 xl6 offset-xl3">
-            <div class="card white">
-               <div class="white">
-                  <span class="card-title black-text">
+            <div class="card">
+               <div>
+                  <span class="card-title">
                      <br>
                      <a href="/">
                         <div class="card-imag responsive-img">
-                           <img src="{% static 'img/Logo-large.jpeg' %}" alt="imagen dañada" style="width: 50%; max-width: 250px;">
+                           <img src="{% static 'img/transparencia.png' %}" alt="imagen dañada" style="width: 50%; max-width: 250px;">
                         </div>
                      </a>
 
-                     <span style="color: #000;font-size: 20px;font-weight: bold;">
+                     <span style="color: white;font-size: 20px;font-weight: bold;">
                         Regístrate
                      </span>
                   </span>
@@ -41,7 +41,7 @@
                         </div>
                         {% endif %}
                         <div class="col s3">
-                           <label style="color: #000;font-family: fuente1;font-size: 18px; font-weight: bold;">Nombre</label>
+                           <label style="color: white;font-family: fuente1;font-size: 18px; font-weight: bold;">Nombre</label>
                         </div>
                         <div class="col s9">
                            {{form.nombre}}
@@ -56,7 +56,7 @@
                         </div>
                         {% endif %}
                         <div class="col s3">
-                           <label style="color: #000;font-family: fuente1;font-size: 18px; font-weight: bold;">Correo</label>
+                           <label style="color: white;font-family: fuente1;font-size: 18px; font-weight: bold;">Correo</label>
                         </div>
                         <div class="col s9">
                            {{form.correo}}
@@ -66,7 +66,7 @@
                      <div class="row">
                         <div class="col s3">
                            <label for="txt_clave"
-                              style="color: #000;font-family: fuente1;font-size: 18px; font-weight: bold;">Contraseña</label>
+                              style="color: white;font-family: fuente1;font-size: 18px; font-weight: bold;">Contraseña</label>
                         </div>
                         <div class="col s9">
                            {{form.password1}}
@@ -81,7 +81,7 @@
                         </div>
                         {% endif %}
                         <div class="col s3">
-                           <label style="color: #000;font-family: fuente1; font-size: 18px; font-weight: bold;">Confirmar Contraseña</label>
+                           <label style="color: white;font-family: fuente1; font-size: 18px; font-weight: bold;">Confirmar Contraseña</label>
                         </div>
                         <div class="col s9">
                            {{form.password2}}
@@ -93,7 +93,7 @@
                      </div>
                      <div>
                         <label for="chk_terminos">
-                           <input class="filled-in" type="checkbox" id="chk_terminos">
+                           <input class="" type="checkbox" id="chk_terminos">
                            <span><a href="" style="font-weight: bold;">Aceptar terminos y condiciones del servicio</a></span>
                         </label>
                      </div>

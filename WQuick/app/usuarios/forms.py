@@ -19,11 +19,11 @@ class FrmRegistar(UserCreationForm):
     #    -  admin: contiene el valor booleano para el administrador
     password1 = forms.CharField(widget=forms.PasswordInput())
     password1.widget.attrs['id'] = 'txt_clave'
-    password1.widget.attrs['style'] = 'margin-left:17px; border-radius: 2px;width: 77%;border: 1px solid #000;height: 5vh;'
+    password1.widget.attrs['style'] = 'background-color: #212121; margin-left:17px; border-radius: 2px;width: 77%;border: 1px solid #000;height: 5vh;'
 
     password2 = forms.CharField(widget=forms.PasswordInput())
     password2.widget.attrs['id'] = 'txt_cclave'
-    password2.widget.attrs['style'] = 'margin-left:17px; border-radius: 2px;width: 77%;border: 1px solid #000;height: 5vh;'
+    password2.widget.attrs['style'] = 'background-color: #212121; margin-left:17px; border-radius: 2px;width: 77%;border: 1px solid #000;height: 5vh;'
 
     admin = forms.BooleanField(initial=False, required=False)
     admin.widget.attrs['class'] = 'filled-in'
@@ -37,7 +37,7 @@ class FrmRegistar(UserCreationForm):
         widgets = {
             'nombre': forms.TextInput(
                 attrs={
-                    'class': 'black-text',
+                    'class': 'grey darken-4',
                     'id': 'txt_usuario',
                     'type': 'text',
                     'style': 'margin-left:17px; border-radius: 2px;width: 77%;border: 1px solid #000;height: 5vh;',
@@ -47,7 +47,7 @@ class FrmRegistar(UserCreationForm):
             ),
             'correo': forms.TextInput(
                 attrs={
-                    'class': 'black-text',
+                    'class': 'grey darken-4',
                     'id': 'txt_correo',
                     'type': 'text',
                     'style': 'margin-left:17px; border-radius: 2px;width: 77%;border: 1px solid #000;height: 5vh;',
@@ -90,11 +90,11 @@ class FrmLogin(AuthenticationForm):
     #    -  password: contraseña del usuario que ingresara al programa
     def __init__(self, *args, **kwargs):
         super(FrmLogin, self).__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs['class'] = 'validate black-text'
+        self.fields['username'].widget.attrs['class'] = 'white-text grey darken-3'
         self.fields['username'].widget.attrs['id'] = 'txt_usuario'
         self.fields['username'].widget.attrs['style'] = 'border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;'
 
-        self.fields['password'].widget.attrs['class'] = 'validate black-text'
+        self.fields['password'].widget.attrs['class'] = 'white-text grey darken-3'
         self.fields['password'].widget.attrs['id'] = 'txt_clave'
         self.fields['password'].widget.attrs['style'] = 'border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;'
 
