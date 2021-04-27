@@ -43,12 +43,12 @@
         padding-top: 4%;
     }
 
-    .elige_imagen{
+    .elige_imagen {
         width: 200px;
         height: auto;
     }
 
-    .btn yellow darken-2{
+    .btn yellow darken-2 {
         position: relative;
         bottom: 100px;
     }
@@ -57,30 +57,31 @@
 <body>
     {% include 'frames/navbar.html' %}
     <div class="row responsividad">
-        <div class="col-md-5">  
-                <div style=" height: auto;" class="mcard main-box mb-red">
-                    <h5>Publica tu Proyecto<br><br><br>
-                        Encontrarás los freelancers adecuados que
-                        realizarán tu proyecto con una alta calidad.
-                    </h5>
-                    <img class="elige_imagen" src="{% static 'img/proyecto.png'%}">
-                    <div style="padding-top: 8%;">
-                        <a href="crearProyecto" class="btn yellow darken-2"style="font-weight: bold; min-width: 220px; position: relative;">
-                            Crea tu Proyecto
-                        </a>
-                    </div>
+        <div class="col-md-5">
+            <div style=" height: auto;" class="mcard main-box mb-red grey darken-3">
+                <h5 class="white-text">Publica tu Proyecto<br><br><br>
+                    Encontrarás los freelancers adecuados que
+                    realizarán tu proyecto con una alta calidad.
+                </h5>
+                <img class="elige_imagen" src="{% static 'img/proyecto.png'%}">
+                <div style="padding-top: 8%;">
+                    <a href="crearProyecto" class="btn yellow darken-4"
+                        style="font-weight: bold; min-width: 220px; position: relative;">
+                        Crea tu Proyecto
+                    </a>
                 </div>
+            </div>
         </div>
         <div class="col-md-5">
-            <div style="height: auto;" class="mcard main-box mb-dull">
+            <div style="height: auto;" class="mcard main-box mb-dull grey darken-3">
                 <a href="#">
-                    <h5>Trabaja con Nosotros<br><br><br>
+                    <h5 class="white-text">Trabaja con Nosotros<br><br><br>
                         Elige el proyecto que más se adecúe a tu experiencia
                         y accede a nuevos clientes de manera sencilla.
                     </h5>
                     <img style="height: 200px " class="elige_imagen" src="{% static 'img/freelancer.png'%}">
                     <div style="padding-top: 8%;">
-                        <a href="/serFreelancer" class="btn yellow darken-2"
+                        <a href="/serFreelancer" class="btn yellow darken-4"
                             style="font-weight: bold; min-width: 220px; position: relative; ">
                             Trabaja con Nosotros
                         </a>
@@ -112,7 +113,13 @@
                 hover: true
             });
             let navbar = document.getElementById('avatar');
-            navbar.style = 'height: 45px; margin-top: -8px;';
+            if (navbar != null) {
+                navbar.style = 'height: 45px; margin-top: -8px;';
+            } else {
+                let navbar = document.getElementsByName('avatar');
+                navbar[0].style = 'height: 45px; width: 45px; margin-top: -8px;';
+                navbar[0].className = 'circle';
+            }
         });
     </script>
 </body>
