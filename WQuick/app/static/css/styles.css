@@ -26,7 +26,6 @@ body {
     margin: 0 auto;
     overflow: hidden;
     padding: 100px 0;
-    cursor: default;
 }
 
 .hero {
@@ -158,16 +157,10 @@ body {
     margin-bottom: 32px;
 }
 
-.container-cards {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
+
 
 .card {
-    height: 600px;
-    width: 30%;
+    width: 30px;
     padding: 30px 0;
     overflow: hidden;
     background: linear-gradient(180deg, var(--black2) 0%, var(--black1) 100%);
@@ -179,9 +172,10 @@ body {
 }
 
 .card__img {
-    align-content: center;
+
     height: 200px;
-    position: relative;
+
+    left: auto;
     border-radius: 10px;
 }
 
@@ -600,7 +594,8 @@ body {
     }
 
     .card {
-        width: 42%;
+        width: 40%;
+
     }
 
     .testimony-container {
@@ -831,10 +826,5 @@ body {
 
     .download__logo {
         font-size: 30px;
-    }
-
-    .logo-erick {
-        height: 55px;
-        padding: 0;
     }
 }

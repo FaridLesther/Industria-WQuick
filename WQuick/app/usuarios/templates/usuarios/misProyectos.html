@@ -32,7 +32,27 @@
                             <div class="container-fluid" style="margin-bottom: 20px;">
                                 <!-- nombre de la eleccion del proyecto -->
                                 <label style="font-size: 20px;">{{proyecto.tipo}}</label><br>
-                                <img style="width: 80%; margin-top: 5%;" src="{% static 'img/diseñoweb.jpg' %}">
+                                {% if proyecto.tipo == 'Programacion Web' %} 
+                                <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/web.jpg' %}">
+                                {% elif proyecto.tipo == 'Tiendas Online' %}
+                                    <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/shop.png' %}">
+                                    {% elif proyecto.tipo == 'Landing page' %}
+                                        <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/lp.jpg' %}">
+                                        {% elif proyecto.tipo == 'Aplicaciones Moviles' %}
+                                            <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/app.png' %}">     
+                                            {% elif proyecto.tipo == 'Sistemas para Ordenadores' %}
+                                                <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/so.jpg' %}">           
+                                                {% elif proyecto.tipo == "Servidores" %}
+                                                    <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/server.png' %}"> 
+                                                    {% elif proyecto.tipo == 'Bases de Datos' %}
+                                                        <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/db.png' %}"> 
+                                                        {% elif proyecto.tipo == 'Infraestructura' %}
+                                                            <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/redes.png' %}">
+                                                            {% elif proyecto.tipo == 'Diseño' %}
+                                                                <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/dg.jpg' %}">
+                                                                {% else %}
+                                                                    <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/o.jpg' %}">    
+                            {% endif %}
                             </div>
                             <div class="row">
 
