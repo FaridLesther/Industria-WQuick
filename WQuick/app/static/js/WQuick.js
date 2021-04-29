@@ -85,3 +85,12 @@ function enableTab(id) {
         }
     };
 }
+
+/*=================== Altura variable en las TextAreas ===================*/
+let area = document.querySelectorAll(".auto_scroll")
+        
+window.addEventListener("DOMContentLoaded", () => {
+    area.forEach((elemento) => {
+    elemento.style.height = `${elemento.scrollHeight}px`
+    })
+}) 
