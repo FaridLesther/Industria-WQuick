@@ -23,11 +23,10 @@ body {
 
 .container {
     width: 100%;
-
     margin: 0 auto;
     overflow: hidden;
     padding: 100px 0;
-
+    cursor: default;
 }
 
 .hero {
@@ -542,9 +541,7 @@ body {
     padding: 60px 0;
     text-align: center;
     background: linear-gradient(180deg, var(--black2) 0%, var(--black1) 100%);
-
 }
-
 
 .item__contact--gold {
     background: linear-gradient(180deg, #F7CE90 0%, #F4BD76 100%);

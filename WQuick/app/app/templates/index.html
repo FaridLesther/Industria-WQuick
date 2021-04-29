@@ -1,102 +1,132 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    {% include 'frames/head.html' %}
+    {% include "frames/head.html" %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 </head>
-
 <body>
-    <!-- navbar barra superior de la pagina -->
     {% include "frames/navbar.html" %}
-
-    <!--Contenido de la página-->
-    <main>
-
-        <div class="slider">
-            <ul class="slides">
-                <!-- imagenes 1-->
-                <li>
-                    <img src="{% static 'img/slider/1.jpg' %}" alt="">
-                    <div class="caption center-align">
-                        <h3><a href="registrar">letras de prueba para prueba</a></h3>
-                        <h5>letras mas pequeña</h5>
-                    </div>
-                </li>
-
-                <!-- imagenes 2-->
-                <li>
-                    <img src="{% static 'img/slider/2.jpg' %}" alt="">
-                    <div class="caption center-align">
-                        <h3>letras de prueba para prueba</h3>
-                        <h5>letras mas pequeña</h5>
-                    </div>
-                </li>
-
-                <!-- imagenes 3-->
-                <li>
-                    <img src="{% static 'img/slider/3.jpg' %}" alt="">
-                    <div class="caption center-align">
-                        <h3>letras de prueba para prueba</h3>
-                        <h5>letras mas pequeña</h5>
-                    </div>
-                </li>
-
-                <!-- imagenes 4-->
-                <li>
-                    <img src="{% static 'img/slider/4.jpg' %}" alt="">
-                    <div class="caption center-align">
-                        <h3><a href="registrar">letras de prueba para prueba</a></h3>
-                        <h5>letras mas pequeña</h5>
-                    </div>
-                </li>
-
-                <!-- imagenes 5-->
-                <li>
-                    <img src="{% static 'img/slider/5.jpg' %}" alt="">
-                    <div class="caption center-align">
-                        <h3>letras de prueba para prueba</h3>
-                        <h5>letras mas pequeña</h5>
-                    </div>
-                </li>
-
-                <!-- imagenes 6-->
-                <li>
-                    <img src="{% static 'img/slider/6.jpg' %}" alt="">
-                    <div class="caption center-align">
-                        <h3>letras de prueba para prueba</h3>
-                        <h5>letras mas pequeña</h5>
-                    </div>
-                </li>
-
-                <!-- imagenes 7-->
-                <li>
-                    <img src="{% static 'img/slider/7.jpg' %}" alt="">
-                    <div class="caption center-align">
-                        <h3>letras de prueba para prueba</h3>
-                        <h5>letras mas pequeña</h5>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <a href="/elige" class="btn waves-effect waves-light">Comienza ya</a>
-
-        <div class="row">
-            <div class="col s6">
-                <h4>Deja tus proyectos Tecnológico en manos de los expertos</h4>
-                <h5>-Proyectos de alta calidad</h5>
-                <h5>-Innovación</h5>
-                <h5>-Nuevas Tecnologias</h5>
+    <header class="hero">
+        <section class="container hero__main">  
+            <div class="hero__textos">
+                <h1 class="title">La mejor <span class="title--active">Experiencia Digital.</span></h1> 
+                <p class="copy">Te ayudamos a hacer realidad <span class="copy__active">tus proyectos</span></p>
+                {% if user.nombre %}
+                    <a href="crearProyecto" class="cta">¡Comienza tu proyecto!</a>
+                    {% else %}
+                    <span class="copy">¡Inicia ya! </span>
+                    <a href="registrar" class="cta">Regístrate</a>
+                    <p class="copy"> si ya estás registrado puedes</p>
+                    <span><a href="accounts/login" class="cta">Inicia Sesión</a></span>
+                {% endif %}
             </div>
-            <div class="col s6"></div>
-        </div>
+                <img src="{% static 'img/slider2/1.PNG' %}" class="mockup">
+           <!-- <img src="{% static 'img/mockup.png' %}" class="mockup">-->
+        </section>
+    </header>
+    <main>
+        <section class="services">
+            <div style="background: --black1" class="container">
+                <h2 class="subtitle">Puedes encontrar profesionales altamente capacitados<span class="point">.</span></h2>
+                <p class="copy__section">según las necesidades de tu proyecto en distintas áreas dentro de la revolución digital</p>
 
+                <article class="container-cards">
+                    <div class="card">
+                        <img src="{% static 'img/slider/1.jpg' %}" class="card__img">
+                        <div class="cards__text">
+                            <p class="card__list">Especialistas en diseño UX / UI</p>
+                            <h3 class="card__title">Diseño web<span class="point">.</span></h3>
+                            <p class="card__copy">Encuentra profesionales capacitados en el área de diseño de interfaces </p>
+                            <a href="" class="card__button">Comienza tu proyecto</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="{% static 'img/slider/2.jpg' %}" class="card__img">
+                        <div class="cards__text">
+                            <p class="card__list">Especialistas en desarrollo web</p>
+                            <h3 class="card__title">Web apps<span class="point">.</span></h3>
+                            <p class="card__copy">Si necesitas una sitio web para tu empresa o negocio, aquí puedes encontrar profesionales en la materia</p>
+                            <a href="registrar" class="card__button">Comienza tu proyecto</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="{% static 'img/slider/4.jpg' %}" class="card__img">
+                        <div class="cards__text">
+                            <p class="card__list">Diseñadores gráficos</p>
+                            <h3 class="card__title">Creatividad y Diseño<span class="point">.</span></h3>
+                            <p class="card__copy">Las mentes más creativas y revolucionarias las encontrarás con nosotros</p>
+                            <a href="registrar" class="card__button">Comienza tu proyecto</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="projects container">
+            <h2 class="subtitle">Proyectos recientes<span class="point">.</span></h2>
+            <p class="copy__section">Hemos colaborado con marcas reconocidas a nivel mundial</p>
+            <article class="container-bg">
+                <div class="card">
+                    <div class="cards__text">
+                        <h3 class="card__title">Diseño web<span class="point">.</span></h3>
+                        <p class="card__date">24 de agosto 2020</p>
+                        <p class="card__copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolorum sit molestias ipsam at veritatis ut esse eius, dolor est!</p>
+                        <a href="#" class="card__button">Comienza tu proyecto</a>
+                    </div>
+                </div>
+                <div class="background">
+                    <div class="background__text">
+                        <h3 class="background__title">La educación en linea</h3>
+                        <p class="background__copy">La realidad aumentada transformará por completo la educación</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="cards__text">
+                        <h3 class="card__title">Diseño web<span class="point">.</span></h3>
+                        <p class="card__date">24 de agosto 2020</p>
+                        <p class="card__copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolorum sit molestias ipsam at veritatis ut esse eius, dolor est!</p>
+                        <a href="#" class="card__button">Comienza tu proyecto</a>
+                    </div>
+                </div>
+                <div class="background">
+                    <div class="background__text">
+                        <h3 class="background__title">La educación en linea</h3>
+                        <p class="background__copy">La realidad aumentada transformará por completo la educación</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="email container container--modifier">
+            <h2 class="subtitle subtitle--modifier">Somos tu mejor opción para adoptar la transformación digital<span class="point">.</span></h2>
+
+            <p class="copy__section copy__section--modifier">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab, et dolore id necessitatibus quibusdam rem accusamus fugiat doloremque voluptatibus eius!</p>
+
+            <div class="check">
+                <div class="check__item">
+                    <i class='bx bx-check' ></i>
+                    <div class="check__numbers">
+                        <p class="check__number">+200</p>
+                        <p class="check__copy">Trabajadores freelancers</p>
+                    </div>
+                </div>
+                <div class="check__item">
+                    <i class='bx bx-check' ></i>
+                    <div class="check__numbers">
+                        <p class="check__number">+200</p>
+                        <p class="check__copy">Proyectos exitosos</p>
+                    </div>
+                </div>
+
+            </div>
+            <form class="newsletter">
+                <input type="text" class="newsletter__input" placeholder="Ingresa tu email">
+                <input type="submit" class="newsletter__submit" value="Comienza hoy">
+            </form>
+        </section>
     </main>
 
-    <!--Espacio para el pie de página-->
     {% include "frames/footer.html" %}
 </body>
-
 </html>

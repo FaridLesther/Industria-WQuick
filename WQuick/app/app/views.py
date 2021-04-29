@@ -19,21 +19,12 @@ def inicio(request):
     parametros = {"titulo": 'Inicio'}
 
     datos = {}
-    freelancers = models.Freelancer.objects.all().values(
-        'usuario_id', 'nombre'
-    ).annotate(Count('usuario_id')).order_by('-usuario_id')[:10]
-
-    usuarios = models.Usuario.objects.all().values(
-        'id', 'imagen'
+    proyectos = models.Proyecto.objects.all().values(
+        'id', 'titulo', 'tipo'
     ).annotate(Count('id')).order_by('-id')[:10]
 
-    for freelancer in freelancers:
-        for imagen in usuarios:
-            if freelancer['usuario_id'] == imagen['id']:
-                if imagen['imagen'] == '':
-                    datos[freelancer['nombre']] = ''
-                else:
-                    datos[freelancer['nombre']] = 'media/'+imagen['imagen']
+    for proyecto in proyectos:
+        datos[proyecto['titulo']] = '../static/img/diseñoweb.jpg'
 
-    parametros['freelancers'] = datos
-    return render(request, 'e.html', parametros)
+    parametros['busqueda'] = datos
+    return render(request, 'index.html', parametros)

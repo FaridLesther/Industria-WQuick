@@ -1,16 +1,21 @@
 <!-- CDN de Materialize JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
-    var freelancers = {{ freelancers|safe }};
-    datos = {};
-    for(let i=0; i<freelancers.length; i++){
-        datos[freelancers[i]['nombre']] = freelancers[i]['nombre']
-    }
+    var busqueda = {{ busqueda|safe }};
     
     document.addEventListener('DOMContentLoaded', function () {
-        var autos = document.querySelectorAll('.autocomplete');
-        var instances = M.Autocomplete.init(autos, {
-            data: freelancers
+        let buscar = document.querySelectorAll('.autocomplete');
+        var instances = M.Autocomplete.init(buscar, {
+            data: busqueda
         });
     });
+
+    var input = document.getElementById("autocomplete-input");
+    input.addEventListener("keyup", function(event) {
+        // 13 es la tecla "Enter" del teclado
+        if (event.keyCode === 13 && 'Inicio' == '{{titulo}}') {
+            event.preventDefault();
+            realizarBusqueda();
+        }
+    }); 
 </script>

@@ -12,6 +12,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.core.mail import send_mail
 from django.core.paginator import Paginator
+from django.db.models import Q
 from usuarios import forms, models
 from usuarios.src.imagenPerfil import cargarImagen
 
@@ -204,3 +205,33 @@ class EditarPerfil(CreateView):
             context['freelancer'] = freelancer[0]
 
         return context
+
+
+def buscarProyectos(request):
+    if request.GET.get('buscar'):
+        busqueda = request.GET.get('buscar')
+        mproyectos = models.Proyecto.objects.filter(
+            Q(titulo__icontains=busqueda) |
+            Q(descripcion__icontains=busqueda)
+        ).values()
+    else:
+        mproyectos = models.Proyecto.objects.all().values()
+
+    datos = {}
+    for proyecto in models.Proyecto.objects.all().values():
+        datos[proyecto['titulo']] = '../static/img/diseñoweb.jpg'
+
+    paginacion = Paginator(mproyectos, 6)
+    pagina = request.GET.get('pagina', 1)
+    mproyectos = paginacion.get_page(pagina)
+
+    # lista objetos contiene todos los proyectos que se van a dibujar en la pagina
+    context = {'titulo': 'Proyectos', 'listaObjetos': False}
+
+    if mproyectos:
+        context["listaObjetos"] = mproyectos
+        context["paginacion"] = paginacion
+        context["busqueda"] = datos
+
+    contexto = {'titulo': 'Buscar Proyectos'}
+    return render(request, 'usuarios/buscarProyectos.html', context)

@@ -14,8 +14,8 @@
                             <div class="col s12 ">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <a onclick='document.getElementById("frm-buscar").submit();'><i class=" material-icons prefix">search</i></a>
-                                        <input type="text" placeholder="buscar" name="buscar" id="autocomplete-input"
+                                        <a onclick='realizarBusqueda()'><i class=" material-icons prefix">search</i></a>
+                                        <input autocomplete="off" type="text" placeholder="buscar" name="buscar" id="autocomplete-input"
                                             class="autocomplete" style="margin-left: 60px;">
                                     </div>
                                 </div>
@@ -215,3 +215,13 @@
 </script>
 {% endif %}
 {% endif %}
+<script>
+    function realizarBusqueda(evento){
+        let busqueda = document.getElementById('autocomplete-input').value;
+        if(busqueda != ''){
+            window.location.href = "{% url 'buscarProyectos' %}?buscar="+busqueda;
+        }else{
+            window.location.href = "{% url 'buscarProyectos' %}";
+        }
+    }
+</script>
