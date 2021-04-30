@@ -31,15 +31,10 @@ body {
 .hero {
     height: auto;
     width: 100%;
-
     background: linear-gradient(180deg, var(--black2) 0%, var(--black1) 100%);
 }
 
-.nav__hero {
-    color: #fff;
-    height: 70px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+
 
 .nav__container {
     display: flex;
@@ -332,16 +327,10 @@ body {
     color: #fff;
 }
 
-.google__logo {
-    margin-bottom: 20px;
-}
-
-
 .testimony__history {
     font-size: 21px;
     font-weight: 300;
 }
-
 
 .testimony__info {
     width: 70%;
@@ -428,7 +417,6 @@ body {
     border-radius: 6px;
     font-family: inherit;
     font-weight: 700;
-    cursor: pointer;
 }
 
 

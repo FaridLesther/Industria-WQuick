@@ -128,6 +128,13 @@ class FrmCrearProyecto(forms.ModelForm):
         (4, "Avanzado"),
     )
 
+    moneda = (
+        ('Moneda', 'Moneda'),
+        ('L.', 'L.'),
+        ('$.', '$.'),
+        ('€.', '€.'),
+    )
+
     tipo = forms.CharField(max_length=30)
     tipo.widget.attrs['style'] = 'display: none;'
     tipo.widget.attrs['id'] = 'txt_tipo'
@@ -139,12 +146,14 @@ class FrmCrearProyecto(forms.ModelForm):
 
     xp = forms.ChoiceField(label='Elija una opción', choices=nivelesXP)
 
+    moneda = forms.ChoiceField(label='Moneda', choices=moneda)
+
     #  Modelo del cual sera construido el formulario: Proyecto
     #  es necesario especificar por lo menos un campo del modelo
 
     class Meta:
         model = models.Proyecto
-        fields = ('tipo', 'titulo', 'descripcion',)
+        fields = ('tipo', 'titulo', 'descripcion', 'presupuesto')
         widgets = {
             'titulo': forms.TextInput(
                 attrs={
@@ -161,6 +170,14 @@ class FrmCrearProyecto(forms.ModelForm):
                     'id': 'txt-descripcion',
                     'placeholder': 'Descipción del Proyecto',
                     'style': 'max-width: 100%; height:135px;border: 1px dotted #848484; color: #fb8c00;',
+                    'required': 'required',
+                }
+            ),
+            'presupuesto': forms.TextInput(
+                attrs={
+                    'class': 'validate',
+                    'id': 'txt_presupuesto',
+                    'type': 'text',
                     'required': 'required',
                 }
             ),
@@ -192,6 +209,7 @@ class FrmCrearProyecto(forms.ModelForm):
 
         proyecto.fecha_fin = fecha_fin
         proyecto.xp = self.cleaned_data.get('xp')
+        proyecto.moneda = self.cleaned_data.get('moneda')
 
         if commit:
             proyecto.save()
@@ -431,13 +449,7 @@ class FrmEditarFreelancer(forms.ModelForm):
         fields = ('nombre', 'apellido',
                   'profesion', 'telefono', 'descripcion',)
         widgets = {
-            'nombre': forms.TextInput(
-                attrs={
-                    'class': 'grey-text text-lighten-2',
-                    'type': 'text',
-                    'required': 'required',
-                }
-            ),
+
             'apellido': forms.TextInput(
                 attrs={
                     'class': 'grey-text text-lighten-2',
@@ -506,3 +518,58 @@ class FrmEditarFreelancer(forms.ModelForm):
         except models.Freelancer.DoesNotExist:
             freelancer = None
         return freelancer
+
+
+class FrmEditarProyecto(forms.ModelForm):
+    #  Formulario de edicion de proyectos en la base de datos
+    #  modelo: Proyectos
+    class Meta:
+        model = models.Proyecto
+        fields = ('titulo', 'tipo', 'descripcion',
+                  'xp', 'fecha_inicio', 'fecha_fin')
+        widgets = {
+            'titulo': forms.TextInput(
+                attrs={
+                    'class': 'grey-text text-lighten-2',
+                    'type': 'text',
+                    'required': 'required',
+                }
+            ),
+            'tipo': forms.TextInput(
+                attrs={
+                    'class': 'grey-text text-lighten-2',
+                    'type': 'text',
+                    'required': 'required',
+                }
+            ),
+            'xp': forms.TextInput(
+                attrs={
+                    'class': 'grey-text text-lighten-2',
+                    'type': 'text',
+                    'required': 'required',
+                }
+            ),
+            'descripcion': forms.Textarea(
+                attrs={
+                    'rows': '5',
+                    'class': 'grey-text text-lighten-2',
+                    'id': 'txt-descripcion',
+                    'placeholder': 'Proporciona una breve descripcion acerca de tu proyecto',
+                    'style': 'width: 100%;',
+                    'required': 'required',
+                }
+            ),
+        }
+
+    def save(self, commit=True, usuario=-1):
+        try:
+            proyecto = models.Proyecto.objects.get(usuario_id=usuario)
+            proyecto.titulo = self.cleaned_data.get('titulo')
+            proyecto.descripcion = self.cleaned_data.get('descripcion')
+            proyecto.tipo = self.cleaned_data.get('tipo')
+            proyecto.xp = self.cleaned_data.get('xp')
+            if commit:
+                proyecto.save()
+        except models.Proyecto.DoesNotExist:
+            proyecto = None
+        return proyecto

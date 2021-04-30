@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% include 'frames/head.html' %}
+</head>
+<body>
+    {% include 'frames/navbar.html' %}
+    {% include 'frames/sidebar.html' %}
+    <main>
+        <div class="row mcard">
+            <div class="col s12 m10 offset-m1">
+                <section style="padding: 5px;">
+                    <div class="row">
+                        <div class="col s12 m10 offset-m1">
+                            <div class="container-fluid">
+                                <form id="frm-editarproyecto" method="POST">{% csrf_token %}
+                                    <div class="container-fluid center">
+                                        <label style="font-size: 20px;">Edita tu proyecto</label>
+                                        <br><br>
+                                    </div>
+
+                                    <div class="col s12 m6">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">description</i>
+                                            {{form.titulo}}
+                                            <label for="id_titulo">Titulo</label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">description</i>
+                                            {{form.tipo}}
+                                            <label for="txt-tipo">Tipo</label>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Nivel de Experiencia</label>
+                                                {{form.xp}}
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col s11">
+                                            <label class="grey-text text-lighten-1"
+                                                style="font-size: 15px;">Descripción:</label>
+                                            <div>
+                                                {{form.descripcion}}
+                                            </div>
+                                        </div>
+    </main>
+</body>
+</html>

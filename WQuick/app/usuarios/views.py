@@ -235,3 +235,19 @@ def buscarProyectos(request):
 
     contexto = {'titulo': 'Buscar Proyectos'}
     return render(request, 'usuarios/buscarProyectos.html', context)
+
+
+class EditarProyecto(CreateView):
+    model = models.Proyecto
+    template_name = 'usuarios/editarProyecto.html'
+    form_class = forms.FrmEditarProyecto
+    success_url = reverse_lazy('misProyectos')
+
+    def form_valid(self, form):
+        proyecto = form.save(True, self.request.proyecto.id)
+        return redirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super(EditarProyecto, self).get_context_data(**kwargs)
+        context['titulo'] = 'Editar mi Proyecto'
+        return context

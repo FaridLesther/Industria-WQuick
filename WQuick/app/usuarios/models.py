@@ -87,6 +87,8 @@ class Proyecto(models.Model):
     titulo = models.CharField(max_length=40)
     descripcion = models.CharField(max_length=500)
     xp = models.IntegerField()
+    moneda = models.CharField(max_length=2)
+    presupuesto = models.IntegerField()
     fecha_inicio = models.DateTimeField()
     fecha_fin = models.DateTimeField()
 
