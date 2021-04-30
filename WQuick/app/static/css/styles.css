@@ -26,6 +26,7 @@ body {
     margin: 0 auto;
     overflow: hidden;
     padding: 100px 0;
+    cursor:default;
 }
 
 .hero {

@@ -4,3 +4,4 @@ from usuarios import models
 admin.site.register(models.Usuario)
 admin.site.register(models.Proyecto)
 admin.site.register(models.Freelancer)
+admin.site.register(models.Notificaciones)

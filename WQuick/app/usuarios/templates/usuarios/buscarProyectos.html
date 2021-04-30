@@ -24,7 +24,7 @@
         <div class="row mPcard">
             {% for proyecto in listaObjetos %}
             <div class="col s12 m6">
-                <div class="card">
+                <div class="card" style="min-height: 100%;">
                     <div class="card-title center grey darken-2" style="color:#d6d6d6; font-weight: bold;">
                         {{proyecto.tipo}}
                     </div>
@@ -32,33 +32,33 @@
                         <div class="row">
 
                             <div class="col s12 m6">
-                                <label style="font-size: 17px;">{{proyecto.titulo}}</label>
-                                {% if proyecto.tipo == 'Programacion Web' %} 
-                                    <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/web.jpg' %}">
-                                    {% elif proyecto.tipo == 'Tiendas Online' %}
-                                        <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/shop.png' %}">
-                                        {% elif proyecto.tipo == 'Landing page' %}
-                                            <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/lp.jpg' %}">
-                                            {% elif proyecto.tipo == 'Aplicaciones Moviles' %}
-                                                <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/app.png' %}">     
-                                                {% elif proyecto.tipo == 'Sistemas para Ordenadores' %}
-                                                    <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/so.jpg' %}">           
-                                                    {% elif proyecto.tipo == "Servidores" %}
-                                                        <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/server.png' %}"> 
-                                                        {% elif proyecto.tipo == 'Bases de Datos' %}
-                                                            <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/db.png' %}"> 
-                                                            {% elif proyecto.tipo == 'Infraestructura' %}
-                                                                <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/redes.png' %}">
-                                                                {% elif proyecto.tipo == 'Diseño' %}
-                                                                    <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/dg.jpg' %}">
-                                                                    {% else %}
-                                                                        <img style="width: 100%; margin-top: 5%;" src="{% static 'img/proyectos/o.jpg' %}">    
+                                <label style="font-size: 15px;">{{proyecto.titulo}}</label>
+                                {% if proyecto.tipo == 'Programacion Web' %}
+                                <img style="height: 120px;  margin-top: 5%;" src="{% static 'img/proyectos/web.jpg' %}">
+                                {% elif proyecto.tipo == 'Tiendas Online' %}
+                                <img style="height: 120px;  margin-top: 5%;" src="{% static 'img/proyectos/shop.png' %}">
+                                {% elif proyecto.tipo == 'Landing page' %}
+                                <img style="height: 120px;  margin-top: 5%;" src="{% static 'img/proyectos/lp.jpg' %}">
+                                {% elif proyecto.tipo == 'Aplicaciones Moviles' %}
+                                <img style="height: 120px;  margin-top: 5%;" src="{% static 'img/proyectos/app.png' %}">
+                                {% elif proyecto.tipo == 'Sistemas para Ordenadores' %}
+                                <img style="height: 120px;  margin-top: 5%;" src="{% static 'img/proyectos/so.jpg' %}">
+                                {% elif proyecto.tipo == "Servidores" %}
+                                <img style="height: 120px;  margin-top: 5%;" src="{% static 'img/proyectos/server.png' %}">
+                                {% elif proyecto.tipo == 'Bases de Datos' %}
+                                <img style="height: 120px;  margin-top: 5%;" src="{% static 'img/proyectos/db.png' %}">
+                                {% elif proyecto.tipo == 'Infraestructura' %}
+                                <img style="height: 120px;  margin-top: 5%;" src="{% static 'img/proyectos/redes.png' %}">
+                                {% elif proyecto.tipo == 'Diseño' %}
+                                <img style="height: 120px;  margin-top: 5%;" src="{% static 'img/proyectos/dg.jpg' %}">
+                                {% else %}
+                                <img style="height: 120px;  margin-top: 5%;" src="{% static 'img/proyectos/o.jpg' %}">
                                 {% endif %}
-                                <div class="row">
+                                <div class="row" style="min-height: 45px;">
                                     <div class="col s1">
                                         <i class="material-icons">work</i>
                                     </div>
-                                    <div class="col s11">
+                                    <div class="col s10">
                                         <label style="font-size: 15px;">Experiencia
                                             Profesional:
                                             {% if proyecto.xp is 1 %}
@@ -77,7 +77,7 @@
                                     <div class="col s1">
                                         <i class="material-icons">short_text</i>
                                     </div>
-                                    <div class="col s11">
+                                    <div class="col s10">
                                         <label style="font-size: 15px;">
                                             Fecha de entrega: {{proyecto.fecha_fin}}
                                         </label>
@@ -85,15 +85,38 @@
                                 </div>
                             </div>
 
-                            <div class="col s12 m6" style="margin-bottom: 20px;">
+                            <div class="col s12 m5" style="margin-bottom: 20px;">
                                 <label style="font-size: 15px;">Descripción:</label>
                                 <textarea disabled class="auto_scroll"
-                                    style="max-height: 240px; resize: none; border: none;">{{proyecto.descripcion}}</textarea>
+                                    style="width: 105%; max-height: 240px; resize: none; border: none;">{{proyecto.descripcion}}</textarea>
                             </div>
 
                             <div class="col s12 center">
-                                <button onclick="postularse('{{proyecto.id}}')" class="btn green darken-1"
-                                    style="min-width: 100px;">Postularse</button>
+                                <!-- Boton para desplegar modal de postularse -->
+                                <button data-target="modal{{proyecto.id}}" class="btn green darken-1 modal-trigger">
+                                    Postularse
+                                </button>
+
+                                <!-- Modal postularse -->
+                                <div id="modal{{proyecto.id}}" class="modal modal-fixed-footer"
+                                    style="max-width: 400px; min-width: 310px; height: 420px;">
+                                    <div class="modal-content">
+                                        <h4>Solicitud de participación</h4>
+                                        <p>solicitud para postularte al proyecto {{proyecto.titulo}}</p>
+                                        <br>
+                                        <textarea id="txt-solicitud{{proyecto.id}}" class="grey darken-4"
+                                            style="resize: none; max-width: 100%; height:155px;border: 1px dotted #848484">{{texto}}</textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="modal-close waves-effect waves-red btn-flat red-text">
+                                            Cancelar
+                                        </a>
+                                        <a onclick="postularse('{{proyecto.id}}', '{{proyecto.titulo}}')"
+                                            class="modal-close waves-effect waves-green btn-flat">
+                                            Enviar
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -119,9 +142,16 @@
 
     <script src="{% static 'js/WQuick.js' %}"></script>
     {% include 'frames/autocomplete.html' %}
+    <script src="{% static 'js/getCookie.js' %}"></script>
+    <script src="{% static 'js/enviarDatos.js' %}"></script>
     <script>
-        function postularse(idProyecto){
-            console.log(idProyecto)
+        function postularse(idProyecto, asunto) {
+            let datos = new FormData();
+            let solicitud = document.getElementById('txt-solicitud'+idProyecto).value
+            datos.append('idProyecto', idProyecto)
+            datos.append('solicitud', solicitud)
+            datos.append('asunto', asunto)
+            enviar(datos, 'post', {}, '{% url "buscarProyectos" %}')
         }
     </script>
 </body>

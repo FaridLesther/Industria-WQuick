@@ -19,7 +19,7 @@ def inicio(request):
     parametros = {"titulo": 'Inicio'}
 
     datos = {}
-    proyectos = models.Proyecto.objects.all().values(
+    proyectos = models.Proyecto.objects.all().exclude(usuario_id=request.user.id).values(
         'id', 'titulo', 'tipo'
     ).annotate(Count('id')).order_by('-id')[:10]
 

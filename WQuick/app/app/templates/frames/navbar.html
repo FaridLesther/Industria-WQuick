@@ -7,16 +7,17 @@
             </a>
 
             <!-- Barra de búsqueda -->
-            <ul class="hide-on-med-and-down left">
+            <ul class="hide-on-med-and-down left" id="contenedorBusqueda">
                 <li>
                     <div class="center row">
                         <form method="get" id="frm-buscar">
                             <div class="col s12 ">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <a onclick='realizarBusqueda()'><i class=" material-icons prefix">search</i></a>
-                                        <input autocomplete="off" type="text" placeholder="buscar" name="buscar" id="autocomplete-input"
-                                            class="autocomplete" style="margin-left: 60px;">
+                                        <a id="btn-buscar" onclick='realizarBusqueda()'><i
+                                                class=" material-icons prefix">search</i></a>
+                                        <input autocomplete="off" type="text" placeholder="buscar" name="buscar"
+                                            id="autocomplete-input" class="autocomplete" style="margin-left: 60px;">
                                     </div>
                                 </div>
                             </div>
@@ -25,14 +26,21 @@
                 </li>
             </ul>
 
+            <!--boton barra de busqueda en dispositivos moviles -->
+            <a href="" id="lupa" class="sidenav-trigger">
+                <i class="material-icons">search</i>
+            </a>
+
             <!--boton menu responsivo -->
             <ul>
-                <li class="right">
-                    <a href="#" data-target="menu-responsive" class="sidenav-trigger">
+                <li class="right" id="menu-usuario">
+                    <a style="max-width: 10px; margin-left: -50px;" data-target="menu-responsive"
+                        class="sidenav-trigger">
                         <i class="material-icons">menu</i>
                     </a>
                 </li>
             </ul>
+
             <!-- Lista desplegable de sesion no responsiva -->
             <ul class="right hide-on-med-and-down">
                 {% if user.nombre %}
@@ -57,7 +65,7 @@
                 </li>
                 {% endif %}
             </ul>
-    
+
             <!-- Botones random que no sabremos si dejaremos -->
             <ul class="hide-on-med-and-down right">
                 <li><i href="" class="large material-icons" style="margin-left: 10px; margin-right: 20px;">message</i>
@@ -131,7 +139,7 @@
     <li class="divider side-divider" style=" margin-left: 20px;"></li>
     {% endif %}
     <li>
-        <a href="{% url 'logout' %}" class="" style="font-size: 15px;" >
+        <a href="{% url 'logout' %}" class="" style="font-size: 15px;">
             <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">exit_to_app</i>
             <span style="color: #ffc19dde;">Cerrar sesión</span>
         </a>
@@ -156,27 +164,27 @@
     {% if not titulo == 'Mis proyectos' %}
     <li class="divider side-divider side-divider" style=" margin-left: 20px;" style="margin-top: 20px;"></li>
     <li><a style="color: #ffc19dde;" href="{% url 'misProyectos' %}">
-        <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
-        Mis Proyectos
-    </a></li>
+            <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
+            Mis Proyectos
+        </a></li>
     {% endif %}
 
     <li class="divider side-divider side-divider" style=" margin-left: 20px;"></li>
     <li><a style="color: #ffc19dde;" href="{% url 'crearProyecto' %}">
-        <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
-        Crear Proyecto
-    </a></li>
+            <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
+            Crear Proyecto
+        </a></li>
 
     <li class="divider side-divider side-divider" style=" margin-left: 20px;"></li>
     <li><a style="color: #ffc19dde;" href="#!">
-        <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
-        Freelancers Contratados
-    </a></li>
+            <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
+            Freelancers Contratados
+        </a></li>
 
     <li class="divider side-divider side-divider" style=" margin-left: 20px;"></li>
     <li><a style="color: #ffc19dde;" href="#!">
-        <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
-        Solicitudes de Freelancers</a>
+            <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
+            Solicitudes de Freelancers</a>
     </li>
 
     <li class="divider side-divider side-divider" style=" margin-left: 20px;"></li>
@@ -216,12 +224,41 @@
 {% endif %}
 {% endif %}
 <script>
-    function realizarBusqueda(evento){
+    function realizarBusqueda(evento) {
         let busqueda = document.getElementById('autocomplete-input').value;
-        if(busqueda != ''){
-            window.location.href = "{% url 'buscarProyectos' %}?buscar="+busqueda;
-        }else{
+        if (busqueda != '') {
+            window.location.href = "{% url 'buscarProyectos' %}?buscar=" + busqueda;
+        } else {
             window.location.href = "{% url 'buscarProyectos' %}";
+        }
+    }
+
+    let lupa = document.getElementById('lupa');
+    let logo = document.getElementById('logo');
+    let menu = document.getElementById('menu-usuario');
+    let barraB = document.getElementById('contenedorBusqueda');
+    let btnBusqueda = document.getElementById('btn-buscar');
+    let txtbusqueda = document.getElementById('autocomplete-input');
+
+    lupa.onclick = (evento) => {
+        evento.preventDefault();
+        lupa.className = 'hide-on-med-and-down';
+        logo.style.display = 'none';
+        menu.style.display = 'none';
+        barraB.className = '';
+        btnBusqueda.style = 'margin-left: -30px;';
+        txtbusqueda.style = 'margin-left: 25px; width: 110%;';
+        txtbusqueda.focus();
+    }
+
+    txtbusqueda.onblur = () => {
+        if (txtbusqueda.value == '') {
+            lupa.className = 'sidenav-trigger';
+            logo.style.display = 'inline-flex';
+            menu.style.display = 'inline-flex';
+            barraB.className = 'hide-on-med-and-down left';
+            btnBusqueda.style = '';
+            txtbusqueda.style = 'margin-left: 60px;';
         }
     }
 </script>

@@ -15,6 +15,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from usuarios import forms, models
 from usuarios.src.imagenPerfil import cargarImagen
+from usuarios.src.solicitarProyecto import solicitarProyecto
 
 path = os.path.dirname(__file__)
 
@@ -208,18 +209,18 @@ class EditarPerfil(CreateView):
 
 
 def buscarProyectos(request):
+    mproyectos = models.Proyecto.objects.all().exclude(
+        usuario_id=request.user.id).values()
+    datos = {}
+    for proyecto in mproyectos:
+        datos[proyecto['titulo']] = '../static/img/diseñoweb.jpg'
+
     if request.GET.get('buscar'):
         busqueda = request.GET.get('buscar')
         mproyectos = models.Proyecto.objects.filter(
-            Q(titulo__icontains=busqueda) |
-            Q(descripcion__icontains=busqueda)
-        ).values()
-    else:
-        mproyectos = models.Proyecto.objects.all().values()
-
-    datos = {}
-    for proyecto in models.Proyecto.objects.all().values():
-        datos[proyecto['titulo']] = '../static/img/diseñoweb.jpg'
+            (Q(titulo__icontains=busqueda) |
+             Q(descripcion__icontains=busqueda)),
+        ).exclude(usuario_id=request.user.id).values()
 
     paginacion = Paginator(mproyectos, 6)
     pagina = request.GET.get('pagina', 1)
@@ -232,8 +233,12 @@ def buscarProyectos(request):
         context["listaObjetos"] = mproyectos
         context["paginacion"] = paginacion
         context["busqueda"] = datos
+        context["texto"] = 'Hola me gustaría trabajar en este proyecto'
 
     contexto = {'titulo': 'Buscar Proyectos'}
+
+    if request.is_ajax():
+        return solicitarProyecto(request)
     return render(request, 'usuarios/buscarProyectos.html', context)
 
 
