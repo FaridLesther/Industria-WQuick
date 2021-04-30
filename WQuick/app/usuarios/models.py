@@ -123,3 +123,14 @@ class Freelancer(models.Model):
 
     idiomas = ArrayField(models.CharField(max_length=10))
     descripcion = models.CharField(max_length=500)
+
+
+class Notificaciones(models.Model):
+    proyecto = models.ForeignKey(
+        Proyecto, null=False, on_delete=models.CASCADE)
+    freelancer = models.ForeignKey(
+        Freelancer, null=False, on_delete=models.CASCADE)
+    asunto = models.CharField(max_length=40, null=False)
+    solicitud = models.CharField(max_length=320, null=False)
+    noLeido = models.BooleanField(default=True)
+    borrado = models.BooleanField(default=False)

@@ -15,6 +15,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from usuarios import forms, models
 from usuarios.src.imagenPerfil import cargarImagen
+from usuarios.src.solicitarProyecto import solicitarProyecto
 
 path = os.path.dirname(__file__)
 
@@ -235,4 +236,7 @@ def buscarProyectos(request):
         context["texto"] = 'Hola me gustaría trabajar en este proyecto'
 
     contexto = {'titulo': 'Buscar Proyectos'}
+
+    if request.is_ajax():
+        return solicitarProyecto(request)
     return render(request, 'usuarios/buscarProyectos.html', context)

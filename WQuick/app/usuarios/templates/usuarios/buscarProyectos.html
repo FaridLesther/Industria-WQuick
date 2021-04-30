@@ -104,14 +104,14 @@
                                         <h4>Solicitud de participación</h4>
                                         <p>solicitud para postularte al proyecto {{proyecto.titulo}}</p>
                                         <br>
-                                        <textarea name="txt-solicitud" class="grey darken-4"
+                                        <textarea id="txt-solicitud{{proyecto.id}}" class="grey darken-4"
                                             style="resize: none; max-width: 100%; height:155px;border: 1px dotted #848484">{{texto}}</textarea>
                                     </div>
                                     <div class="modal-footer">
                                         <a class="modal-close waves-effect waves-red btn-flat red-text">
                                             Cancelar
                                         </a>
-                                        <a onclick="postularse('{{proyecto.id}}')"
+                                        <a onclick="postularse('{{proyecto.id}}', '{{proyecto.titulo}}')"
                                             class="modal-close waves-effect waves-green btn-flat">
                                             Enviar
                                         </a>
@@ -142,9 +142,16 @@
 
     <script src="{% static 'js/WQuick.js' %}"></script>
     {% include 'frames/autocomplete.html' %}
+    <script src="{% static 'js/getCookie.js' %}"></script>
+    <script src="{% static 'js/enviarDatos.js' %}"></script>
     <script>
-        function postularse(idProyecto) {
-            console.log(idProyecto)
+        function postularse(idProyecto, asunto) {
+            let datos = new FormData();
+            let solicitud = document.getElementById('txt-solicitud'+idProyecto).value
+            datos.append('idProyecto', idProyecto)
+            datos.append('solicitud', solicitud)
+            datos.append('asunto', asunto)
+            enviar(datos, 'post', {}, '{% url "buscarProyectos" %}')
         }
     </script>
 </body>
