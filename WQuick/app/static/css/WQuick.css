@@ -41,12 +41,12 @@ main {
 }
 
 .sidenav::-webkit-scrollbar {
-	width: 7px;
+    width: 7px;
 }
 
 .sidenav::-webkit-scrollbar-thumb {
-	background: #fcd45b ;
-	border-radius: 5px;
+    background: #fcd45b;
+    border-radius: 5px;
 }
 
 /*==================== color de las cars(tarjetas) en materialize ====================*/
@@ -54,6 +54,25 @@ main {
     background-color: #424242;
 }
 
+/*==================== color de los modals en materialize ====================*/
+.modal {
+    background-color: #424242;
+    color: #ccc;
+}
+
+.modal .modal-footer {
+    background-color: #424242;
+    color: #ccc;
+}
+
+.modal .modal-footer {
+    background-color: #424242;
+    color: #ccc;
+}
+
+.modal .modal-footer .btn-flat {
+    color: #ccc;
+}
 /*========================================== Alertas personalizadas ==========================================*/
 html {
     line-height: 1.5;
@@ -246,6 +265,7 @@ ul.dropdown-content.select-dropdown li span {
 .select-dropdown {
     color: #f7f7f7;
 }
+
 /*========================================== Autocomplete barra de búsqueda ==========================================*/
 .dropdown-content li>a,
 .dropdown-content li>span {
@@ -257,11 +277,11 @@ ul.dropdown-content.select-dropdown li span {
 }
 
 .autocomplete-content li:hover {
-    background-color:black;
+    background-color: black;
 }
 
 .autocomplete-content li.active {
-    background-color:black;
+    background-color: black;
 }
 
 /*========================================== Estilos que puso nicoll para el login y registro ==========================================*/

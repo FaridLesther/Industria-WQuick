@@ -90,11 +90,11 @@ class FrmLogin(AuthenticationForm):
     #    -  password: contraseña del usuario que ingresara al programa
     def __init__(self, *args, **kwargs):
         super(FrmLogin, self).__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs['class'] = 'white-text grey darken-3'
+        self.fields['username'].widget.attrs['class'] = 'white-text grey darken-4'
         self.fields['username'].widget.attrs['id'] = 'txt_usuario'
         self.fields['username'].widget.attrs['style'] = 'border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;'
 
-        self.fields['password'].widget.attrs['class'] = 'white-text grey darken-3'
+        self.fields['password'].widget.attrs['class'] = 'white-text grey darken-4'
         self.fields['password'].widget.attrs['id'] = 'txt_clave'
         self.fields['password'].widget.attrs['style'] = 'border-radius: 2px;width: 60%;border: 1px solid #000;height: 5vh;'
 
