@@ -41,10 +41,10 @@ class Registrar(CreateView):
             Te damos la bienvenida {nombre} a WQuick
             
             Puedes acceder a tu cuenta de WQuick iniciando sesión
-            en el siguiente enlace: https://industriawquick.herokuapp.com/login/
+            en el siguiente enlace: https://industriawquick.herokuapp.com{reverse_lazy('login')}
 
             Te invitamos a que publiques tus proyectos o trabajes como freelancer con los
-            servicios que ofrecemos: https://industriawquick.herokuapp.com/elige/
+            servicios que ofrecemos: https://industriawquick.herokuapp.com{reverse_lazy('elegir')}
 
             Fecha de registro: {datetime.datetime.now().strftime('%d/%m/%Y')}
         """
@@ -303,5 +303,5 @@ def fContratados(request):
                 )
 
     contexto['contrataciones'] = listaContrataciones
-    
+
     return render(request, 'usuarios/fContratados.html', contexto)
