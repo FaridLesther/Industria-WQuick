@@ -102,10 +102,11 @@
     <script>
         var url = '{% url "solicitudesF" %}';
 
-        function leer(id, freelancer) {
+        function leer(id, freelancer, contratar = false, eliminar = false) {
             datos = new FormData();
             datos.append('idNotificacion', id);
             datos.append('freelancer', freelancer);
+            datos.append('contratar', contratar);
             enviar(datos, 'post', url)
         }
 
@@ -122,8 +123,9 @@
                 .then(respuesta => {
                     if (!respuesta['resultado']) {
                         alerta(respuesta['mensaje'], 'red')
+                    } else if(respuesta['resultado'] == 'contratado'){
+                        window.location.href = respuesta['mensaje']['url']
                     } else {
-
                         let numNotificaciones = document.getElementById('noti');
                         if (numNotificaciones != null) {
                             if (numNotificaciones.innerHTML - 1 == 0) {
@@ -164,6 +166,7 @@
                                         <br><br><br><br><br><br>
                                         <div class="center">
                                             <button class="btn green darken-4" id="contratar"
+                                                onclick="leer(${notificacion['id']}, '${notificacion['freelancer']}', 1)"
                                                 style="min-width: 120px; margin-bottom: 10px;">Contratar</button>
                                             <button class="btn red darken-4" id="eliminar"
                                                 style="min-width: 120px; margin-bottom: 10px;">Eliminar</button>
