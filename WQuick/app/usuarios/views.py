@@ -278,3 +278,5 @@ def solicitudesF(request):
         return leer.leerNotificacion(request)
 
     return render(request, 'usuarios/solicitudesF.html', contexto)
+
+

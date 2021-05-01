@@ -5,6 +5,7 @@
     {% include "frames/head.html" %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="materialize-social.css">
 </head>
 <body>
     {% include "frames/navbar.html" %}
@@ -23,15 +24,14 @@
                 {% endif %}
             </div>
                 <img src="{% static 'img/slider2/1.png' %}" class="mockup">
-           <!-- <img src="{% static 'img/mockup.png' %}" class="mockup">-->
+
         </section>
     </header>
     <main>
-        <section class="services">
-            <div style="background: --black1" class="container">
-                <h2 class="subtitle">Puedes encontrar profesionales altamente capacitados<span class="point">.</span></h2>
-                <p class="copy__section">según las necesidades de tu proyecto en distintas áreas dentro de la revolución digital</p>
-
+        <section class="services" style="background-color: #212121 ;">
+            <div  class="container" style="background-color: #212121 ;">
+                <h2 class="subtitle" style="color: white;">Puedes encontrar profesionales altamente capacitados<span class="point">.</span></h2>
+                <p class="copy__section" style="color: #F4BD76;">según las necesidades de tu proyecto en distintas áreas dentro de la revolución digital</p>
                 <article class="container-cards">
                     <div class="card">
                         <img src="{% static 'img/slider/1.jpg' %}" class="card__img">
@@ -39,7 +39,7 @@
                             <p class="card__list">Especialistas en diseño UX / UI</p>
                             <h3 class="card__title">Diseño web<span class="point">.</span></h3>
                             <p class="card__copy">Encuentra profesionales capacitados en el área de diseño de interfaces </p>
-                            <a href="" class="card__button">Comienza tu proyecto</a>
+                            <a href="elige" class="card__button">Comienza tu proyecto</a>
                         </div>
                     </div>
                     <div class="card">
@@ -48,7 +48,7 @@
                             <p class="card__list">Especialistas en desarrollo web</p>
                             <h3 class="card__title">Web apps<span class="point">.</span></h3>
                             <p class="card__copy">Si necesitas una sitio web para tu empresa o negocio, aquí puedes encontrar profesionales en la materia</p>
-                            <a href="registrar" class="card__button">Comienza tu proyecto</a>
+                            <a href="elige" class="card__button">Comienza tu proyecto</a>
                         </div>
                     </div>
                     <div class="card">
@@ -57,21 +57,20 @@
                             <p class="card__list">Diseñadores gráficos</p>
                             <h3 class="card__title">Creatividad y Diseño<span class="point">.</span></h3>
                             <p class="card__copy">Las mentes más creativas y revolucionarias las encontrarás con nosotros</p>
-                            <a href="registrar" class="card__button">Comienza tu proyecto</a>
+                            <a href="elige" class="card__button">Comienza tu proyecto</a>
                         </div>
                     </div>
                 </article>
             </div>
         </section>
-        <section class="projects container">
-            <h2 class="subtitle">Proyectos recientes<span class="point">.</span></h2>
-            <p class="copy__section">Hemos colaborado con marcas reconocidas a nivel mundial</p>
+        <section class="projects container" style="background: #212121;">
+            <h2 class="subtitle" style="color: white;">Proyectos recientes<span class="point">.</span></h2>
+            <p class="copy__section" style="color: white;">Hemos colaborado con marcas reconocidas a nivel mundial</p>
             <article class="container-bg">
                 <div class="card">
-                    <div class="cards__text">
-                        <h3 class="card__title">Diseño web<span class="point">.</span></h3>
-                        <p class="card__date">24 de agosto 2020</p>
-                        <p class="card__copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolorum sit molestias ipsam at veritatis ut esse eius, dolor est!</p>
+                    <div class="cards__text" style="background: #1A1B1F">
+                            <div class="col s12 m6">
+                                </div>
                         <a href="#" class="card__button">Comienza tu proyecto</a>
                     </div>
                 </div>
