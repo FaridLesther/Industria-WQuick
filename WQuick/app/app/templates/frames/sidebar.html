@@ -61,20 +61,20 @@
         <div class="container-fluid center">
             {% if not titulo == 'Mis proyectos' %}
             <li class="divider side-divider" style=" margin-left: 20px;" style="margin-top: 20px;"></li>
-            <li><a style="color: #ffc19dde;" href="{% url 'misProyectos' %}" >Mis Proyectos</a></li>
+            <li><a style="color: #ffc19dde;" href="{% url 'misProyectos' %}">Mis Proyectos</a></li>
             {% endif %}
 
             <li class="divider side-divider" style=" margin-left: 20px;"></li>
-            <li><a style="color: #ffc19dde;"  href="{% url 'crearProyecto' %}" >Crear Proyecto</a></li>
+            <li><a style="color: #ffc19dde;" href="{% url 'crearProyecto' %}">Crear Proyecto</a></li>
 
             <li class="divider side-divider" style=" margin-left: 20px;"></li>
-            <li><a style="color: #ffc19dde;" href="#!" >Freelancers Contratados</a></li>
+            <li><a style="color: #ffc19dde;" href="{% url 'fContratados' %}">Freelancers Contratados</a></li>
 
             <li class="divider side-divider" style=" margin-left: 20px;"></li>
-            <li><a style="color: #ffc19dde;" href="{% url 'solicitudesF' %}" >Solicitudes de Freelancers</a></li>
-            
-            <li class="divider side-divider" style=" margin-left: 20px;"></li>     
-        </div>   
+            <li><a style="color: #ffc19dde;" href="{% url 'solicitudesF' %}">Solicitudes de Freelancers</a></li>
+
+            <li class="divider side-divider" style=" margin-left: 20px;"></li>
+        </div>
     </div>
     <br><br><br>
 </ul>
@@ -85,9 +85,9 @@
     function activarGuardar() {
         let btnGuardar = document.getElementById('btn-guardari');
         let txtImagen = '';
-        if(document.getElementById('txt-imagen').value == ''){
+        if (document.getElementById('txt-imagen').value == '') {
             txtImagen = document.getElementById('txt-imagen2');
-        }else{
+        } else {
             txtImagen = document.getElementById('txt-imagen');
         }
         if (txtImagen.value.length == 0) {

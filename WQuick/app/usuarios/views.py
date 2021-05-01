@@ -278,3 +278,30 @@ def solicitudesF(request):
         return leer.leerNotificacion(request)
 
     return render(request, 'usuarios/solicitudesF.html', contexto)
+
+
+def fContratados(request):
+    contexto = {'titulo': 'Freelancers Contratados'}
+    misContrataciones = models.Contrataciones.objects.filter(
+        proyecto_id__usuario_id=request.user.id).values()
+
+    listaContrataciones = []
+    if misContrataciones.exists():
+        for contratacion in misContrataciones:
+            idFreelancer = contratacion['freelancer_id']
+            idProyecto = contratacion['proyecto_id']
+            freelancer = models.Freelancer.objects.filter(
+                id=idFreelancer).values()
+            proyecto = models.Proyecto.objects.filter(id=idProyecto).values()
+
+            if freelancer.exists() and proyecto.exists():
+                nombre = freelancer[0]['nombre']+' '+freelancer[0]['apellido']
+                tituloProyecto = proyecto[0]['titulo']
+                fecha = contratacion['fechaContratacion']
+                listaContrataciones.append(
+                    {'nombre': nombre, 'proyecto': tituloProyecto, 'fecha': fecha}
+                )
+
+    contexto['contrataciones'] = listaContrataciones
+    
+    return render(request, 'usuarios/fContratados.html', contexto)

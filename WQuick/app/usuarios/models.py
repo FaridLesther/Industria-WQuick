@@ -136,3 +136,12 @@ class Notificaciones(models.Model):
     solicitud = models.CharField(max_length=320, null=False)
     noLeido = models.BooleanField(default=True)
     borrado = models.BooleanField(default=False)
+
+
+class Contrataciones(models.Model):
+    proyecto = models.ForeignKey(
+        Proyecto, null=False, on_delete=models.CASCADE)
+    freelancer = models.ForeignKey(
+        Freelancer, null=False, on_delete=models.CASCADE)
+    fechaContratacion = models.DateTimeField(null=False)
+    activa = models.BooleanField(default=True)

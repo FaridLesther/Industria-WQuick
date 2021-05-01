@@ -17,4 +17,5 @@ urlpatterns = [
     path('buscarProyectos', views.buscarProyectos, name='buscarProyectos'),
     path('editarProyecto', login_required(views.EditarProyecto.as_view()), name='editarProyecto'),
     path('solicitudesFreel', login_required(views.solicitudesF), name='solicitudesF'),
+    path('cantratados', login_required(views.fContratados), name='fContratados'),
 ]
