@@ -129,7 +129,6 @@ class FrmCrearProyecto(forms.ModelForm):
     )
 
     moneda = (
-        ('Moneda', 'Moneda'),
         ('L.', 'L.'),
         ('$.', '$.'),
         ('€.', '€.'),
@@ -177,8 +176,10 @@ class FrmCrearProyecto(forms.ModelForm):
                 attrs={
                     'class': 'validate',
                     'id': 'txt_presupuesto',
-                    'type': 'text',
+                    'type': 'number',
+                    'style': 'margin-top: 15px;',
                     'required': 'required',
+                    'value': '1000',
                 }
             ),
         }
@@ -196,6 +197,17 @@ class FrmCrearProyecto(forms.ModelForm):
         descripcion = descripcion.replace('>', '')
         descripcion = descripcion.replace('\\', '')
         return descripcion
+
+    def clean_presupuesto(self):
+        try:
+            valor = int(self.cleaned_data.get('presupuesto'))
+            if valor < 99:
+                raise forms.ValidationError(
+                    'El presupuesto debe ser mayor que 100')
+            return valor
+        except ValueError:
+            raise forms.ValidationError(
+                'El presupuesto solo debe tener números')
 
     def save(self, commit=True, usuario=-1, fechaInicio=None):
         proyecto = super().save(commit=False)

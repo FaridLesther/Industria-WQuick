@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
         hover: true
     });
 
+    var drops = document.querySelectorAll('.notificaciones');
+    var instances = M.Dropdown.init(drops, {
+        coverTrigger: false,
+    });
     /*=================== Funcionalidades para los sliders ===================*/
     var sliders = document.querySelectorAll('.slider');
     var instances = M.Slider.init(sliders, {

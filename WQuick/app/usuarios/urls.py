@@ -16,4 +16,5 @@ urlpatterns = [
     path('editarPerfil', login_required(views.EditarPerfil.as_view()), name='editarPerfil'),
     path('buscarProyectos', views.buscarProyectos, name='buscarProyectos'),
     path('editarProyecto', login_required(views.EditarProyecto.as_view()), name='editarProyecto'),
+    path('solicitudesFreel', login_required(views.solicitudesF), name='solicitudesF'),
 ]

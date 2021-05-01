@@ -148,49 +148,12 @@ textarea::placeholder {
     background-color: hsl(180, 50%, 40%);
 }
 
-/*
-.datepicker-date-display {
-    background-color: rgb(118, 186, 241);
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-.datepicker-cancel,
-.datepicker-clear,
-.datepicker-today,
-.datepicker-done {
-    color: rgb(69, 143, 204);
+input[type=number] {
+    -moz-appearance: textfield;
 }
-
-.datepicker-table td.is-today {
-    color: rgb(69, 143, 204);
-}
-
-.datepicker-table td.is-selected {
-    background-color: rgb(118, 186, 241);
-    color: #fff;
-}
-*/
-/*
-input:focus {
-    border-bottom: 1px solid royalblue !important;
-    box-shadow: 0 1px 0 0 royalblue !important;
-}
-
-label.active {
-    color: royalblue !important;
-}*/
-
-/*[type="radio"]:checked+span:after,
-[type="radio"].with-gap:checked+span:after {
-    background-color: orange;
-}
-
-[type="radio"]:checked+span:after,
-[type="radio"].with-gap:checked+span:before,
-[type="radio"].with-gap:checked+span:after {
-    border: 2px solid orange;
-}*/
-
-/*
-ul.dropdown-content.select-dropdown li span {
-    color: #000;
-}*/

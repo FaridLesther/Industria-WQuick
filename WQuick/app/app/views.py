@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.db.models import Count
 from usuarios import models
+from usuarios.src import funciones
 
 path = os.path.dirname(__file__)
 
@@ -27,4 +28,11 @@ def inicio(request):
         datos[proyecto['titulo']] = '../static/img/diseñoweb.jpg'
 
     parametros['busqueda'] = datos
+
+    listaNotificaciones = funciones.nuevasNotificaciones(request.user.id)
+
+    if listaNotificaciones.__len__() > 0:
+        parametros['notificaciones'] = listaNotificaciones
+        parametros['numNotificaciones'] = listaNotificaciones.__len__()
+
     return render(request, 'index.html', parametros)

@@ -155,17 +155,25 @@
                             {{ form.xp }}
                             <label>Experiencia profesional</label>
                         </div>
-                        <br>
-                        <div class="input-field col s12">
-                            <label>Presupuesto</label>
-                            {{ form.presupuesto }}                        
-                            {{ form.moneda }}   
-                        </div>
-                        <br>
+                        
+                        <div class="row">
+                            {% if form.presupuesto.errors %}
+                            <label class="red-text">{{ form.presupuesto.errors.as_text }}</label>
+                            {% endif %}
+                            <div class="col s12">
+                                <label>Presupuesto</label>  
+                            </div>
+                            <div class="input-field col s2">                      
+                                {{ form.moneda }}   
+                            </div>
+                            <div class="col s10">
+                                {{ form.presupuesto }}
+                            </div>
+                           </div>
+
                         <div class="input-field">
                             {{ form.fecha }}
                             <label for="data">Fecha en que necesitas tu Proyecto</label>
-                            <br><br><br><br>
                         </div>
                     </div>
 

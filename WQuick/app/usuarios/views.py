@@ -16,6 +16,7 @@ from django.db.models import Q
 from usuarios import forms, models
 from usuarios.src.imagenPerfil import cargarImagen
 from usuarios.src.solicitarProyecto import solicitarProyecto
+from usuarios.src import leerNotificacion as leer, funciones
 
 path = os.path.dirname(__file__)
 
@@ -256,3 +257,24 @@ class EditarProyecto(CreateView):
         context = super(EditarProyecto, self).get_context_data(**kwargs)
         context['titulo'] = 'Editar mi Proyecto'
         return context
+
+
+def solicitudesF(request):
+    contexto = {'titulo': 'Solicitudes de freelancers'}
+
+    misProyectos = models.Proyecto.objects.filter(
+        usuario_id=request.user.id).values('id')
+
+    listaNotificaciones = funciones.misNotificaciones(request.user.id)
+
+    nuevasNotificaciones = funciones.nuevasNotificaciones(request.user.id)
+
+    if listaNotificaciones.__len__() > 0:
+        contexto['notificaciones'] = nuevasNotificaciones
+        contexto['numNotificaciones'] = nuevasNotificaciones.__len__()
+        contexto['misNotificaciones'] = listaNotificaciones
+
+    if request.is_ajax():
+        return leer.leerNotificacion(request)
+
+    return render(request, 'usuarios/solicitudesF.html', contexto)

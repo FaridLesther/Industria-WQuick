@@ -68,14 +68,40 @@
 
             <!-- Botones random que no sabremos si dejaremos -->
             <ul class="hide-on-med-and-down right">
-                <li><i href="" class="large material-icons" style="margin-left: 10px; margin-right: 20px;">message</i>
+                <li class="dropdown-trigger notificaciones" data-target="menu-notificaciones">
+                    {% if numNotificaciones > 0 %}
+                    <span id="noti" class="new badge" data-badge-caption="nuevos">{{numNotificaciones}}</span>
+                    {% endif %}
+                    <a href=""><i class="large material-icons"
+                            style="margin-left: 10px; margin-right: 20px;">message</i></a>
                 </li>
-                <li><i href="" class="large material-icons " style="margin-right: 20px;">settings</i></li>
+                <!--<li><i href="" class="large material-icons " style="margin-right: 20px;">settings</i></li>-->
             </ul>
 
         </div>
     </nav>
 </div>
+
+<!--Menú de notificaciones en escritorio-->
+<ul class="dropdown-content" id="menu-notificaciones" style="min-width: 435px;">
+    {% if notificaciones %}
+
+    {% for notificacion in notificaciones %}
+    <li>
+        <a href="{% url 'solicitudesF' %}?solicitud={{notificacion.id}}" class="link white-text" style="font-size: 15px;">
+            Solicitud para trabajar en {{notificacion.asunto}} de: {{notificacion.freelancer_id}}
+        </a>
+    </li>
+    {% endfor %}
+
+    {% else %}
+
+    <li>
+        <a class="link">No tiene nuevas notificaciones</a>
+    </li>
+
+    {% endif %}
+</ul>
 
 <!--Menú de sessión no responsivo-->
 <ul class="dropdown-content" id="id_drop" style="min-width: 135px;">
@@ -182,7 +208,7 @@
         </a></li>
 
     <li class="divider side-divider side-divider" style=" margin-left: 20px;"></li>
-    <li><a style="color: #ffc19dde;" href="#!">
+    <li><a style="color: #ffc19dde;" href="{% url 'solicitudesF' %}">
             <i class="material-icons grey-text text-lighten-2" style="font-size: 35px;">message</i>
             Solicitudes de Freelancers</a>
     </li>
